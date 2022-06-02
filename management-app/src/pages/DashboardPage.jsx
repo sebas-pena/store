@@ -1,13 +1,12 @@
-import ChartTotalSales from "../components/charts/total-sales/ChartTotalSales"
+import SalesExpensesChart from "../components/charts/sales-expenses/SalesExpensesChart"
+import { totalSalesMock } from "../mocks/totalsales"
 import "./dashboard-page.css"
 const DashboardPage = () => {
-	return (
-		<div className="dashboard__ctn">
-			<div className="dashboard__total-sales-ctn">
-				<ChartTotalSales period={"lastyear"} />
-			</div>
-		</div>
-	)
+  return (
+    <div className="dashboard__ctn">
+      <SalesExpensesChart period={"lastyear"} {...totalSalesMock} />
+    </div>
+  )
 }
 
 export default DashboardPage

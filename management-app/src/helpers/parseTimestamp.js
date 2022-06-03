@@ -1,45 +1,54 @@
 const dayNames = [
-	"Sunday",
-	"Monday",
-	"Tuesday",
-	"Wednesday",
-	"Thursday",
-	"Friday",
-	"Saturday",
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
 ]
 
 const monthNames = [
-	"January",
-	"February",
-	"March",
-	"April",
-	"May",
-	"June",
-	"July",
-	"August",
-	"September",
-	"October",
-	"November",
-	"December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ]
 
 export const parseTimestamp = {
-	getHour: (timestamp) => {
-		const date = new Date(timestamp)
-		return date.getHours()
-	},
+  getHour: (timestamp) => {
+    const date = new Date(timestamp)
+    return date.getHours()
+  },
 
-	getMouthDayYear: (timestamp) => {
-		const date = new Date(timestamp)
-		const day = date.getDate()
-		const month = monthNames[date.getMonth()]
-		const year = date.getFullYear()
-		return ` ${month} ${day}, ${year}`
-	},
+  getMouthDayYear: (timestamp) => {
+    const date = new Date(timestamp)
+    const day = date.getDate()
+    const month = monthNames[date.getMonth()]
+    const year = date.getFullYear()
+    return ` ${month} ${day}, ${year}`
+  },
 
-	getDay: (timestamp) => {
-		const date = new Date(timestamp)
-		const day = dayNames[date.getDay()]
-		return day
-	},
+  getDay: (timestamp) => {
+    const date = new Date(timestamp)
+    const day = dayNames[date.getDay()]
+    return day
+  },
+  getTime12: (timestamp) => {
+    const date = new Date(timestamp)
+    const time = date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    })
+    return time
+  },
 }

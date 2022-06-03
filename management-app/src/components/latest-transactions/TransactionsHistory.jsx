@@ -1,13 +1,20 @@
 import { parseTimestamp } from "../../helpers/parseTimestamp"
 
 import { transactionsHistoryMock } from "../../mocks/transactionsHistory"
+import { ReactComponent as CashIcon } from "../../assets/svg/cash.svg"
+import { ReactComponent as CardIcon } from "../../assets/svg/card.svg"
 import "./latesttransactions.css"
+
+const paymentMethodsIcons = {
+  cash: <CashIcon width="24" />,
+  card: <CardIcon width="24" />,
+}
 
 const LatestTransactions = () => {
   return (
     <div className="latest-transactions__ctn">
       <header className="latest-transactions__header">
-        <p>Lastest Transactions</p>
+        <p>Latest Transactions</p>
       </header>
       <ul className="latest-transactions__list">
         {transactionsHistoryMock.map((day, index) => {
@@ -16,17 +23,24 @@ const LatestTransactions = () => {
               <header className="latest-transactions__day">
                 <p>{parseTimestamp.getMouthDayYear(day.timestamp)}</p>
               </header>
-              <ul>
+              <ul className="latest-transactions__day-list">
                 {day.transactions.map((transaction) => {
                   return (
                     <li
                       key={transaction.timestamp}
-                      className="latest-transactions__item"
+                      className={`latest-transactions__item ${transaction.type}`}
                     >
-                      <p>{transaction.type === "income" ? "+" : "-"}</p>
-                      <p>
-                        Amount: $
-                        {transaction.currency + " " + transaction.amount}
+                      {paymentMethodsIcons[transaction.method]}
+                      <div className="latest-transactions__item-info">
+                        <p className="latest-transactions__item-local">
+                          {transaction.local}
+                        </p>
+                        <p className="latest-transactions__item-time">
+                          {parseTimestamp.getTime12(transaction.timestamp)}
+                        </p>
+                      </div>
+                      <p className="latest-transactions__item-amount">
+                        ${transaction.currency + " " + transaction.amount}
                       </p>
                     </li>
                   )

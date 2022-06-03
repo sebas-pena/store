@@ -1,0 +1,42 @@
+.best-seller-dashboard{
+    display: flex;
+    flex-direction: column;
+    max-height: 391px;
+    margin: 20px 40px;
+    overflow: hidden;
+}
+
+.best-seller-dashboard-header > h3{
+    color: var(--gray);
+    font-weight: 500;
+}
+
+.best-seller-dashboard__name{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+}
+
+.best-seller-dashboard__img{
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.best-seller-dashboard__img > img{
+    object-fit: contain;
+    padding: 20px;
+}
+.best-seller-dashboard__price{
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--dark-gray);
+}
+.best-seller-dashboard__description{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    color: var(--gray);
+}

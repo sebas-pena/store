@@ -1,34 +1,38 @@
 import { ReactComponent as StarIcon } from "../../assets/svg/star.svg"
 
 import "./starrating.css"
-const ratings = {
-  0: "0%",
-  0.5: "10%",
-  1: "20%",
-  1.5: "30%",
-  2: "40%",
-  2.5: "50%",
-  3: "60%",
-  3.5: "70%",
-  4: "80%",
-  4.5: "90%",
-  5: "100%",
-}
 
-const StarRating = ({ rating }) => {
+const StarRating = ({
+  rating = 2.5,
+  size = 15,
+  max = 5,
+  primary = "#ffc800",
+  secondary = "#fffcad",
+}) => {
+  const fillStyle = {
+    width: size * rating,
+    backgroundColor: primary,
+  }
+  const emptyStyle = {
+    flex: 1,
+    backgroundColor: secondary,
+  }
+
   return (
     <div className="star-rating__ctn">
-      <StarIcon width="25" fill="grey" className="star-rating__star" />
-      <StarIcon width="25" fill="grey" className="star-rating__star" />
-      <StarIcon width="25" fill="grey" className="star-rating__star" />
-      <StarIcon width="25" fill="grey" className="star-rating__star" />
-      <StarIcon width="25" fill="grey" className="star-rating__star" />
+      {Array(Number(max))
+        .fill(1)
+        .map((_, i) => (
+          <StarIcon
+            width={size}
+            fill="#888888"
+            className="star-rating__star"
+            key={i}
+          />
+        ))}
       <div className="star-rating__overlays">
-        <div
-          className="star-rating__overlay-yellow"
-          style={{ width: ratings[rating] }}
-        ></div>
-        <div className="star-rating__overlay-gray"></div>
+        <div className="star-rating__overlay-yellow" style={fillStyle}></div>
+        <div className="star-rating__overlay-gray" style={emptyStyle}></div>
       </div>
     </div>
   )

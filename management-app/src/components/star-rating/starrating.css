@@ -15,12 +15,3 @@
     mix-blend-mode: overlay;
     height: 100%;
 }
-
-.star-rating__overlay-yellow{
-    background-color: #ffc800;
-}
-
-.star-rating__overlay-gray{
-    flex: 1;
-    background-color: #fffcad;
-}

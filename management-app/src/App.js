@@ -4,17 +4,17 @@ import Aside from "./components/aside/Aside"
 import AppRouter from "./router/AppRouter"
 
 function App() {
-  return (
-    <BrowserRouter>
-      <div className="App">
-        <TitleBar />
-        <Aside />
-        <main>
-          <AppRouter />
-        </main>
-      </div>
-    </BrowserRouter>
-  )
+	return (
+		<BrowserRouter>
+			<div className="App">
+				<Aside />
+				<div className="app__ctn">
+					<TitleBar />
+					<AppRouter />
+				</div>
+			</div>
+		</BrowserRouter>
+	)
 }
 
 export default App

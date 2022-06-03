@@ -1,4 +1,9 @@
-.dashboard__total-sales-ctn{
-    padding-top: 30px;
-    width: 500px;
+.dashboard__ctn{
+    flex: 1;
+    display: flex;
+}
+
+.dashboard__main-ctn{
+    flex: 1;
+    display: flex;
 }

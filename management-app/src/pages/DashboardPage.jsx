@@ -3,14 +3,14 @@ import TransactionsHistory from "../components/transactions-history/Transactions
 import { totalSalesMock } from "../mocks/totalsales"
 import "./dashboard-page.css"
 const DashboardPage = () => {
-  return (
-    <div className="dashboard__ctn">
-      <div>
-        <SalesExpensesChart period={"lastyear"} {...totalSalesMock} />
-      </div>
-      <TransactionsHistory />
-    </div>
-  )
+	return (
+		<div className="dashboard__ctn">
+			<main className="dashboard__main-ctn">
+				<SalesExpensesChart period={"lastyear"} {...totalSalesMock} />
+			</main>
+			<TransactionsHistory />
+		</div>
+	)
 }
 
 export default DashboardPage

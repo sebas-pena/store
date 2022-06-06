@@ -24,6 +24,7 @@ const SalesExpensesChart = ({ labels, incomes, expenses }) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "none",

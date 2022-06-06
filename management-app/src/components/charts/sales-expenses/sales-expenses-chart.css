@@ -1,8 +1,8 @@
 .sales-expenses-chart__ctn{
     display: flex;
     flex-direction: column;
-    padding: 20px;
     user-select: none;
+    padding: 20px;
 }
 
 .sales-expenses-chart__title{
@@ -63,7 +63,7 @@
     background-color: #FF91A9;
 }
 
-
 .sales-expenses-chart__chart{
-    width: 500px;
+    height: 200px;
+    width: 100%;
 }

@@ -1,6 +1,6 @@
 import { ReactComponent as StarIcon } from "../../assets/svg/star.svg"
 
-import "./starrating.css"
+import "./StarRating.css"
 
 const StarRating = ({
   rating = 2.5,

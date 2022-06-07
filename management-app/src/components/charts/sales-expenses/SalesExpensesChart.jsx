@@ -9,7 +9,7 @@ import {
 } from "chart.js"
 import { Bar } from "react-chartjs-2"
 
-import "./sales-expenses-chart.css"
+import "./SalesExpensesChart.css"
 
 const SalesExpensesChart = ({ labels, incomes, expenses }) => {
   BarElement.prototype.constructor.defaults.borderRadius = 3

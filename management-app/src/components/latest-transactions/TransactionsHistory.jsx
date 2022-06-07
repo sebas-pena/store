@@ -3,7 +3,7 @@ import { parseTimestamp } from "../../helpers/parseTimestamp"
 import { transactionsHistoryMock } from "../../mocks/transactionsHistory"
 import { ReactComponent as CashIcon } from "../../assets/svg/cash.svg"
 import { ReactComponent as CardIcon } from "../../assets/svg/card.svg"
-import "./latesttransactions.css"
+import "./TransactionsHistory.css"
 
 const paymentMethodsIcons = {
   cash: <CashIcon width="24" />,

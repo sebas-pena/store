@@ -1,0 +1,21 @@
+.search-input__ctn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--light-gray);
+}
+.search-input__icon{
+    fill: var(--dark-gray);
+    
+}
+.search-input__input{
+    flex: 1;
+    background-color: transparent;
+    font-size: 15px;
+    color: var(--dark-gray);
+}

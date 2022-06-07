@@ -59,6 +59,14 @@ a:link{
   text-decoration: none;
 }
 
+input{
+  outline: none;
+  border: none;
+}
+input:focus{
+  outline: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 3px;

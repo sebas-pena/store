@@ -1,7 +1,7 @@
-import "./orders-page.css"
+import "./OrdersPage.css"
 
 const OrdersPage = () => {
-	return <div>orders</div>
+  return <div>orders</div>
 }
 
 export default OrdersPage

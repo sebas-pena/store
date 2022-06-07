@@ -18,6 +18,7 @@
 }
 .aside-item__btn > span{
     line-height: 1;
+    font-weight: 500;
 }
 .aside-item__btn > svg > *{
     fill: var(--gray);

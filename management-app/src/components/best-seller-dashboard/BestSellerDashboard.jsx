@@ -1,6 +1,6 @@
 import StarRating from "../star-rating/StarRating"
 import productImage from "../../assets/images/product-test.png"
-import "./bestseller.css"
+import "./BestSellerDashboard.css"
 const BestSeller = () => {
   return (
     <div className="best-seller-dashboard">

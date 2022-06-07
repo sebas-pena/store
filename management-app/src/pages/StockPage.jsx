@@ -1,6 +1,6 @@
-import "./stock-page.css"
+import "./StockPage.css"
 const StockPage = () => {
-	return <div>stock</div>
+  return <div>stock</div>
 }
 
 export default StockPage

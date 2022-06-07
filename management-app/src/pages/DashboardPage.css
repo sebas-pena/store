@@ -58,16 +58,11 @@
         width: 250px;
         flex-grow: 1;
     }
-    .dashboard__cards-1{
+    .dashboard__cards-1, .dashboard__cards-2{
         flex-direction: row;
         flex-grow: 1;
         width: calc(50% - 10px);
-        height: calc(100vh - 380px - 50px - 23px);
+        height: calc(100% - 380px - 10px);
     }
-    .dashboard__cards-2{
-        display: flex;
-        flex-grow: 1;
-        height: calc(100vh - 380px - 50px - 23px);
-        width: calc(50% - 10px);
-    }
+
 }

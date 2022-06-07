@@ -1,6 +1,6 @@
-import "./aside.css"
-import AsideItem from "./AsideItem"
-import AsideMarca from "./AsideMarca"
+import AsideItem from "./aside-item/AsideItem"
+import AsideMarca from "./aside-marca/AsideMarca"
+import "./Aside.css"
 
 const Aside = () => {
   const routes = [

@@ -1,0 +1,35 @@
+.product-page__ctn{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: red;
+}
+
+
+.product-page__header{
+    display: flex;
+    align-items: center;
+    padding: 4px 20px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.product-page__search{
+    width: 250px;
+    height: 100%;
+}
+
+.product-page__add-product{
+    margin-left: auto;
+    width: 250px;
+    height: 100%;
+}
+
+.product-page__body{
+    flex: 1;
+    background-color: #fff;
+    border-radius: 10px;
+}

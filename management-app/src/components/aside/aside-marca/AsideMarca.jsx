@@ -1,5 +1,5 @@
-import logo from "../../assets/images/logo.png"
-import "./asidemarca.css"
+import logo from "../../../assets/images/logo.png"
+import "./AsideMarca.css"
 const AsideMarca = () => {
   return (
     <div className="aside-marca__ctn">

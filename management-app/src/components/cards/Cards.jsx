@@ -1,29 +1,32 @@
-import CardBG1 from "../../assets/images/cards/card-background1.webp"
-import CardBG2 from "../../assets/images/cards/card-background2.webp"
-import CardBG3 from "../../assets/images/cards/card-background3.webp"
-import CardBG4 from "../../assets/images/cards/card-background4.webp"
-import CardBG5 from "../../assets/images/cards/card-background5.webp"
-import CardBG6 from "../../assets/images/cards/card-background6.webp"
-
 import "./cards.css"
 
-const backgrounds = [CardBG1, CardBG2, CardBG3, CardBG4, CardBG5, CardBG6]
+const backgrounds = [
+	{
+		backgroundImage: "linear-gradient(to top, #f77062 0%, #fe5196 100%)",
+	},
+	{
+		backgroundColor: "#FBAB7E",
+		backgroundImage: "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+	},
+	{
+		backgroundImage: "linear-gradient(to top, #4481eb 0%, #04befe 100%)",
+	},
+	{
+		backgroundImage: "linear-gradient(to top, #9be15d 0%, #00e3ae 100%)",
+	},
+]
 
-const Cards = ({ background = 0 }) => {
-  background = backgrounds[background]
+const Cards = ({ background = 0, children }) => {
+	let backgroundStyle = {
+		backgroundRepeat: "no-repeat",
+		...backgrounds[background],
+	}
 
-  let backgroundStyle = {
-    backgroundImage: `url(${background})`,
-    width: "100%",
-    height: "100%",
-    backgroundRepeat: "no-repeat",
-  }
-
-  return (
-    <div className="cards__ctn">
-      <div className="card__background" style={backgroundStyle}></div>
-    </div>
-  )
+	return (
+		<div className="cards__ctn" style={backgroundStyle}>
+			{children}
+		</div>
+	)
 }
 
 export default Cards

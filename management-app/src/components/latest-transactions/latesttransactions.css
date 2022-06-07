@@ -17,6 +17,7 @@
   flex: 1 0 ;
   flex-basis: 0;
   overflow: auto;
+  width: max-content;
 }
 
 .latest-transactions__list > li:not(:first-child){

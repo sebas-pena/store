@@ -6,6 +6,7 @@ import { totalSalesMock } from "../mocks/totalsales"
 
 import { ReactComponent as TruckIcon } from "../assets/svg/truck.svg"
 import { ReactComponent as CartIcon } from "../assets/svg/cart2.svg"
+import { ReactComponent as TrendingIcon } from "../assets/svg/trending.svg"
 import "./DashboardPage.css"
 
 const DashboardPage = () => {
@@ -31,8 +32,12 @@ const DashboardPage = () => {
           </Cards>
         </div>
         <div className="dashboard__cards-2">
-          <Cards background="2" />
-          <Cards background="3" />
+          <Cards background="2">
+            <TrendingIcon width="80" height="80" fill="#fff" />
+            <h3>Trending</h3>
+            <p>Graphic Cards</p>
+          </Cards>
+          <Cards background="3"></Cards>
         </div>
       </main>
       <LatestTransactions />

@@ -9,7 +9,6 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "chart.js": "^3.8.0",
-    "electron": "^19.0.1",
     "react": "^18.1.0",
     "react-chartjs-2": "^4.1.0",
     "react-dom": "^18.1.0",
@@ -54,6 +53,7 @@
   "devDependencies": {
     "cra-build-watch": "^3.4.0",
     "electron-reload": "^2.0.0-alpha.1",
+    "nodemon": "^2.0.16",
     "npm-watch": "^0.11.0"
   }
 }

@@ -3,7 +3,7 @@ import { useState } from "react"
 import { ReactComponent as MinimizeIcon } from "../../assets/svg/minimize.svg"
 import { ReactComponent as MaximizeIcon } from "../../assets/svg/maximize.svg"
 import { ReactComponent as CloseIcon } from "../../assets/svg/cross2.svg"
-import "./TitleBar.css"
+import "./titlebar.css"
 
 const TitleBar = () => {
   const electron = window.electron

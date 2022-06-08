@@ -1,0 +1,36 @@
+.select-box__ctn{
+  position: relative;
+  height: 100%;
+  padding: 0 10px;
+  border-radius: 4px;
+  background-color: var(--light-gray);
+  color: var(--gray);
+}
+
+.select-box__selected{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.select-box__options{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.select-box__options.close{
+  display: none;
+}
+.select-box__options.open{
+  display: flex;
+}
+
+.select-box__option{
+  font-weight: 400;
+
+}

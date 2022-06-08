@@ -11,10 +11,9 @@
 .product-page__header{
     display: flex;
     align-items: center;
-    padding: 4px 20px;
+    gap: 10px;
+    padding: 0 10px;
     height: 40px;
-    background-color: #fff;
-    border-radius: 5px;
 }
 
 .product-page__search{

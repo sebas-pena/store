@@ -1,7 +1,5 @@
 import Star from "./Star"
 
-import "./StarRating.css"
-
 const StarRating = ({
   rating = 2.5,
   size = 15,

@@ -1,21 +1,22 @@
 {
-	"name": "store",
-	"private": true,
-	"version": "1.0.0",
-	"workspaces": [
-		"backend",
-		"ecommerce-web",
-		"ecommerce-mobile",
-		"management-app"
-	],
-	"description": "",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev:managment-app": "npm start --workspace=management-app",
-		"start-web": "npm start-web --workspace=management-app"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {}
+  "name": "store",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "backend",
+    "ecommerce-web",
+    "ecommerce-mobile",
+    "management-app"
+  ],
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:managment-app": "npm start --workspace=management-app",
+    "start-web": "npm start-web --workspace=management-app",
+    "start-api": "npm run start-api --workspace=backend"
+  },
+  "keywords": [],
+  "author": "Pablo Peña",
+  "license": "ISC",
+  "devDependencies": {}
 }

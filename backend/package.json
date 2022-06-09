@@ -1,22 +1,22 @@
 {
-	"name": "store",
-	"private": true,
-	"version": "1.0.0",
-	"workspaces": [
-		"backend",
-		"ecommerce-web",
-		"ecommerce-mobile",
-		"management-app"
-	],
-	"description": "",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start-api": "npm start-api --workspace=api",
-		"dev:managment-app": "npm start --workspace=management-app",
-		"start-web": "npm start-web --workspace=management-app"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {}
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "./api/server.js",
+  "scripts": {
+    "start-api": "nodemon ./api/server.js"
+  },
+  "keywords": [],
+  "author": "BanKing",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }

@@ -1,3 +1,4 @@
+import StarRating from "../../star-rating/StarRating"
 import "./ProductListItem.css"
 const ProductListItem = ({ product }) => {
   const {
@@ -28,7 +29,7 @@ const ProductListItem = ({ product }) => {
       <td>{price}</td>
       <td>{quantity}</td>
       <td>
-        {rate}
+        <StarRating size="16" rating={rate} />
         <span>{reviewsCount}</span>
       </td>
       <td>

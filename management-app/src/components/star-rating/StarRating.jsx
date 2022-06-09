@@ -1,4 +1,4 @@
-import { ReactComponent as StarIcon } from "../../assets/svg/star.svg"
+import Star from "./Star"
 
 import "./StarRating.css"
 
@@ -9,31 +9,25 @@ const StarRating = ({
   primary = "#ffc800",
   secondary = "#fffcad",
 }) => {
-  const fillStyle = {
-    width: size * rating,
-    backgroundColor: primary,
-  }
-  const emptyStyle = {
-    flex: 1,
-    backgroundColor: secondary,
-  }
-
   return (
     <div className="star-rating__ctn">
       {Array(Number(max))
         .fill(1)
-        .map((_, i) => (
-          <StarIcon
-            width={size}
-            fill="#888888"
-            className="star-rating__star"
-            key={i}
-          />
-        ))}
-      <div className="star-rating__overlays">
-        <div className="star-rating__overlay-yellow" style={fillStyle}></div>
-        <div className="star-rating__overlay-gray" style={emptyStyle}></div>
-      </div>
+        .map((_, i) => {
+          let percentage
+          if (rating - (i + 1) >= 1) percentage = 100
+          else if (rating - (i + 1) > 0) percentage = (rating - (i + 1)) * 100
+          else percentage = 0
+          return (
+            <Star
+              primary={primary}
+              size={size}
+              secondary={secondary}
+              key={i}
+              percentage={percentage}
+            />
+          )
+        })}
     </div>
   )
 }

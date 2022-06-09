@@ -11,8 +11,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:managment-app": "npm start --workspace=management-app",
-    "start-web": "npm start-web --workspace=management-app",
+    "dev:managment-app": "npm run start --workspace=management-app",
+    "start-web": "npm run start-web --workspace=management-app",
     "start-api": "npm run start-api --workspace=backend"
   },
   "keywords": [],

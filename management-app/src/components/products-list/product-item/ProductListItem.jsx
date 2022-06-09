@@ -1,4 +1,6 @@
 import StarRating from "../../star-rating/StarRating"
+
+import { ReactComponent as MoreIcon } from "../../../assets/svg/more.svg"
 import "./ProductListItem.css"
 const ProductListItem = ({ product }) => {
   const {
@@ -28,12 +30,17 @@ const ProductListItem = ({ product }) => {
       <td>algo</td>
       <td>{price}</td>
       <td>{quantity}</td>
-      <td>
+      <td className="product-list-item__rate">
         <StarRating size="16" rating={rate} />
-        <span>{reviewsCount}</span>
+        <span>({reviewsCount})</span>
       </td>
       <td>
-        <button className="product-list-item__btn">Edit</button>
+        <button className="product-list-item__btn-edit">Edit</button>
+      </td>
+      <td>
+        <button className="product-list-item__btn-more">
+          <MoreIcon width="20" fill="#7f7f81" />
+        </button>
       </td>
     </tr>
   )

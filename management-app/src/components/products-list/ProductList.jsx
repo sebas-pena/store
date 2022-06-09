@@ -13,6 +13,7 @@ const ProductList = ({ products = productsMock }) => {
           <th>Quantity</th>
           <th>Rate</th>
           <th>Actions</th>
+          <th></th>
         </tr>
       </thead>
       <tbody className="product-list__body">

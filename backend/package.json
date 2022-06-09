@@ -1,0 +1,22 @@
+{
+	"name": "store",
+	"private": true,
+	"version": "1.0.0",
+	"workspaces": [
+		"backend",
+		"ecommerce-web",
+		"ecommerce-mobile",
+		"management-app"
+	],
+	"description": "",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start-api": "npm start-api --workspace=api",
+		"dev:managment-app": "npm start --workspace=management-app",
+		"start-web": "npm start-web --workspace=management-app"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {}
+}

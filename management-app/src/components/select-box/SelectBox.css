@@ -51,6 +51,15 @@
 .select-box__arrow{
   margin-left: auto;
   fill: var(--dark-gray);
+  transition: all 0.6s ease-in-out;
+}
+
+.select-box__arrow.open{
+  transform: rotate(0deg);
+}
+
+.select-box__arrow.close{
+  transform: rotate(180deg);
 }
 
 .select-box__options{

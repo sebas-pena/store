@@ -22,7 +22,7 @@ const ProductsPage = () => {
 				<ProductSearch />
 				<SelectBox
 					placeholder="Sort By"
-					options={["Name", "Price", "Rating", "Stock"]}
+					options={["Name", "Price", "Rating", "Stock", "Category"]}
 					handleChange={setSort}
 				/>
 				<div className="product-page__add-product">

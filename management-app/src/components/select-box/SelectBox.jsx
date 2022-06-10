@@ -39,7 +39,11 @@ const SelectBox = ({
 			</div>
 			<div className="select-box__selected" onClick={handleOpenBox}>
 				<span>{value || placeholder}</span>
-				<ArrowIcon className="select-box__arrow" width="15" height="15" />
+				<ArrowIcon
+					className={` select-box__arrow ${isOpen ? "open" : "close"}`}
+					width="13"
+					height="13"
+				/>
 			</div>
 			<ul className={` select-box__options ${isOpen ? "open" : "close"}`}>
 				{options.map((option, index) => (

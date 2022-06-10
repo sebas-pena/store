@@ -30,3 +30,6 @@
     flex: 1;
     border-radius: 10px;
 }
+.product-page__pagination-ctn{
+    text-align: end;
+}

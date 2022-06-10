@@ -12,7 +12,7 @@
 
 .select-box__ctn.open > .select-box__selected {
   border-radius:  4px 4px 0 0;
-  border: 2px solid #e1e1e1
+  border-color:  #e1e1e1
 }
 
 .select-box__placeholder{
@@ -46,6 +46,7 @@
   font-weight: 500;
   line-height: 1;
   cursor: pointer;
+  transition: border 0.3s ease;
 }
 
 .select-box__arrow{
@@ -68,10 +69,12 @@
   background-color: #fff;
   border: 2px solid #e1e1e1;
   border-top: transparent;
+  transition: border 0.3s ease;
 }
 
 .select-box__options.close{
   display: none;
+  border-color: transparent;
 }
 
 .select-box__options-title,

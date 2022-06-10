@@ -1,7 +1,7 @@
 .product-list-item__ctn{
     border-radius: 4px;
     word-wrap: break-word;
-    height: 100px;
+    height: 75px;
     overflow: hidden;
 }
 
@@ -12,7 +12,8 @@
 .product-list-item__ctn > td:not(:last-child){
     padding-right: 20px;
 }
-
+.product-list-item__ctn > td:not(:first-child){
+}
 .product-list-item__ctn > td:first-child{
     border-radius: 4px 0 0 4px;
     overflow: hidden;
@@ -29,8 +30,6 @@
 
 .product-list-item__product > img {
     object-fit: none;
-    width: 100px;
-    height: 100px;
     margin-right: 10px;
 }
 

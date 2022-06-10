@@ -3,11 +3,13 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 0 15px;
+    padding: 0 13px;
     height: 100%;
     width: 100%;
     border-radius: 5px;
+    border: 2px solid transparent;
     background-color: var(--light-gray);
+    transition: all 0.3s ease;
 }
 .search-input__icon{
     fill: var(--dark-gray);
@@ -18,4 +20,8 @@
     background-color: transparent;
     font-size: 15px;
     color: var(--dark-gray);
+}
+
+.search-input__ctn:focus-within{
+  border-color: #e1e1e1
 }

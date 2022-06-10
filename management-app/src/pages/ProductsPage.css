@@ -4,6 +4,7 @@
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+    padding-top: 20px;
 }
 
 
@@ -11,7 +12,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    height: 40px;
+    height: 45px;
 }
 
 .product-page__search{
@@ -21,7 +22,7 @@
 
 .product-page__add-product{
     margin-left: auto;
-    width: 250px;
+    width: 150px;
     height: 100%;
 }
 

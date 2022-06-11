@@ -9,18 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: blurModal 0.3s ease-in forwards ;
-    background-color: rgba(255,255,255,0.05);
-
-}
-
-@keyframes blurModal {
-  0% {
-    backdrop-filter: blur(0px);
-  }
-  100% {
-    backdrop-filter: blur(1px);
-    background-color: rgba(0,0,0,0.05);
-  }
-  
+  overflow: hidden;
+  backdrop-filter: blur(1px);
+  background-color: rgba(0,0,0,0.05);
 }

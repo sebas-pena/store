@@ -1,5 +1,5 @@
 import "./Button.css"
-const bgColor = {
+const buttonBgColor = {
 	primary: "#3A78F2",
 	secondary: "#00a8ff",
 	success: "#00a8ff",
@@ -19,15 +19,15 @@ const buttonSmall = {
 	padding: "10px 20px",
 }
 
-const Button = ({ color = "", children, small, big }) => {
+const Button = ({ color = "", children, small, big, onClick }) => {
 	let buttonStyle = {
-		backgroundColor: bgColor[color] || bgColor.primary,
+		backgroundColor: buttonBgColor[color] || buttonBgColor.primary,
 		...(small ? buttonSmall : {}),
 		...(big ? buttonBig : {}),
 	}
 
 	return (
-		<button className="button__ctn" style={buttonStyle}>
+		<button className="button__ctn" style={buttonStyle} onClick={onClick}>
 			{children}
 		</button>
 	)

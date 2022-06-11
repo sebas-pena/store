@@ -1,15 +1,30 @@
+import { useRef } from "react"
 import Modal from "../Modal"
 
 import { ReactComponent as CloseIcon } from "../../../assets/svg/cross2.svg"
+import { ReactComponent as ImagesIcon } from "../../../assets/svg/images.svg"
 import "./NewProductModal.css"
 import Input from "../../input/Input"
 import Button from "../../button/Button"
 
 const NewProductModal = ({ handleClose }) => {
+	const modalCtnRef = useRef(null)
+
+	const handleCloseModal = () => {
+		let modalCtn = modalCtnRef.current
+		modalCtn.classList.add("close")
+		setTimeout(() => {
+			handleClose()
+		}, 300)
+	}
+
 	return (
 		<Modal>
-			<div className="new-product-modal__ctn">
-				<button className="new-product-modal__close-btn" onClick={handleClose}>
+			<div ref={modalCtnRef} className="new-product-modal__ctn">
+				<button
+					className="new-product-modal__close-btn"
+					onClick={handleCloseModal}
+				>
 					<CloseIcon width="14" height="14" fill="#404043" />
 				</button>
 				<header className="new-product-modal__header">
@@ -17,6 +32,7 @@ const NewProductModal = ({ handleClose }) => {
 				</header>
 				<form className="new-product-modal__form">
 					<label className="new-product-modal__images-input">
+						<ImagesIcon width="36" height="36" fill="#404043" />
 						<input type="file" name="images" />
 					</label>
 					<div className="new-product-modal__inputs-ctn">

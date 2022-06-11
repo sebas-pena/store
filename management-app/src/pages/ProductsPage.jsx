@@ -12,32 +12,50 @@ const ProductsPage = () => {
 	const [sort, setSort] = useState("")
 	const [search, setSearch] = useState("")
 	const [products, setProducts] = useState([])
+	const [showNewProductModal, setShowNewProductModal] = useState(false)
 
 	useEffect(() => {
 		console.log(sort)
 	}, [sort])
 
 	return (
-		<div className="product-page__ctn">
-			<div className="product-page__header">
-				<ProductSearch />
-				<SelectBox
-					placeholder="Sort By"
-					options={["Name", "Price", "Rating", "Stock", "Category"]}
-					handleChange={setSort}
-				/>
-				<div className="product-page__add-product">
-					<AddButton>New Product</AddButton>
+		<>
+			<div className="product-page__ctn">
+				<div className="product-page__header">
+					<ProductSearch />
+					<SelectBox
+						placeholder="Sort By"
+						options={["Name", "Price", "Rating", "Stock", "Category"]}
+						handleChange={setSort}
+					/>
+					<div className="product-page__add-product">
+						<AddButton
+							onClick={() => {
+								setShowNewProductModal(true)
+							}}
+						>
+							New Product
+						</AddButton>
+					</div>
+				</div>
+				<div className="product-page__body">
+					<ProductList />
+					<div className="product-page__pagination-ctn">
+						<Pagination />
+					</div>
 				</div>
 			</div>
-			<div className="product-page__body">
-				<ProductList />
-				<div className="product-page__pagination-ctn">
-					<Pagination />
-				</div>
-			</div>
-			<NewProductModal handleClose={() => {}}>Modal</NewProductModal>
-		</div>
+			{showNewProductModal && (
+				<NewProductModal
+					handleClose={() => {
+						setShowNewProductModal(false)
+					}}
+					handleSubmit={() => {}}
+				>
+					Modal
+				</NewProductModal>
+			)}
+		</>
 	)
 }
 

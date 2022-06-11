@@ -1,9 +1,9 @@
 import Button from "../Button"
 import { ReactComponent as AddIcon } from "../../../assets/svg/plus.svg"
 import "./AddButton.css"
-const AddButton = ({ children }) => {
+const AddButton = ({ children, onClick }) => {
 	return (
-		<Button big>
+		<Button big onClick={onClick}>
 			<AddIcon
 				width="16"
 				height="16"

@@ -7,7 +7,7 @@
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 0 14px rgb(0 0 0 / 12%);
-  animation: modal-open .3s ease-out;
+  animation: modal-open .3s ease-in;
 }
 
 .new-product-modal__close-btn{
@@ -52,14 +52,13 @@
   height: 100%;
 }
 
+.new-product-modal__ctn.close{
+  animation: modal-close .3s ease-out forwards;
+}
+
 
 @keyframes modal-open{
-  /* 0%{
-    transform: translateY(100%);
-  }
-  100%{
-    transform: translateY(0);
-  } */
+  
     from {
       opacity: 0;
       transform: translate3d(-100%, 0 , 0);
@@ -67,6 +66,18 @@
     to {
       opacity: 1;
       transform: translate3d(0, 0, 0);
+    }
+}
+  
+@keyframes modal-close{
+  
+    from {
+      opacity: 1;
+      transform: translate3d(0, 0 , 0);
+    }
+    to {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
     }
 }
   

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 
 import AddButton from "../components/button/add-button/AddButton"
+import NewProductModal from "../components/modals/new-product/NewProductModal"
 import Pagination from "../components/pagination/Pagination"
 import ProductList from "../components/products-list/ProductList"
 import ProductSearch from "../components/search-input/product-search/ProductSearch"
@@ -35,6 +36,7 @@ const ProductsPage = () => {
 					<Pagination />
 				</div>
 			</div>
+			<NewProductModal handleClose={() => {}}>Modal</NewProductModal>
 		</div>
 	)
 }

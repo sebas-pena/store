@@ -1,0 +1,26 @@
+.textarea__ctn{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.textarea__ctn > p {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+
+
+
+.textarea{
+    flex-grow: 1;
+    resize: none;
+    border: none;
+    padding: 10px;
+    background-color:#e9eaee;
+    color: var(--dark-gray);
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}

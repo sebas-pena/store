@@ -1,15 +1,29 @@
-import { useRef } from "react"
+import { useState, useRef } from "react"
 import Modal from "../Modal"
 
 import { ReactComponent as CloseIcon } from "../../../assets/svg/cross2.svg"
-import { ReactComponent as ImagesIcon } from "../../../assets/svg/images.svg"
 import "./NewProductModal.css"
 import Input from "../../input/Input"
 import Button from "../../button/Button"
 import TextArea from "../../input/TextArea"
+import FileInput from "../../input/FileInput"
+import VariantsInput from "./variants-input/VariantsInput"
+import { useForm } from "../../../hooks/useForm"
 
-const NewProductModal = ({ handleClose }) => {
+const NewProductModal = ({ handleClose, handleSubmit }) => {
   const modalCtnRef = useRef(null)
+  const [showVariantsForm, setShowVariantsForm] = useState(false)
+
+  const { handleChange, values } = useForm({
+    name: "",
+    description: "",
+    price: "",
+    quantity: "",
+    variants: [],
+    category: "",
+  })
+
+  const { name, description, price, quantity, variants, category } = values
 
   const handleCloseModal = () => {
     let modalCtn = modalCtnRef.current
@@ -19,6 +33,9 @@ const NewProductModal = ({ handleClose }) => {
     }, 300)
   }
 
+  const toggleShowVariants = () => {
+    setShowVariantsForm(!showVariantsForm)
+  }
   return (
     <Modal>
       <div ref={modalCtnRef} className="new-product-modal__ctn">
@@ -32,22 +49,69 @@ const NewProductModal = ({ handleClose }) => {
           <h1>New Product</h1>
         </header>
         <form className="new-product-modal__form">
-          <label className="new-product-modal__images-input">
-            <ImagesIcon width="36" height="36" fill="#6799fb" />
-            <p>Drag and drop images here or click to select images</p>
-            <input type="file" name="images" />
-          </label>
-          <div className="new-product-modal__inputs-ctn">
-            <Input type="text" placeholder="Product name" name="name" />
-            <label className="new-product-modal__description">
-              <TextArea placeholder="Description" />
-            </label>
-            <Input type="number" placeholder="Price" name="price" min="0" />
-            <Input type="number" placeholder="Quantity" name="quantity" />
-            <div className="new-product-modal__variants-ctn"></div>
-
-            <Button color="primary" small onClick={handleClose}>
-              Save
+          {!showVariantsForm ? (
+            <>
+              <FileInput />
+              <div className="new-product-modal__inputs-ctn">
+                <Input
+                  type="text"
+                  placeholder="Product name"
+                  name="name"
+                  onChange={handleChange}
+                  value={name}
+                />
+                <Input
+                  type="number"
+                  placeholder="Price"
+                  name="price"
+                  min="0"
+                  onChange={handleChange}
+                  value={price}
+                />
+                <Input
+                  type="number"
+                  placeholder="Quantity"
+                  name="quantity"
+                  onChange={handleChange}
+                  value={quantity}
+                />
+                <Input
+                  type="text"
+                  placeholder="Category"
+                  name="category"
+                  onChange={handleChange}
+                  value={category}
+                />
+              </div>
+              <div className="new-product-modal__inputs-ctn">
+                <TextArea
+                  name="description"
+                  placeholder="description"
+                  onChange={handleChange}
+                  value={description}
+                />
+              </div>
+            </>
+          ) : (
+            <VariantsInput />
+          )}
+          <div className="new-products-modal__buttons">
+            <Button
+              color="gray"
+              small
+              onClick={toggleShowVariants}
+              type="button"
+            >
+              {showVariantsForm ? "Back" : "Add variants"}
+            </Button>
+            <Button
+              className="new-products-modal__submit"
+              color="primary"
+              onClick={handleSubmit}
+              small
+              type="submit"
+            >
+              Create Product
             </Button>
           </div>
         </form>

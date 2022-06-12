@@ -5,4 +5,10 @@
     border-radius: 5px;
     color: #fff;
     font-weight: 600;
+    filter: brightness(1);
+    transition: filter .3s ease-in-out;
+}
+
+.button__ctn:hover{
+    filter: brightness(0.9);
 }

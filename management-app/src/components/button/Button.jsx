@@ -7,9 +7,10 @@ const buttonBgColor = {
   danger: "#00a8ff",
   warning: "#00a8ff",
   info: "#00a8ff",
-  light: "#00a8ff",
+  light: "#99bbf5",
   dark: "#00a8ff",
   gray: "#a5a5a5",
+  "light-gray": "#e9e9e9",
 }
 
 const buttonBig = {

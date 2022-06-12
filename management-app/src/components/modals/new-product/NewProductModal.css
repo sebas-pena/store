@@ -34,13 +34,29 @@
 }
 
 .new-product-modal__images-input{
-  height: 200px;
-  width: 200px;
-  border: 1px dashed #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  height: 250px;
+  width: 250px;
+  border: 2px dashed #6799fb;
+  cursor: pointer;
 }
 
 .new-product-modal__images-input > input{
   display: none;
+}
+
+
+.new-product-modal__images-input > p{
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #6799fb;
 }
 
 .new-product-modal__description{

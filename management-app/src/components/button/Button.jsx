@@ -30,6 +30,7 @@ const Button = ({
   onClick,
   className = "",
   type = "button",
+  removeHover,
 }) => {
   let buttonStyle = {
     backgroundColor: buttonBgColor[color] || buttonBgColor.primary,
@@ -39,7 +40,9 @@ const Button = ({
 
   return (
     <button
-      className={`button__ctn ${className}`}
+      className={`button__ctn ${className || ""} ${
+        removeHover ? "remove-hover" : ""
+      }`}
       style={buttonStyle}
       onClick={onClick}
       type={type}

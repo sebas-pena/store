@@ -1,3 +1,6 @@
+.input__label{
+  display: inline-block;
+}
 .input__label > p {
   font-size: 14px;
   font-weight: 500;

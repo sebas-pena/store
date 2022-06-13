@@ -1,0 +1,16 @@
+.orders-page__ctn{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+}
+.orders-page__body{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.orders-page__pagination{
+  text-align: right;
+}

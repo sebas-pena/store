@@ -19,11 +19,6 @@ const Aside = () => {
       icon: "cart",
       title: "Orders",
     },
-    {
-      path: "/stock",
-      icon: "stock",
-      title: "Stock",
-    },
   ]
 
   return (

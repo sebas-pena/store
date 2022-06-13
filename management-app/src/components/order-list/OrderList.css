@@ -7,36 +7,3 @@
   color: var(--gray);
   font-weight: 500;
 }
-
-.order-list__item{
-  height: 50px;
-  background-color: #e9eaee;
-}
-.order-list__item > td:first-child{
-  padding-left: 20px;
-  border-radius: 5px 0 0 5px;
-}
-.order-list__item > td:last-child{
-  border-radius: 0 5px 5px 0;
-}
-
-
-.order-list__item > td {
-  font-weight: 500;
-  color: var(--dark-gray);
-}
-
-
-.order-list__item-status{
-  text-transform: capitalize;
-  font-weight: 500;
-}
-.order-list__item-status.completed{
-  color: #1ED796;
-}
-.order-list__item-status.cancelled{
-  color: #ff4747;
-}
-.order-list__item-status.pending{
-  color: #787878;
-}

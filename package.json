@@ -16,7 +16,7 @@
     "start-api": "npm run start-api --workspace=backend"
   },
   "keywords": [],
-  "author": "Pablo Peña",
+  "author": "Pablo Peña & BanKing",
   "license": "ISC",
   "devDependencies": {}
 }

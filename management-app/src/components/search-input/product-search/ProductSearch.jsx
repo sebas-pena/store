@@ -1,9 +1,9 @@
 import SearchInput from "../SearchInput"
 import "./ProductSearch.css"
-const ProductSearch = () => {
+const ProductSearch = ({ onChange, value }) => {
 	return (
 		<div className="product-search__ctn">
-			<SearchInput />
+			<SearchInput onChange={onChange} value={value} />
 		</div>
 	)
 }

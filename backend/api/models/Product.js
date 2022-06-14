@@ -9,7 +9,22 @@ const ProductSchema = new mongoose.Schema(
         price: { type: Number, required: true },
         color: { type: Array },
         ratings: { type: Number, default: 0 },
-        img: { type: String, required: true },
+        img: [
+            {
+                smallImg : {
+                    type: String,
+                    required: true
+                },
+                mediumImg : {
+                    type: String,
+                    required: true
+                },
+                bigImg : {
+                    type: String,
+                    required: true
+                }
+            }
+        ],
     },
     { timestamps: true }
 );

@@ -2,8 +2,11 @@ import { useState, useEffect } from "react"
 import { ReactComponent as ArrowIcon } from "../../assets/svg/arrow.svg"
 import { ReactComponent as ElipsisIcon } from "../../assets/svg/elipsis.svg"
 import "./Pagination.css"
-const Pagination = ({ total = 4, handleChange }) => {
+const Pagination = ({ total = 4, onChange }) => {
 	const [currentPage, setCurrentPage] = useState(1)
+	useEffect(() => {
+		onChange(currentPage)
+	}, [currentPage])
 	return (
 		<div className="pagination__ctn">
 			<div className="pagination__buttons">

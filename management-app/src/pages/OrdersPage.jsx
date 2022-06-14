@@ -1,13 +1,20 @@
-import { useState } from "react"
-
-import Button from "../components/button/Button"
+import { useState, useContext, useEffect } from "react"
 import Input from "../components/input/Input"
+import Button from "../components/button/Button"
 import OrderList from "../components/order-list/OrderList"
 import Pagination from "../components/pagination/Pagination"
+import { StoreContext } from "../store/StoreProvider"
+// svgs, css and images below
 import "./OrdersPage.css"
 
 const OrdersPage = () => {
   const [statusFilter, setStatusFilter] = useState("")
+  const [page, setPage] = useState(1)
+  const { dispatch } = useContext(StoreContext)
+
+  useEffect(() => {
+    dispatch({ type: "SET_TITLE", payload: "Orders" })
+  }, [])
 
   return (
     <div className="orders-page__ctn">
@@ -60,7 +67,7 @@ const OrdersPage = () => {
       <div className="orders-page__body">
         <OrderList orders={[]} />
         <div className="orders-page__pagination">
-          <Pagination />
+          <Pagination onChange={setPage} />
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ const createOauthWindow = () => {
   })
   authWindow.loadURL(process.env.MELI_AUTH_URL)
   authWindow.show()
-  authWindow.webContents.on("did-navigate", function (event, newUrl) {
+  authWindow.webContents.on("did-navigate", (event, newUrl) => {
     if (newUrl.includes("code=")) {
       var code = newUrl.split("code=")[1]
       console.log(code)

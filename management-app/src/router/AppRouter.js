@@ -1,16 +1,13 @@
-import { Routes, Route } from "react-router-dom"
-import DashboardPage from "../pages/DashboardPage"
-import OrdersPage from "../pages/OrdersPage"
-import ProductsPage from "../pages/ProductsPage"
+import { useContext } from "react"
+import { StoreContext } from "../store/StoreProvider"
+import PrivateRoutes from "./PrivateRoutes"
+import PublicRoutes from "./PublicRoutes"
 
 const AppRouter = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<DashboardPage />} />
-      <Route path="/products" element={<ProductsPage />} />
-      <Route path="/orders" element={<OrdersPage />} />
-    </Routes>
-  )
+  const { store } = useContext(StoreContext)
+  const { user } = store
+  console.log("user", user)
+  return user ? <PrivateRoutes /> : <PublicRoutes />
 }
 
 export default AppRouter

@@ -1,0 +1,22 @@
+.button-with-image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  width: max-content;
+  height: 45px;
+  padding: 0 15px;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.button-with-image img{
+  height: 100%;
+  padding: 5px;
+  object-fit: contain;
+  background-color: #fff;
+}
+
+.button-with-image > span{
+  font-size: 18px;
+}

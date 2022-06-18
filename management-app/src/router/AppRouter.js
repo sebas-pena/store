@@ -4,10 +4,9 @@ import PrivateRoutes from "./PrivateRoutes"
 import PublicRoutes from "./PublicRoutes"
 
 const AppRouter = () => {
-  const { store } = useContext(StoreContext)
-  const { user } = store
-  console.log("user", user)
-  return user ? <PrivateRoutes /> : <PublicRoutes />
+	const { store } = useContext(StoreContext)
+	const { user } = store
+	return user ? <PrivateRoutes /> : <PublicRoutes />
 }
 
 export default AppRouter

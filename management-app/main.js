@@ -1,11 +1,9 @@
 const path = require("path")
-require("dotenv").config({
-  path: path.join(__dirname, ".env"),
-})
-
+const { oauthUris } = require("./config/config")
+const { getToken } = require("./auth/getToken")
 const { app, BrowserWindow, ipcMain } = require("electron")
 
-const createOauthWindow = () => {
+const createOauthWindow = (provider) => {
   let authWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -16,13 +14,12 @@ const createOauthWindow = () => {
   authWindow.on("closed", function () {
     authWindow = null
   })
-  authWindow.loadURL(process.env.MELI_AUTH_URL)
+  authWindow.loadURL(oauthUris(provider))
   authWindow.show()
   authWindow.webContents.on("did-navigate", (event, newUrl) => {
     if (newUrl.includes("code=")) {
-      var code = newUrl.split("code=")[1]
-      console.log(code)
-      authWindow.close()
+      let token = getToken(provider, newUrl.split("code=")[1])
+      console.log(token)
     }
   })
 }
@@ -53,7 +50,7 @@ const createWindow = () => {
     win.unmaximize()
   })
   ipcMain.on("startOauth", (event, provider) => {
-    createOauthWindow()
+    createOauthWindow(provider)
   })
 }
 

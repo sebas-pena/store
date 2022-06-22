@@ -1,6 +1,7 @@
 export const initialStore = {
+  title: "Login",
+  token: null,
   user: null,
-  title: "",
 }
 
 export const StoreReducer = (state, action) => {
@@ -9,6 +10,8 @@ export const StoreReducer = (state, action) => {
       return { ...state, title: action.payload }
     case "SET_USER":
       return { ...state, user: action.payload }
+    case "SET_TOKEN":
+      return { ...state, token: action.payload }
     default:
       return state
   }

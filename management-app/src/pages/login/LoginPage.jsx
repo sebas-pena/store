@@ -7,7 +7,6 @@ import AppLogo from "../../assets/images/logo.png"
 import MeliLogo from "../../assets/images/logos/meli-logo.png"
 import ButtonWithImage from "../../components/button/button-with-image/ButtonWithImage"
 import "./LoginPage.css"
-import getMeliUser from "../../helpers/meli/user"
 
 const LoginPage = () => {
   const { startOauth, addEventListener, removeEventListener } = window.electron
@@ -20,14 +19,24 @@ const LoginPage = () => {
   useEffect(() => {
     const handleOauthResponse = async (event, response) => {
       setIsLoading(false)
+
       if (response.error) {
         setError(response.error)
         return
       }
-      const { user_id: userId, access_token: accessToken } = response
-      const user = await getMeliUser(userId, accessToken)
-      dispatch({ type: "SET_USER", payload: user })
-      dispatch({ type: "SET_TOKEN", payload: response })
+
+      let token = {
+        accessToken: response.access_token,
+        refreshToken: response.refresh_token,
+        expireTimestamp: +new Date(
+          new Date().getTime() + response.expires_in * 1000
+        ),
+        scope: response.scope,
+        userId: response.user_id,
+      }
+
+      localStorage.setItem("token", JSON.stringify(token))
+      dispatch({ type: "SET_TOKEN", payload: token })
       navigate("/")
     }
 

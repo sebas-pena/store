@@ -4,9 +4,16 @@ import PrivateRoutes from "./PrivateRoutes"
 import PublicRoutes from "./PublicRoutes"
 
 const AppRouter = () => {
-	const { store } = useContext(StoreContext)
-	const { user } = store
-	return user ? <PrivateRoutes /> : <PublicRoutes />
+  let isLoggedIn
+  let token =
+    useContext(StoreContext).token || JSON.parse(localStorage.getItem("token"))
+  if (token) isLoggedIn = token.expireTimestamp > +new Date()
+  else isLoggedIn = false
+
+  // UNCOMMENT THE LINE BELOW TO FORCE LOGIN
+  // isLoggedIn = false
+
+  return isLoggedIn ? <PrivateRoutes /> : <PublicRoutes />
 }
 
 export default AppRouter

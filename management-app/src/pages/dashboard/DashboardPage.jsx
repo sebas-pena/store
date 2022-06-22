@@ -1,18 +1,18 @@
 import { useContext, useEffect } from "react"
-import BestSellerDashboard from "../components/best-seller-dashboard/BestSellerDashboard"
-import Cards from "../components/cards/Cards"
-import SalesExpensesChart from "../components/charts/sales-expenses/SalesExpensesChart"
-import LatestTransactions from "../components/latest-transactions/TransactionsHistory"
-import { StoreContext } from "../store/StoreProvider"
+import BestSellerDashboard from "../../components/best-seller-dashboard/BestSellerDashboard"
+import Cards from "../../components/cards/Cards"
+import SalesExpensesChart from "../../components/charts/sales-expenses/SalesExpensesChart"
+import LatestTransactions from "../../components/latest-transactions/TransactionsHistory"
+import { StoreContext } from "../../store/StoreProvider"
 
 // svgs , css and images below
-import { ReactComponent as TruckIcon } from "../assets/svg/truck.svg"
-import { ReactComponent as CartIcon } from "../assets/svg/cart2.svg"
-import { ReactComponent as TrendingIcon } from "../assets/svg/trending.svg"
+import { ReactComponent as TruckIcon } from "../../assets/svg/truck.svg"
+import { ReactComponent as CartIcon } from "../../assets/svg/cart2.svg"
+import { ReactComponent as TrendingIcon } from "../../assets/svg/trending.svg"
 import "./DashboardPage.css"
 
 // mocks below
-import { totalSalesMock } from "../mocks/totalsales"
+import { totalSalesMock } from "../../mocks/totalsales"
 
 const DashboardPage = () => {
   const { dispatch } = useContext(StoreContext)

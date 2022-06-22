@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom"
 import Aside from "../components/aside/Aside"
 import TitleBar from "../components/titlebar/TitleBar"
-import DashboardPage from "../pages/DashboardPage"
-import LoginPage from "../pages/login-page/LoginPage"
-import OrdersPage from "../pages/OrdersPage"
-import ProductsPage from "../pages/ProductsPage"
+import DashboardPage from "../pages/dashboard/DashboardPage"
+import LoginPage from "../pages/login/LoginPage"
+import OrdersPage from "../pages/orders/OrdersPage"
+import ProductsPage from "../pages/products/ProductsPage"
 
 const PrivateRoutes = () => {
   return (

@@ -4,6 +4,7 @@ const { getToken } = require("./auth/getToken")
 const { app, BrowserWindow, ipcMain } = require("electron")
 
 const createOauthWindow = (provider) => {
+  console.log(provider)
   let authWindow = new BrowserWindow({
     width: 800,
     height: 600,

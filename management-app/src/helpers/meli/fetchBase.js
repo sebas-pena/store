@@ -7,17 +7,17 @@
  * @returns {object} - Response from the api
  */
 const fetchMeli = async (path, method, token, body) => {
-  let response = await (
-    await fetch(`https://api.mercadolibre.com/${path}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      method,
-      body: JSON.stringify(body),
-    })
-  ).json()
-  return response
+	let response = (
+		await fetch(`https://api.mercadolibre.com/${path}`, {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			method,
+			body: JSON.stringify(body),
+		})
+	).json()
+	return response
 }
 
 export default fetchMeli

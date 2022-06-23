@@ -12,7 +12,7 @@ const getUserVisits = async (accessToken, userId, dateFrom, dateTo) => {
   const result = (
     await fetchMeli(
       `users/${userId}/items_visits?date_from=${dateFrom}&date_to=${dateTo}`,
-      "POST",
+      "GET",
       accessToken
     )
   ).json()

@@ -7,9 +7,9 @@ import fetchMeli from "./fetchBase"
  * @returns
  */
 const getMeliUser = async (userId, accessToken) => {
-  const user = await fetchMeli(`/users/${userId}`, "GET", accessToken)
+	const user = (await fetchMeli(`/users/${userId}`, "GET", accessToken)).json()
 
-  return user
+	return user
 }
 
 export default getMeliUser

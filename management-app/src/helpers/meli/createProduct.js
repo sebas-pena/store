@@ -7,9 +7,7 @@ import fetchMeli from "./fetchBase"
  * @returns {object} - API response
  */
 const createProduct = async (accessToken, product) => {
-	const result = await (
-		await fetchMeli(`items`, "POST", accessToken, product)
-	).json()
+	const result = (await fetchMeli(`items`, "POST", accessToken, product)).json()
 	return result
 }
 

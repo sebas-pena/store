@@ -7,10 +7,10 @@ import fetchMeli from "./fetchBase"
  * @returns {object} - API response
  */
 const getSellerProducts = async (userId, accessToken) => {
-	const result = await (
+	const response = (
 		await fetchMeli(`users/${userId}/items/search?`, "GET", accessToken)
 	).json()
-	return result
+	return response
 }
 
 export default getSellerProducts

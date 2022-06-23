@@ -1,12 +1,25 @@
 import { createContext, useReducer } from "react"
-import { initialStore, StoreReducer } from "./StoreReducer"
+import { StoreReducer } from "./StoreReducer"
 
 export const StoreContext = createContext()
 export const StoreProvider = ({ children }) => {
-  const [store, dispatch] = useReducer(StoreReducer, initialStore)
-  return (
-    <StoreContext.Provider value={{ store, dispatch }}>
-      {children}
-    </StoreContext.Provider>
-  )
+	let token = JSON.parse(localStorage.getItem("token"))
+
+	if (token) {
+		token = token.expireTimestamp > +new Date() ? token : null
+	}
+
+	const initialStore = {
+		title: "Login",
+		token,
+		user: null,
+	}
+
+	const [store, dispatch] = useReducer(StoreReducer, initialStore)
+
+	return (
+		<StoreContext.Provider value={{ store, dispatch }}>
+			{children}
+		</StoreContext.Provider>
+	)
 }

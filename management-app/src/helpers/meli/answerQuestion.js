@@ -7,13 +7,15 @@ import fetchMeli from "./fetchBase"
  * @param {string} answer - User answer
  * @returns
  */
-const getMeliUser = async (accessToken, questionId, answer) => {
-	const user = await fetchMeli(`answers`, "POST", accessToken, {
-		question_id: questionId,
-		text: answer,
-	})
+const answeQuestion = async (accessToken, questionId, answer) => {
+	const response = (
+		await fetchMeli(`answers`, "POST", accessToken, {
+			question_id: questionId,
+			text: answer,
+		})
+	).json()
 
-	return user
+	return response
 }
 
-export default getMeliUser
+export default answeQuestion

@@ -29,7 +29,7 @@
 }
 
 .product-list-item__product > img {
-    object-fit: none;
+    object-fit: contain;
     margin-right: 10px;
 }
 

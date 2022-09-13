@@ -12,78 +12,86 @@ import SelectBox from "../../components/select-box/SelectBox"
 import "./ProductsPage.css"
 
 const ProductsPage = () => {
-  const [sort, setSort] = useState("")
-  const [search, setSearch] = useState("")
-  const [page, setPage] = useState(1)
-  const { products, loading, error } = useProducts({
-    query: search,
-    page,
-  })
-  const [showNewProductModal, setShowNewProductModal] = useState(false)
+	const [sort, setSort] = useState("")
+	const [search, setSearch] = useState("")
+	const [page, setPage] = useState(1)
+	const { products, loading, error } = useProducts({
+		query: search,
+		page,
+	})
 
-  const { dispatch } = useContext(StoreContext)
+	const [showNewProductModal, setShowNewProductModal] = useState(false)
 
-  useEffect(() => {
-    dispatch({ type: "SET_TITLE", payload: "Products" })
-  }, [])
+	const { dispatch } = useContext(StoreContext)
 
-  useEffect(() => {
-    console.log(sort)
-  }, [sort])
+	useEffect(() => {
+		dispatch({ type: "SET_TITLE", payload: "Products" })
+	}, [])
 
-  useEffect(() => {
-    console.log(search)
-  }, [search])
+	useEffect(() => {
+		console.log(sort)
+	}, [sort])
 
-  useEffect(() => {
-    console.log(page)
-  }, [page])
+	useEffect(() => {
+		console.log(search)
+	}, [search])
 
-  useEffect(() => {
-    console.log(products)
-    console.log(loading)
-    console.log(error)
-  }, [products, loading, error])
+	useEffect(() => {
+		console.log(page)
+	}, [page])
 
-  return (
-    <>
-      <div className="product-page__ctn">
-        <div className="product-page__header">
-          <ProductSearch onChange={setSearch} value={search} />
-          <SelectBox
-            placeholder="Sort By"
-            options={["Name", "Price", "Rating", "Stock", "Category"]}
-            handleChange={setSort}
-          />
-          <div className="product-page__add-product">
-            <AddButton
-              onClick={() => {
-                setShowNewProductModal(true)
-              }}
-            >
-              New Product
-            </AddButton>
-          </div>
-        </div>
-        <div className="product-page__body">
-          <ProductList />
-          <div className="product-page__pagination-ctn">
-            <Pagination onChange={setPage} />
-          </div>
-        </div>
-      </div>
-      {showNewProductModal && (
-        <NewProductModal
-          handleClose={() => {
-            setShowNewProductModal(false)
-          }}
-          handleSubmit={() => {}}
-        >
-          Modal
-        </NewProductModal>
-      )}
-    </>
-  )
+	useEffect(() => {
+		console.log(products)
+		console.log(loading)
+		console.log(error)
+	}, [products, loading, error])
+	const handleAddProduct = (product) => {
+		product.imageUrl = product.images[0]
+		product.rate = 0
+		product.reviewsCount = 0
+		products.unshift({
+			...product,
+		})
+	}
+	return (
+		<>
+			<div className="product-page__ctn">
+				<div className="product-page__header">
+					<ProductSearch onChange={setSearch} value={search} />
+					<SelectBox
+						placeholder="Sort By"
+						options={["Name", "Price", "Rating", "Stock", "Category"]}
+						handleChange={setSort}
+					/>
+					<div className="product-page__add-product">
+						<AddButton
+							onClick={() => {
+								setShowNewProductModal(true)
+							}}
+						>
+							New Product
+						</AddButton>
+					</div>
+				</div>
+				<div className="product-page__body">
+					<ProductList products={products} />
+					<div className="product-page__pagination-ctn">
+						<Pagination onChange={setPage} />
+					</div>
+				</div>
+			</div>
+			{showNewProductModal && (
+				<NewProductModal
+					handleClose={() => {
+						setShowNewProductModal(false)
+					}}
+					submitCallback={handleAddProduct}
+				>
+					Modal
+				</NewProductModal>
+			)}
+		</>
+	)
 }
 
 export default ProductsPage

@@ -43,7 +43,6 @@
 }
 
 
-
 .new-product-modal__description,
 .new-products-modal__variants{
   height: 50%;
@@ -57,7 +56,6 @@
   right: 40px;
   bottom: 20px;
 }
-
 
 @keyframes modal-open{
   

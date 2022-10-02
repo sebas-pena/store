@@ -84,3 +84,51 @@ input:focus{
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(141, 141, 141);
 }
+
+
+/* ANIMATIONS */
+
+:root {
+  --animate-duration: .4s;
+  --animate-delay: 0;
+  --animate-repeat: 1;
+}
+
+.animated {
+  animation-duration: var(--animate-duration);
+  animation-fill-mode: both;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 0.5);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  animation-name: zoomIn;
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 0.5);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.zoomOut {
+  animation-name: zoomOut;
+}

@@ -13,7 +13,8 @@ const AppRouter = () => {
   // UNCOMMENT THE LINE BELOW TO FORCE LOGIN
   // isLoggedIn = false
 
-  return isLoggedIn ? <PrivateRoutes /> : <PublicRoutes />
+  /* return isLoggedIn ? <PrivateRoutes /> : <PublicRoutes /> */
+  return <PrivateRoutes />
 }
 
 export default AppRouter

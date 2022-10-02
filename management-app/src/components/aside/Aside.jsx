@@ -19,6 +19,11 @@ const Aside = () => {
 			icon: "cart",
 			title: "Orders",
 		},
+		{
+			path: "/settings",
+			icon: "settings",
+			title: "Settings",
+		},
 	]
 
 	return (

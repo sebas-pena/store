@@ -4,6 +4,7 @@ import TitleBar from "../components/titlebar/TitleBar"
 import DashboardPage from "../pages/dashboard/DashboardPage"
 import OrdersPage from "../pages/orders/OrdersPage"
 import ProductsPage from "../pages/products/ProductsPage"
+import SettingsPage from "../pages/settings/SettingsPage"
 
 const PrivateRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const PrivateRoutes = () => {
           <Route path="/" element={<DashboardPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/orders" element={<OrdersPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </div>
     </div>

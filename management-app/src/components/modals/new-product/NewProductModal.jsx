@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import Modal from "../Modal"
 
 import { ReactComponent as CloseIcon } from "../../../assets/svg/cross2.svg"
@@ -11,7 +11,7 @@ import { useForm } from "../../../hooks/useForm"
 import ImageInput from "./image-input/ImageInput"
 
 const NewProductModal = ({ handleClose, submitCallback }) => {
-	const modalCtnRef = useRef(null)
+	const [isClosed, setIsClosed] = useState(false)
 	const [showVariantsForm, setShowVariantsForm] = useState(false)
 	const [images, setImages] = useState([])
 	const { handleChange, values } = useForm({
@@ -24,8 +24,7 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 	})
 	const { name, description, price, quantity, variants, category } = values
 	const handleCloseModal = () => {
-		let modalCtn = modalCtnRef.current
-		modalCtn.classList.add("close")
+		setIsClosed(true)
 		setTimeout(() => {
 			handleClose()
 		}, 300)
@@ -38,14 +37,13 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 		handleCloseModal()
 	}
 	return (
-		<Modal>
-			<div ref={modalCtnRef} className="new-product-modal__ctn">
-				<button
-					className="new-product-modal__close-btn"
-					onClick={handleCloseModal}
-				>
-					<CloseIcon width="14" height="14" fill="#404043" />
-				</button>
+		<Modal
+			handleClose={handleCloseModal}
+			isClosed={isClosed}
+			setIsClosed={setIsClosed}
+			showCross
+		>
+			<div className="new-product-modal__ctn">
 				<header className="new-product-modal__header">
 					<h1>New Product</h1>
 				</header>

@@ -4,22 +4,6 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 850px;
-  padding: 30px 40px 70px 40px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 14px rgb(0 0 0 / 12%);
-  animation: modal-open .3s ease-in;
-}
-
-.new-product-modal__ctn.close{
-  animation: modal-close .3s ease-out forwards;
-}
-
-.new-product-modal__close-btn{
-  position: absolute;
-  top: 15px;
-  right: 15px;
 }
 
 .new-product-modal__header > h1{
@@ -53,31 +37,6 @@
   display: flex;
   gap: 20px;
   position: absolute;
-  right: 40px;
-  bottom: 20px;
+  right: 0;
+  bottom: -50px;
 }
-
-@keyframes modal-open{
-  
-    from {
-      opacity: 0;
-      transform: translate3d(-100%, 0 , 0);
-    }
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-}
-  
-@keyframes modal-close{
-  
-    from {
-      opacity: 1;
-      transform: translate3d(0, 0 , 0);
-    }
-    to {
-      opacity: 0;
-      transform: translate3d(100%, 0, 0);
-    }
-}
-  

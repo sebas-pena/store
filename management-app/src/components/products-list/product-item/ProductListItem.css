@@ -31,6 +31,8 @@
 .product-list-item__product > img {
     object-fit: contain;
     margin-right: 10px;
+    width: 75px;
+    height: 75px;
 }
 
 .product-list-item__product-description{

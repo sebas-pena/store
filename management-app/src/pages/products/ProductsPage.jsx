@@ -5,11 +5,11 @@ import AddButton from "../../components/button/add-button/AddButton"
 import NewProductModal from "../../components/modals/new-product/NewProductModal"
 import Pagination from "../../components/pagination/Pagination"
 import ProductList from "../../components/products-list/ProductList"
-import ProductSearch from "../../components/search-input/product-search/ProductSearch"
 import SelectBox from "../../components/select-box/SelectBox"
 
 // svgs, css and images below
 import "./ProductsPage.css"
+import SearchInput from "../../components/input/SearchInput"
 
 const ProductsPage = () => {
 	const [sort, setSort] = useState("")
@@ -57,7 +57,12 @@ const ProductsPage = () => {
 		<>
 			<div className="product-page__ctn">
 				<div className="product-page__header">
-					<ProductSearch onChange={setSearch} value={search} />
+					<SearchInput
+						onChange={setSearch}
+						value={search}
+						placeholder="Name or Category"
+						maxWidth={250}
+					/>
 					<SelectBox
 						placeholder="Sort By"
 						options={["Name", "Price", "Rating", "Stock", "Category"]}

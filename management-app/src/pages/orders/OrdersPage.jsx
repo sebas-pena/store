@@ -65,6 +65,7 @@ const OrdersPage = () => {
 				</Button>
 				<div className="orders-page__search">
 					<Input name="Order #" type="number" hideControls />
+					<Input name="Customer #" type="text" hideControls />
 				</div>
 			</div>
 			<div className="orders-page__body">

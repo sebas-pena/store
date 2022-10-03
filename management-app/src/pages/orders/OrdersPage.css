@@ -27,6 +27,10 @@
 .orders-page__search{
   margin-left: auto;
 }
+
+.orders-page__search > label:not(:last-child){
+  margin-right: 10px;
+}
 .orders-page__body{
   flex-grow: 1;
   display: flex;

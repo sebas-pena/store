@@ -1,14 +1,12 @@
 import { useState } from "react"
 import Modal from "../Modal"
-
-import { ReactComponent as CloseIcon } from "../../../assets/svg/cross2.svg"
-import "./NewProductModal.css"
 import Input from "../../input/Input"
 import Button from "../../button/Button"
 import TextArea from "../../input/TextArea"
 import VariantsInput from "./variants-input/VariantsInput"
-import { useForm } from "../../../hooks/useForm"
 import ImageInput from "./image-input/ImageInput"
+import { useForm } from "../../../hooks/useForm"
+import "./NewProductModal.css"
 
 const NewProductModal = ({ handleClose, submitCallback }) => {
 	const [isClosed, setIsClosed] = useState(false)

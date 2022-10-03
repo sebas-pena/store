@@ -6,3 +6,7 @@
   padding: 10px;
   padding-top: 20px;
 }
+
+.settings-page__header{
+  font-weight: 500;
+}

@@ -24,7 +24,14 @@ const ModalPortal = ({ children, handleClose }) => {
 	return ReactDOM.createPortal(children, portalNode)
 }
 
-const Modal = ({ isClosed, setIsClosed, showCross, children, handleClose }) => {
+const Modal = ({
+	isClosed,
+	setIsClosed,
+	showCross,
+	children,
+	handleClose,
+	maxWidth,
+}) => {
 	const handleCloseModal = () => {
 		setIsClosed(true)
 		setTimeout(() => {
@@ -34,7 +41,10 @@ const Modal = ({ isClosed, setIsClosed, showCross, children, handleClose }) => {
 
 	return (
 		<ModalPortal handleClose={handleCloseModal}>
-			<div className={`modal__ctn animated ${isClosed ? "zoomOut" : "zoomIn"}`}>
+			<div
+				style={{ maxWidth: maxWidth || 850 }}
+				className={`modal__ctn animated ${isClosed ? "zoomOut" : "zoomIn"}`}
+			>
 				{showCross && (
 					<button className="modal__close-btn" onClick={handleCloseModal}>
 						<CloseIcon width="14" height="14" fill="#404043" />

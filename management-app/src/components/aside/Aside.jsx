@@ -20,6 +20,11 @@ const Aside = () => {
 			title: "Orders",
 		},
 		{
+			path: "/suppliers",
+			icon: "truck",
+			title: "Suppliers",
+		},
+		{
 			path: "/settings",
 			icon: "settings",
 			title: "Settings",

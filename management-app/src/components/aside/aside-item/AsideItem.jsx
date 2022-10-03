@@ -4,6 +4,7 @@ import { ReactComponent as CartIcon } from "../../../assets/svg/cart.svg"
 import { ReactComponent as ProductIcon } from "../../../assets/svg/product.svg"
 import { ReactComponent as StockIcon } from "../../../assets/svg/stock.svg"
 import { ReactComponent as SettingsIcon } from "../../../assets/svg/settings.svg"
+import { ReactComponent as TruckIcon } from "../../../assets/svg/truck.svg"
 import "./AsideItem.css"
 
 const icons = {
@@ -12,6 +13,7 @@ const icons = {
 	product: ProductIcon,
 	stock: StockIcon,
 	settings: SettingsIcon,
+	truck: TruckIcon,
 }
 const AsideItem = ({ path, icon, title }) => {
 	let Icon = icons[icon]

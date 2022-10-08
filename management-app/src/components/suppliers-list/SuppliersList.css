@@ -1,0 +1,9 @@
+.suppliers-list__ctn{
+  text-align: left;
+  border-spacing: 0 10px;
+}
+.suppliers-list__header > tr > th{
+  font-size: 15px;
+  color: var(--gray);
+  font-weight: 500;
+}

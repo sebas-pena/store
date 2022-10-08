@@ -13,3 +13,18 @@
   backdrop-filter: blur(1px);
   background-color: rgba(0,0,0,0.05);
 }
+
+.modal__ctn{
+  position: relative;
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 14px rgb(0 0 0 / 12%);
+}
+
+.modal__close-btn{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}

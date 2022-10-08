@@ -1,19 +1,32 @@
 import "./Input.css"
 
-const Input = (props) => {
-  const { name = "" } = props
-  const inputProps = { ...props }
-  inputProps.hideControls && delete inputProps.hideControls
-  return (
-    <label className="input__label">
-      {<p>{name}</p>}
-      <input
-        className={`input ${props.hideControls ? "hide-controls" : ""}`}
-        {...inputProps}
-        spellCheck="false"
-      />
-    </label>
-  )
+const Input = ({
+	label = "",
+	name = "",
+	placeholder = "",
+	type = "text",
+	maxWidth = "unset",
+	hideControls,
+	value = "",
+	onChange,
+}) => {
+	return (
+		<label className="input__label">
+			{<p>{label}</p>}
+			<input
+				className={`input ${hideControls ? "hide-controls" : ""}`}
+				name={name}
+				placeholder={placeholder}
+				type={type}
+				style={{
+					maxWidth,
+				}}
+				value={value}
+				spellCheck="false"
+				onChange={onChange}
+			/>
+		</label>
+	)
 }
 
 export default Input

@@ -3,22 +3,93 @@
   display : flex;
   align-items : center;
   justify-content : center;
-  background-color: #bdd3ff;
 }
+
+.login__background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgb(181 211 255) 0%, rgb(106 170 251) 100%);
+}
+
+.login__background li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.login__background li:nth-child(1) {
+  left: -27px;
+  top: -39px;
+  width: 218px;
+  height: 218px;
+}
+
+.login__background li:nth-child(2) {
+  right: -48px;
+  bottom: 0;
+  width: 382px;
+  height: 382px;
+}
+
 .login-page__ctn{
+  position: relative;
   display : flex;
-  flex-direction : column;
   align-items : center;
   justify-content : center;
-  background-color: #fff;
-  padding: 40px;
-  gap: 20px;
-  border-radius: 10px;
+  height: 100%;
+  max-height: 500px;
+  width: 100%;
+  max-width: 900px;
 }
+
+.login-page__ctn > div{
+  flex: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.login-page__welcome-ctn{
+  position: relative;
+  color: #fff;
+  border-radius: 10px 0 0 10px;
+  overflow: hidden;
+}
+
+.login-page__welcome-ctn > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.login-page__welcome{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+}
+
 .login-page__logo-ctn{
   display : flex;
   align-items : center;
   gap: 20px;
+  width: max-content;
+  background: #fff;
+  padding: 5px 15px;
+  border-radius: 7px;
 }
 
 
@@ -29,9 +100,38 @@
 .login-page__logo-ctn > figcaption {
   font-weight: 500;
   font-size: 50px;
+  color: #e4003a;
 }
 
-.login-page__oauth-title{
-  font-size: 20px;
-  font-weight: 500;
+.login-page__welcome-ctn h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50% , 35px);
+  height: 3px;
+  width: 65px;
+  background-color: #fff;
+}
+
+.login-page__form{
+  justify-content: center;
+  align-items: center;
+  gap: 23px;
+  background-color: #fff;
+  border-radius: 0 10px 10px 0;
+  overflow: hidden;
+  padding: 50px;
+}
+.login-page__form > h2 {
+  color: #e4003a;
+}
+
+.login-form__input{
+  height: 40px;
+  padding: 0 10px;
+  background-color: #f1f1f1;
+  width: 100%;
+  max-width: 250px;
+  font-size: 18px;
+  border-left: 5px solid #e4003a;
 }

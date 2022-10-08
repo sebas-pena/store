@@ -10,7 +10,6 @@ import "./NewProductModal.css"
 
 const NewProductModal = ({ handleClose, submitCallback }) => {
 	const [isClosed, setIsClosed] = useState(false)
-	const [showVariantsForm, setShowVariantsForm] = useState(false)
 	const [images, setImages] = useState([])
 	const { handleChange, values } = useForm({
 		name: "",
@@ -26,9 +25,6 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 		setTimeout(() => {
 			handleClose()
 		}, 300)
-	}
-	const toggleShowVariants = () => {
-		setShowVariantsForm(!showVariantsForm)
 	}
 	const handleSubmit = () => {
 		submitCallback({ ...values, images })
@@ -49,68 +45,55 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 					className="new-product-modal__form"
 					onSubmit={() => handleSubmit({ ...values, images })}
 				>
-					{!showVariantsForm ? (
-						<>
-							<ImageInput images={images} setImages={setImages} />
+					<ImageInput images={images} setImages={setImages} />
 
-							<div className="new-product-modal__inputs-ctn">
-								<Input
-									type="text"
-									placeholder="Product name"
-									name="name"
-									onChange={handleChange}
-									value={name}
-								/>
-								<Input
-									type="number"
-									placeholder="Price"
-									name="price"
-									min="0"
-									onChange={handleChange}
-									value={price}
-								/>
-								<Input
-									type="number"
-									placeholder="Quantity"
-									name="quantity"
-									min="0"
-									onChange={handleChange}
-									value={quantity}
-								/>
-								<Input
-									type="text"
-									placeholder="Category"
-									name="category"
-									onChange={handleChange}
-									value={category}
-								/>
-							</div>
-							<div className="new-product-modal__inputs-ctn">
-								<TextArea
-									name="description"
-									placeholder="Description"
-									onChange={handleChange}
-									value={description}
-								/>
-							</div>
-						</>
-					) : (
-						<VariantsInput />
-					)}
+					<div className="new-product-modal__inputs-ctn">
+						<Input
+							type="text"
+							placeholder="Product name"
+							name="name"
+							onChange={handleChange}
+							value={name}
+						/>
+						<Input
+							type="number"
+							placeholder="Price"
+							name="price"
+							min="0"
+							onChange={handleChange}
+							value={price}
+						/>
+						<Input
+							type="number"
+							placeholder="Quantity"
+							name="quantity"
+							min="0"
+							onChange={handleChange}
+							value={quantity}
+						/>
+						<Input
+							type="text"
+							placeholder="Category"
+							name="category"
+							onChange={handleChange}
+							value={category}
+						/>
+					</div>
+					<div className="new-product-modal__inputs-ctn">
+						<TextArea
+							name="description"
+							placeholder="Description"
+							onChange={handleChange}
+							value={description}
+						/>
+					</div>
+
 					<div className="new-products-modal__buttons">
-						<Button
-							color="gray"
-							small
-							onClick={toggleShowVariants}
-							type="button"
-						>
-							{showVariantsForm ? "Back" : "Add variants"}
-						</Button>
 						<Button
 							className="new-products-modal__submit"
 							color="primary"
 							onClick={handleSubmit}
-							small
+							height="35px"
 							type="submit"
 						>
 							Create Product

@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "./static/css/main.8944fee0.css",
+    "main.js": "./static/js/main.97b2a980.js",
+    "static/media/product-test.png": "./static/media/product-test.71372d223bdf192a22ee.png",
+    "static/media/logo.png": "./static/media/logo.35a7c54a888153cc0c2c.png",
+    "static/media/dashboard.svg": "./static/media/dashboard.40066ede0fd7e421b7b361e1a4dcbbcd.svg",
+    "static/media/support-icon.svg": "./static/media/support-icon.0d2b85a7985a6860c64c0ad4831d8f5d.svg",
+    "static/media/settings.svg": "./static/media/settings.803efab57c6d4c1979662ca06b7e7466.svg",
+    "static/media/cash.svg": "./static/media/cash.42b86385d90b0044409b0596306388c5.svg",
+    "static/media/meli-hands.svg": "./static/media/meli-hands.b9d2386a0e21909607edc70bbb8e8ba9.svg",
+    "static/media/amazon-icon.svg": "./static/media/amazon-icon.1591be663b8d504de66fdf060bd3b64e.svg",
+    "static/media/card.svg": "./static/media/card.212e1ea218d4cfc15a5e4409d7017928.svg",
+    "static/media/cart2.svg": "./static/media/cart2.a148a7c9e4ffdb9e8e44eb23527e8051.svg",
+    "static/media/truck.svg": "./static/media/truck.476857f896c616b0ce30a1dd1d91075c.svg",
+    "static/media/stock.svg": "./static/media/stock.f1c50916be7ffd54da12cd9b88dc66d1.svg",
+    "static/media/product.svg": "./static/media/product.3eae8e54379fb096e6f0c5a72e21c3a6.svg",
+    "static/media/minimize.svg": "./static/media/minimize.d5bcc2dbf16e8ae944fa5dfcee657e98.svg",
+    "static/media/plus.svg": "./static/media/plus.8a5f72dd91b0559fd3783a4ca9d056ee.svg",
+    "static/media/cross2.svg": "./static/media/cross2.f305a96300fce9f5ff14e08701b36adb.svg",
+    "static/media/cart.svg": "./static/media/cart.a63ebd36380ae08353218abc8b13f8b5.svg",
+    "static/media/arrow.svg": "./static/media/arrow.942caf2ad35a00ac7d5abe5c1f02f938.svg",
+    "static/media/plus2.svg": "./static/media/plus2.b99b778cdf36c5fc2c03a521cee01744.svg",
+    "static/media/eye.svg": "./static/media/eye.1d05f411087a81027014ec3e5358733c.svg",
+    "index.html": "./index.html",
+    "static/media/magnify.svg": "./static/media/magnify.c3fa9e87f7074cdb8e8c3330d4977636.svg",
+    "static/media/images.svg": "./static/media/images.c2cc8933b4348df3f6eb737a02f1bb76.svg",
+    "static/media/elipsis.svg": "./static/media/elipsis.3f76e4330c67bfaad4fc7b32f05854c5.svg",
+    "static/media/maximize.svg": "./static/media/maximize.79ba43176224ff48ac83bc44e89dcd11.svg",
+    "static/media/trending.svg": "./static/media/trending.71659b5e1e85b26897e0a31dd6b22ac6.svg",
+    "main.8944fee0.css.map": "./static/css/main.8944fee0.css.map",
+    "main.97b2a980.js.map": "./static/js/main.97b2a980.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8944fee0.css",
+    "static/js/main.97b2a980.js"
+  ]
+}

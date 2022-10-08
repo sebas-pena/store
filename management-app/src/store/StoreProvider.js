@@ -13,6 +13,7 @@ export const StoreProvider = ({ children }) => {
 		title: "Login",
 		token,
 		user: null,
+		settings: {}
 	}
 
 	const [store, dispatch] = useReducer(StoreReducer, initialStore)

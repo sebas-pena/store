@@ -6,6 +6,8 @@ export const StoreReducer = (state, action) => {
 			return { ...state, user: action.payload }
 		case "SET_TOKEN":
 			return { ...state, token: action.payload }
+		case "SET_SETTINGS":
+			return { ...state, setting: action.payload }
 		default:
 			return state
 	}

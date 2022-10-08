@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import Modal from "../Modal"
 import "./OrderDetailModal.css"
 const OrderDetailModal = ({ handleClose, order }) => {
@@ -31,7 +32,18 @@ const OrderDetailModal = ({ handleClose, order }) => {
 			<div className="order-modal__ctn">
 				<h2 className="order-modal__title">Order #{orderId}</h2>
 				<div className="order-modal__customer-details">
-					<p>Customer: {customer}</p>
+					<div>
+						<span>
+							Customer:{" "}
+							<Link
+								className="order-modal__customer-link"
+								to={`/customer/${1234}`}
+							>
+								{" "}
+								{customer}
+							</Link>
+						</span>
+					</div>
 					{customerEmail && <p>Email: {customerEmail}</p>}
 					{customerPhone && <p>Phone: {customerPhone}</p>}
 					<p>Status: {status}</p>

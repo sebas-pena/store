@@ -4,6 +4,9 @@
   max-height: 518px;
   gap: 10px;
 }
+.order-modal__customer-link{
+  color: blue;
+}
 .order-modal__products{
   display: flex;
   gap: 20px;

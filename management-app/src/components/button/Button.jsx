@@ -13,29 +13,24 @@ const buttonBgColor = {
 	"light-gray": "#e9e9e9",
 }
 
-const buttonBig = {
-	width: "100%",
-	height: "50px",
-}
-
-const buttonSmall = {
-	padding: "10px 20px",
-}
-
 const Button = ({
 	color = "",
 	children,
-	small,
-	big,
 	onClick,
 	className = "",
 	type = "button",
 	removeHover,
+	height = "unset",
+	width = "unset",
+	maxWidth = "unset",
+	paddingX = "15px",
 }) => {
 	let buttonStyle = {
 		backgroundColor: buttonBgColor[color] || buttonBgColor.primary,
-		...(small ? buttonSmall : {}),
-		...(big ? buttonBig : {}),
+		width,
+		height,
+		maxWidth,
+		padding: `0 ${paddingX}`,
 	}
 
 	return (

@@ -13,18 +13,12 @@ import { ordersMock } from "../../mocks/orders"
 const OrdersPage = () => {
 	const [statusFilter, setStatusFilter] = useState("")
 	const [page, setPage] = useState(1)
-	const { dispatch } = useContext(StoreContext)
-
-	useEffect(() => {
-		dispatch({ type: "SET_TITLE", payload: "Orders" })
-	}, [])
-
 	return (
 		<div className="orders-page__ctn">
 			<div className="orders-page__header">
 				<p className="orders-page__status-filter">Status</p>
 				<Button
-					small
+					height="35px"
 					color={statusFilter ? "light-gray" : "primary"}
 					removeHover={statusFilter === ""}
 					onClick={() => {
@@ -34,7 +28,7 @@ const OrdersPage = () => {
 					All
 				</Button>
 				<Button
-					small
+					height="35px"
 					color={statusFilter === "pending" ? "primary" : "light-gray"}
 					removeHover={statusFilter === "pending"}
 					onClick={() => {
@@ -44,7 +38,7 @@ const OrdersPage = () => {
 					Pending
 				</Button>
 				<Button
-					small
+					height="35px"
 					color={statusFilter === "completed" ? "primary" : "light-gray"}
 					removeHover={statusFilter === "completed"}
 					onClick={() => {
@@ -54,7 +48,7 @@ const OrdersPage = () => {
 					Completed
 				</Button>
 				<Button
-					small
+					height="35px"
 					color={statusFilter === "cancelled" ? "primary" : "light-gray"}
 					removeHover={statusFilter === "cancelled"}
 					onClick={() => {
@@ -64,8 +58,13 @@ const OrdersPage = () => {
 					Cancelled
 				</Button>
 				<div className="orders-page__search">
-					<Input name="Order #" type="number" hideControls />
-					<Input name="Customer #" type="text" hideControls />
+					<Input label="Order #" name="Order #" type="number" hideControls />
+					<Input
+						label="Customer #"
+						name="Customer #"
+						type="text"
+						hideControls
+					/>
 				</div>
 			</div>
 			<div className="orders-page__body">

@@ -29,7 +29,7 @@ const OrderItem = ({ order }) => {
 					<span>{order.status}</span>
 				</td>
 				<td>
-					<Button small color="primary" onClick={handleShowModal}>
+					<Button height="35px" color="primary" onClick={handleShowModal}>
 						<ShowIcon width="16" height="16" fill="#fff" />
 					</Button>
 				</td>

@@ -9,6 +9,7 @@ import CheckBox from "../../components/input/checkbox/CheckBox"
 import Button from "../../components/button/Button"
 import fetchAstro from "../../helpers/fetchAstro"
 import { useForm } from "../../hooks/useForm"
+import parseJWT from "../../helpers/parseJWT"
 
 const LoginPage = () => {
 	const [showSignUp, setShowSignUp] = useState(false)
@@ -41,7 +42,7 @@ const LoginPage = () => {
 				body: JSON.stringify({
 					email: email,
 					password,
-					"store-name": storeName,
+					storeName: storeName,
 				}),
 			})
 		} else {
@@ -59,8 +60,12 @@ const LoginPage = () => {
 
 		response
 			.then(({ token, user }) => {
-				dispatch({ action: "SET_TOKEN", payload: token })
-				dispatch({ action: "SET_USER", payload: user })
+				console.log("*** LOGUEADO CORRECTAMENTE ***")
+				console.log({ user })
+				dispatch({ type: "SET_TOKEN", payload: token })
+				dispatch({ type: "SET_SETTINGS", payload: user.settings })
+				dispatch({ type: "SET_USER", payload: user })
+
 				if (keepSignned) {
 					localStorage.setItem("token", token)
 				} else {

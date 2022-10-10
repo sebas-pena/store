@@ -1,20 +1,12 @@
 import "./Button.css"
 
-const buttonBgColor = {
-	primary: "#3A78F2",
-	secondary: "#00a8ff",
-	success: "#00a8ff",
-	danger: "#fd5457",
-	warning: "#00a8ff",
-	info: "#00a8ff",
-	light: "#99bbf5",
-	dark: "#00a8ff",
-	gray: "#a5a5a5",
-	"light-gray": "#e9e9e9",
-}
-
 const Button = ({
-	color = "",
+	color = "#fff",
+	disabled,
+	colorHover,
+	bgColor = "#3A78F2",
+	bgHover = "#2564e0",
+	predefinedStyle = "",
 	children,
 	onClick,
 	className = "",
@@ -26,21 +18,39 @@ const Button = ({
 	paddingX = "15px",
 }) => {
 	let buttonStyle = {
-		backgroundColor: buttonBgColor[color] || buttonBgColor.primary,
+		backgroundColor: bgColor,
 		width,
 		height,
 		maxWidth,
 		padding: `0 ${paddingX}`,
+		color,
 	}
+
+	if (!colorHover) colorHover = color
+	switch (predefinedStyle) {
+		case "simple":
+			bgColor = "transparent"
+			bgHover = "transparent"
+			break
+		case "primary":
+			bgColor = "#3A78F2"
+			bgHover = "#2564e0"
+			break
+	}
+
+	buttonStyle.backgroundColor = bgColor
+	buttonStyle["--bgHover"] = bgHover
+	buttonStyle["--colorHover"] = colorHover
 
 	return (
 		<button
 			className={`button__ctn ${className || ""} ${
-				removeHover ? "remove-hover" : ""
-			}`}
+				disabled ? "disabled" : ""
+			} ${removeHover ? "remove-hover" : ""}`}
 			style={buttonStyle}
 			onClick={onClick}
 			type={type}
+			disabled={disabled}
 		>
 			{children}
 		</button>

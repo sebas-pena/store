@@ -10,7 +10,7 @@ const SupplierItem = ({ supplier }) => {
 			<td>{supplier.phone}</td>
 			<td>{supplier.tag}</td>
 			<td>
-				<Button height="35px" color="danger" onClick={""}>
+				<Button height="35px" predefinedStyle="danger" onClick={""}>
 					Eliminar
 				</Button>
 			</td>

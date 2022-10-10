@@ -8,7 +8,6 @@ const ProductListItem = ({ product }) => {
 		id,
 		name,
 		category,
-		variants,
 		price,
 		quantity,
 		rate,
@@ -28,7 +27,6 @@ const ProductListItem = ({ product }) => {
 			<td>
 				<span className="product-list-item__category">{category}</span>
 			</td>
-			<td>algo</td>
 			<td>{price}</td>
 			<td>{quantity}</td>
 			<td className="product-list-item__rate">
@@ -36,13 +34,8 @@ const ProductListItem = ({ product }) => {
 				<span>({reviewsCount})</span>
 			</td>
 			<td>
-				<Button color="light" height="35px">
-					Edit
-				</Button>
-			</td>
-			<td>
 				<button>
-					<Button color="light-gray" height="35px">
+					<Button predefinedStyle="grey" height="35px">
 						<ElipsisIcon width="20" fill="#7f7f81" />
 					</Button>
 				</button>

@@ -7,11 +7,9 @@ const ProductList = ({ products }) => {
 				<tr>
 					<th>Product</th>
 					<th>Category</th>
-					<th>Variants</th>
 					<th>Price</th>
 					<th>Quantity</th>
 					<th>Rate</th>
-					<th>Actions</th>
 					<th></th>
 				</tr>
 			</thead>

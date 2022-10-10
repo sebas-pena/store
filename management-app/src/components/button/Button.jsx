@@ -36,6 +36,14 @@ const Button = ({
 			bgColor = "#3A78F2"
 			bgHover = "#2564e0"
 			break
+		case "grey":
+			bgColor = "#cccccc"
+			bgHover = "#a4a4a4"
+			break
+		case "danger":
+			bgColor = "#ee6a6a"
+			bgHover = "#e91e2a"
+			break
 	}
 
 	buttonStyle.backgroundColor = bgColor

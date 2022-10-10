@@ -15,7 +15,7 @@
 .button__ctn.remove-hover:hover{
     cursor: default;
 }
-.button__ctn.disabled:not(disabled){
+.button__ctn:not(:disabled){
     transition: all .3s ease-in-out;
 }
 

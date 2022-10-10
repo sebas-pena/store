@@ -19,7 +19,7 @@ const OrdersPage = () => {
 				<p className="orders-page__status-filter">Status</p>
 				<Button
 					height="35px"
-					color={statusFilter ? "light-gray" : "primary"}
+					predefinedStyle={statusFilter ? "grey" : "primary"}
 					removeHover={statusFilter === ""}
 					onClick={() => {
 						setStatusFilter("")
@@ -29,7 +29,7 @@ const OrdersPage = () => {
 				</Button>
 				<Button
 					height="35px"
-					color={statusFilter === "pending" ? "primary" : "light-gray"}
+					predefinedStyle={statusFilter === "pending" ? "primary" : "grey"}
 					removeHover={statusFilter === "pending"}
 					onClick={() => {
 						setStatusFilter("pending")
@@ -39,7 +39,7 @@ const OrdersPage = () => {
 				</Button>
 				<Button
 					height="35px"
-					color={statusFilter === "completed" ? "primary" : "light-gray"}
+					predefinedStyle={statusFilter === "completed" ? "primary" : "grey"}
 					removeHover={statusFilter === "completed"}
 					onClick={() => {
 						setStatusFilter("completed")
@@ -49,7 +49,7 @@ const OrdersPage = () => {
 				</Button>
 				<Button
 					height="35px"
-					color={statusFilter === "cancelled" ? "primary" : "light-gray"}
+					predefinedStyle={statusFilter === "cancelled" ? "primary" : "grey"}
 					removeHover={statusFilter === "cancelled"}
 					onClick={() => {
 						setStatusFilter("cancelled")

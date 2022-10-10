@@ -5,10 +5,11 @@ export const useForm = (initialState) => {
 
   const [values, setValues] = useState(initialState)
 
-  const handleChange = (event) => {
+  const handleChange = (e) => {
+    const target = e.target
     setValues((values) => ({
       ...values,
-      [event.target.name]: event.target.value,
+      [target.name]: target.type === "checkbox" ? target.checked : target.value
     }))
   }
   const resetForm = () => {

@@ -1,20 +1,12 @@
-import { useContext } from "react"
-import { StoreContext } from "../store/StoreProvider"
+import { useLocation } from "react-router-dom"
 import PrivateRoutes from "./PrivateRoutes"
 import PublicRoutes from "./PublicRoutes"
 
 const AppRouter = () => {
-  let isLoggedIn
-  let token =
-    useContext(StoreContext).token || JSON.parse(localStorage.getItem("token"))
-  if (token) isLoggedIn = token.expireTimestamp > +new Date()
-  else isLoggedIn = false
+  const location = useLocation()
+  const token = localStorage.getItem("token") || sessionStorage.getItem("token")
 
-  // UNCOMMENT THE LINE BELOW TO FORCE LOGIN
-  // isLoggedIn = false
-
-  /* return isLoggedIn ? <PrivateRoutes /> : <PublicRoutes /> */
-  return <PrivateRoutes />
+  return token ? <PrivateRoutes /> : <PublicRoutes />
 }
 
 export default AppRouter

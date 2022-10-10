@@ -9,7 +9,12 @@ const Input = ({
 	hideControls,
 	value = "",
 	onChange,
+	width = "unset",
 }) => {
+	const inputStyles = {
+		maxWidth,
+		width,
+	}
 	return (
 		<label className="input__label">
 			{<p>{label}</p>}
@@ -18,9 +23,7 @@ const Input = ({
 				name={name}
 				placeholder={placeholder}
 				type={type}
-				style={{
-					maxWidth,
-				}}
+				style={inputStyles}
 				value={value}
 				spellCheck="false"
 				onChange={onChange}

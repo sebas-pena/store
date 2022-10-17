@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import { ReactComponent as AmazonIcon } from "../../assets/svg/amazon-icon.svg"
 import { ReactComponent as MeliIcon } from "../../assets/svg/meli-hands.svg"
 import Button from "../../components/button/Button"
@@ -6,11 +6,15 @@ import OauthButton from "../../components/button/oauth-button/OauthButton"
 import Input from "../../components/input/Input"
 import { useForm } from "../../hooks/useForm"
 import { StoreContext } from "../../store/StoreProvider"
+import { ReactComponent as CameraIcon } from "../../assets/svg/camera.svg"
 import "./SettingsPage.css"
+import imageFileToUrl from "../../helpers/imageFileToUrl"
+import fetchAstro from "../../helpers/fetchAstro"
+import resizeImageFile from "../../helpers/resizeImageFile"
 const SettingsPage = () => {
 	const { dispatch, store } = useContext(StoreContext)
-	const [hasChanges, setHasChanges] = useState(false)
-	const { user } = store
+	const { user, token } = store
+	const [profileUrl, setProfileUrl] = useState(user.profileImage)
 	const { settings } = user
 	const { handleChange, values, resetForm, changeInitialValues } = useForm({
 		...settings,
@@ -21,7 +25,9 @@ const SettingsPage = () => {
 		confirmPassword: "",
 		address: user.address || "",
 		backendToken: user.backendToken || "",
+		profileImage: user.profileImage,
 	})
+	console.log({ settings })
 	const {
 		backendUri,
 		ordersEndpoint,
@@ -36,43 +42,79 @@ const SettingsPage = () => {
 		confirmPassword,
 		address,
 		backendToken,
+		profileImage,
 	} = values
+	const formRef = useRef(null)
 	useEffect(() => {
-		if (
-			backendToken ||
-			newPassword !== "" ||
-			backendUri !== settings.backendUri ||
-			ordersEndpoint !== settings.ordersEndpoint ||
-			productsEndpoint !== settings.productsEndpoint ||
-			suppliersEndpoint !== settings.suppliersEndpoint ||
-			customersEndpoint !== settings.customersEndpoint ||
-			supportEndpoint !== settings.supportEndpoint ||
-			storeName !== user.storeName ||
-			email !== user.email ||
-			confirmPassword !== "" ||
-			address !== "" ||
-			backendToken !== ""
-		) {
-			setHasChanges(true)
-		} else {
-			setHasChanges(false)
+		if (typeof profileImage === "object") {
+			imageFileToUrl(profileImage, (url) => {
+				setProfileUrl(url)
+			})
 		}
-	}, [values])
-	const handleSubmit = (e) => {
+	}, [profileImage])
+
+	const handleResetForm = () => {
+		resetForm()
+		setProfileUrl(user.profileImage)
+	}
+
+	const handleSubmit = async (e) => {
 		e.preventDefault()
 
+		const data = new FormData(formRef.current)
+		if (data.getAll("profileImage")[0].size) {
+			const image = await resizeImageFile(
+				data.getAll("profileImage")[0],
+				300,
+				300
+			)
+			data.set("profileImage", image, "profile.png")
+		}
+		console.log("send")
+		fetchAstro("user", {
+			method: "PUT",
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+			body: data,
+		})
+			.then((res) => console.log(res))
+			.catch((err) => err.json())
+			.then((res) => console.log(res))
 		/* dispatch({ type: "SET_SETTINGS", payload: values })
 		changeInitialValues(values)
 		localStorage.setItem("settigns", JSON.stringify(values)) */
 	}
+	const handleDeleteAccount = () => {
+		fetchAstro("user", {
+			method: "DELETE",
+			headers: {
+				"Content-type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({
+				vicky: "TONTA",
+			}),
+		})
+	}
 
 	return (
 		<div className="settings-page__ctn">
-			<form onSubmit={handleSubmit} className="settings-page__form">
+			<form
+				onSubmit={handleSubmit}
+				ref={formRef}
+				className="settings-page__form"
+			>
 				<div className="settings-page__progile-ctn">
-					<img src={user.profileImage} alt={`${user.storeName} logo`} />
+					<img src={profileUrl} alt={`${user.storeName} logo`} />
 					<label>
-						<input type="file" accept="image/*" />
+						<CameraIcon width="30px" height="30px" fill="#fff" />
+						<input
+							type="file"
+							accept="image/*"
+							name="profileImage"
+							onChange={handleChange}
+						/>
 					</label>
 				</div>
 				<h2 className="settings-page__header">Account</h2>
@@ -207,14 +249,20 @@ const SettingsPage = () => {
 				</div>
 				<div className="settings-page__divisor"></div>
 				<h2 className="settings-page__header">Delete Account</h2>
-				<Button predefinedStyle="danger" height="35px" width="max-content">
+				<Button
+					predefinedStyle="danger"
+					height="35px"
+					width="max-content"
+					type="button"
+					onClick={handleDeleteAccount}
+				>
 					Delete Account
 				</Button>
 				<div className="settings-page__bottom-buttons">
 					<Button
 						height="35px"
 						width="150px"
-						onClick={resetForm}
+						onClick={handleResetForm}
 						predefinedStyle="grey"
 					>
 						Revert

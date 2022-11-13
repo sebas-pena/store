@@ -9,7 +9,8 @@ const SuppliersList = ({ suppliers = [] }) => {
 					<th>Name</th>
 					<th>Email</th>
 					<th>Phone</th>
-					<th>Tags</th>
+					<th>Address</th>
+					<th>Min. Order Ammount</th>
 					<th></th>
 				</tr>
 			</thead>

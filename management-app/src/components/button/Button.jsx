@@ -12,18 +12,28 @@ const Button = ({
 	className = "",
 	type = "button",
 	removeHover,
-	height = "unset",
+	height = 32,
 	width = "unset",
 	maxWidth = "unset",
-	paddingX = "15px",
+	minHeight = "unset",
+	paddingX = "24px",
+	paddingY = "0",
+	transitionDuration = ".3s",
+	radius = "5px",
+	position = "unset",
+	zIndex = "unset",
+	handleRef,
 }) => {
 	let buttonStyle = {
 		backgroundColor: bgColor,
 		width,
 		height,
 		maxWidth,
-		padding: `0 ${paddingX}`,
-		color,
+		padding: `${paddingY} ${paddingX}`,
+		borderRadius: radius,
+		position,
+		zIndex,
+		minHeight,
 	}
 
 	if (!colorHover) colorHover = color
@@ -40,15 +50,22 @@ const Button = ({
 			bgColor = "#cccccc"
 			bgHover = "#a4a4a4"
 			break
+		case "light-grey":
+			bgColor = "#e9eaee"
+			bgHover = "#dadadb"
+			color = "#a2a2a2"
+			colorHover = "#828283"
+			break
 		case "danger":
 			bgColor = "#ee6a6a"
 			bgHover = "#e91e2a"
 			break
 	}
-
+	buttonStyle.color = color
 	buttonStyle.backgroundColor = bgColor
 	buttonStyle["--bgHover"] = bgHover
 	buttonStyle["--colorHover"] = colorHover
+	buttonStyle["--transitionDuration"] = transitionDuration
 
 	return (
 		<button
@@ -59,6 +76,7 @@ const Button = ({
 			onClick={onClick}
 			type={type}
 			disabled={disabled}
+			ref={handleRef}
 		>
 			{children}
 		</button>

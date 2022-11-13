@@ -1,0 +1,64 @@
+.oauth-page__ctn{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f8ff;
+}
+
+.oauth-page__message-ctn{
+  width: 100%;
+  max-width: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0px 0px 12px 0px #00000038;
+  border: 1px solid #00000030;
+}
+
+.oauth-page__spinner-ctn{
+  display: grid;
+  place-content: center;
+  height: 118px;
+}
+
+.oauth-page__message-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 0;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+.oauth-page__message-header.error{
+  background-image: radial-gradient( circle 685.3px at 47.8% 55.1%,  rgba(255,99,152,1) 0%, rgba(251,213,149,1) 90.1% );
+}
+.oauth-page__message-header.successful{
+  background-image: radial-gradient( circle farthest-corner at 92.3% 71.5%,  rgba(83,138,214,1) 0%, rgba(134,231,214,1) 90% );
+}
+
+.oauth-page__message-header img{
+  height: 80px;
+}
+.oauth-page__message-header span{
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 500;
+  color: #333;
+}
+.oauth-page__message-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 10px;
+}
+
+.oauth-page__link{
+  color: #1063d0;
+  font-size: 18;
+  width: max-content
+}
+.oauth-page__link:hover{
+  color: #00f
+}

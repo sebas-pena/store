@@ -8,7 +8,12 @@ const StarRating = ({
 	secondary = "#f5e4a6",
 }) => {
 	return (
-		<div className="star-rating__ctn">
+		<div
+			className="star-rating__ctn"
+			style={{
+				width: "max-content",
+			}}
+		>
 			{Array(Number(max))
 				.fill(1)
 				.map((_, i) => {

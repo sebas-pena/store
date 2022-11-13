@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import FileInput from "../../../input/FileInput"
 import "./ImageInput.css"
 
-const ImageInput = ({ images, setImages }) => {
+const ImageInput = ({ handleChange, images = [] }) => {
 	const [imageOnFocus, setImageOnFocus] = useState(0)
 	const handleDropFiles = (e) => {
 		e.preventDefault()
@@ -11,7 +11,7 @@ const ImageInput = ({ images, setImages }) => {
 			const reader = new FileReader()
 			reader.readAsDataURL(file)
 			reader.addEventListener("load", (e) => {
-				setImages((state) => [...state, e.target.result])
+				handleChange([...images, e.target.result])
 			})
 		})
 	}

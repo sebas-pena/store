@@ -10,7 +10,8 @@ import { ReactComponent as CameraIcon } from "../../assets/svg/camera.svg"
 import "./SettingsPage.css"
 import imageFileToUrl from "../../helpers/imageFileToUrl"
 import fetchAstro from "../../helpers/fetchAstro"
-import resizeImageFile from "../../helpers/resizeImageFile"
+import { resizeImageFile } from "../../helpers/resizeImageFile"
+import StyledText from "../../components/styled-text/StyledText"
 const SettingsPage = () => {
 	const { dispatch, store } = useContext(StoreContext)
 	const { user, token } = store
@@ -27,7 +28,6 @@ const SettingsPage = () => {
 		backendToken: user.backendToken || "",
 		profileImage: user.profileImage,
 	})
-	console.log({ settings })
 	const {
 		backendUri,
 		ordersEndpoint,
@@ -117,7 +117,9 @@ const SettingsPage = () => {
 						/>
 					</label>
 				</div>
-				<h2 className="settings-page__header">Account</h2>
+				<StyledText asHeader={2} big semiBold color="#000">
+					Account
+				</StyledText>
 				<div className="settins-page__inputs-ctn">
 					<Input
 						label="Store Name"
@@ -163,7 +165,9 @@ const SettingsPage = () => {
 					/>
 				</div>
 				<div className="settings-page__divisor"></div>
-				<h2 className="settings-page__header">Integrate Application</h2>
+				<StyledText asHeader={2} big semiBold color="#000">
+					Integrate Application
+				</StyledText>
 				<div className="settins-page__inputs-ctn">
 					<Input
 						label="Base URI"
@@ -232,23 +236,29 @@ const SettingsPage = () => {
 					<a href="www.google.com">More info</a>
 				</div>
 				<div className="settings-page__divisor"></div>
-				<h2 className="settings-page__header">Integrate Third Party</h2>
+				<StyledText asHeader={2} big semiBold color="#000">
+					Integrate Third Party
+				</StyledText>
 				<div className="settins-page__integrations-ctn">
 					<OauthButton
 						primary="#FF9A00"
 						secondary="#fff"
 						icon={<AmazonIcon width="25" height="25" />}
 						text="Connect Amazon"
+						oauthUri={process.env.REACT_APP_AMAZON_OAUTH}
 					/>
 					<OauthButton
 						primary="#1e77d9"
 						secondary="#fff"
 						icon={<MeliIcon width="25" height="25" />}
 						text="Connect Mercado Libre"
+						oauthUri={process.env.REACT_APP_MELI_OAUTH}
 					/>
 				</div>
 				<div className="settings-page__divisor"></div>
-				<h2 className="settings-page__header">Delete Account</h2>
+				<StyledText asHeader={2} big semiBold color="#000">
+					Delete Account
+				</StyledText>
 				<Button
 					predefinedStyle="danger"
 					height="35px"

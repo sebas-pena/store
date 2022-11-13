@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react"
 import Input from "../../components/input/Input"
 import Button from "../../components/button/Button"
-import OrderList from "../../components/order-list/OrderList"
 import Pagination from "../../components/pagination/Pagination"
 import { StoreContext } from "../../store/StoreProvider"
 // svgs, css and images below
@@ -9,6 +8,7 @@ import "./OrdersPage.css"
 
 // mocks below
 import { ordersMock } from "../../mocks/orders"
+import Table from "../../components/table/Table"
 
 const OrdersPage = () => {
 	const [statusFilter, setStatusFilter] = useState("")
@@ -68,8 +68,9 @@ const OrdersPage = () => {
 				</div>
 			</div>
 			<div className="orders-page__body">
-				<OrderList
-					orders={ordersMock.filter((order) =>
+				<Table
+					type="orders"
+					rows={ordersMock.filter((order) =>
 						statusFilter ? order.status == statusFilter : true
 					)}
 				/>

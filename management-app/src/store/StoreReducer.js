@@ -8,6 +8,13 @@ export const StoreReducer = (state, action) => {
 			return { ...state, token: action.payload }
 		case "SET_SETTINGS":
 			return { ...state, settings: action.payload }
+		case "LOGOUT":
+			return {
+				title: "login",
+				token: null,
+				user: null,
+				settings: {}
+			}
 		default:
 			return state
 	}

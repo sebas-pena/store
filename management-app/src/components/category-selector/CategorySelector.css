@@ -1,0 +1,22 @@
+.category-selector__ctn{
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  overflow: auto;
+}
+
+.category-selector{
+  overflow: auto;
+  visibility: hidden;
+}
+
+.category-selector__selection-ctn{
+  display: flex;
+  height: 28px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-selector.show{
+  visibility: visible;
+}

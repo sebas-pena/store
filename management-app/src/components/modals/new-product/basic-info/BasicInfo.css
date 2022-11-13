@@ -1,0 +1,16 @@
+.new-product__basic-info__ctn{
+  flex: 1;
+  display: flex;
+  gap: 20px;
+}
+
+.new-product-modal__basic-info__inputs-ctn{
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  justify-content: space-between;
+}
+
+.new-product-modal__basic-info__inputs-ctn.category{
+  flex-grow: 1;
+}

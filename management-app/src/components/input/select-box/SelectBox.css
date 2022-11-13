@@ -1,0 +1,16 @@
+.select-box2{
+  display: inline-block;
+}
+
+.select-box2__options{
+  display: none;
+  position: absolute;
+  z-index: 15;
+  min-width: max-content;
+  transform: translateY(0);
+}
+
+.select-box2__options.visible{
+  display: flex;
+  flex-direction: column;
+}

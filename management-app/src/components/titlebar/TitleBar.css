@@ -1,10 +1,14 @@
 .titlebar{
   display: flex;
-  padding-right: 10px;
+  height: 32px;
+  align-items: center;
   justify-content: flex-start;
   background-color: var(--primary);
 }
 
+.titlebar p {
+  line-height: 1;
+}
 
 .titlebar__drag-area{
   flex: 1;
@@ -22,7 +26,8 @@
   overflow: hidden;
 }
 .titlebar__button {
-  padding: 4px 8px;
+  height: 32px;
+  width: 32px;
 }
 .titlebar__button > svg > path{
   fill: #fff;

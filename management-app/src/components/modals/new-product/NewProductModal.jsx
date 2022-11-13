@@ -1,107 +1,159 @@
-import { useState } from "react"
+import { useState, useRef, useContext } from "react"
 import Modal from "../Modal"
-import Input from "../../input/Input"
 import Button from "../../button/Button"
-import TextArea from "../../input/TextArea"
-import VariantsInput from "./variants-input/VariantsInput"
-import ImageInput from "./image-input/ImageInput"
 import { useForm } from "../../../hooks/useForm"
 import "./NewProductModal.css"
+import { resizedImageURL } from "../../../helpers/resizeImageFile"
+import fetchAstro from "../../../helpers/fetchAstro"
+import { StoreContext } from "../../../store/StoreProvider"
+import BasicInfo from "./basic-info/BasicInfo"
+import AttributesSection from "./attributes/AttributesSection"
+import { NewProductContext } from "../../../context/NewProductContext"
+import { useEffect } from "react"
+import Description from "./description/Description"
 
 const NewProductModal = ({ handleClose, submitCallback }) => {
+	const { store } = useContext(StoreContext)
+	const { token } = store
 	const [isClosed, setIsClosed] = useState(false)
 	const [images, setImages] = useState([])
+	const [step, setStep] = useState(1)
+	const [categories, setCategories] = useState([])
+	const [attributesSelected, setAttributedSelected] = useState([])
+
 	const { handleChange, values } = useForm({
 		name: "",
 		description: "",
-		price: "",
+		price: { price: 0, currency: {} },
 		quantity: "",
-		variants: [],
-		category: "",
+		images: [],
 	})
-	const { name, description, price, quantity, variants, category } = values
+	const {
+		handleChange: handleChangeAttribute,
+		values: attributesValues,
+		resetForm: resetAttributes,
+	} = useForm({})
+	console.log({ values, attributesValues })
+	const { name } = values
 	const handleCloseModal = () => {
 		setIsClosed(true)
 		setTimeout(() => {
 			handleClose()
 		}, 300)
 	}
-	const handleSubmit = () => {
-		submitCallback({ ...values, images })
-		handleCloseModal()
+	useEffect(() => {
+		resetAttributes()
+		setAttributedSelected([])
+	}, [categories])
+	const formRef = useRef()
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+		const data = new FormData(formRef.current)
+		const imagesResult = await Promise.all(
+			images.map((image) => resizedImageURL(image, 500, 500))
+		)
+		data.delete("images")
+		imagesResult.forEach((image, i) => {
+			data.append(`image-${i}`, image, `${name}-${i}.png`)
+		})
+		data.append("price")
+		console.log(data)
+		fetchAstro("product", {
+			method: "POST",
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+			body: data,
+		})
+			.then((res) => console.log(res))
+			.catch((err) => err.json())
+			.then((res) => console.log(res))
+		// submitCallback({ ...values, images })
+		// handleCloseModal()
 	}
 	return (
-		<Modal
-			handleClose={handleCloseModal}
-			isClosed={isClosed}
-			setIsClosed={setIsClosed}
-			showCross
+		<NewProductContext.Provider
+			value={{
+				values,
+				handleChange,
+				setImages,
+				images,
+				categories,
+				setCategories,
+				handleChangeAttribute,
+				attributesValues,
+				attributesSelected,
+				setAttributedSelected,
+			}}
 		>
-			<div className="new-product-modal__ctn">
-				<header className="new-product-modal__header">
-					<h1>New Product</h1>
-				</header>
-				<div
-					className="new-product-modal__form"
-					onSubmit={() => handleSubmit({ ...values, images })}
-				>
-					<ImageInput images={images} setImages={setImages} />
-
-					<div className="new-product-modal__inputs-ctn">
-						<Input
-							type="text"
-							placeholder="Product name"
-							name="name"
-							onChange={handleChange}
-							value={name}
-						/>
-						<Input
-							type="number"
-							placeholder="Price"
-							name="price"
-							min="0"
-							onChange={handleChange}
-							value={price}
-						/>
-						<Input
-							type="number"
-							placeholder="Quantity"
-							name="quantity"
-							min="0"
-							onChange={handleChange}
-							value={quantity}
-						/>
-						<Input
-							type="text"
-							placeholder="Category"
-							name="category"
-							onChange={handleChange}
-							value={category}
-						/>
-					</div>
-					<div className="new-product-modal__inputs-ctn">
-						<TextArea
-							name="description"
-							placeholder="Description"
-							onChange={handleChange}
-							value={description}
-						/>
-					</div>
-
-					<div className="new-products-modal__buttons">
-						<Button
-							className="new-products-modal__submit"
-							color="primary"
-							onClick={handleSubmit}
-							height="35px"
-							type="submit"
-						>
-							Create Product
-						</Button>
-					</div>
+			<Modal
+				handleClose={handleCloseModal}
+				isClosed={isClosed}
+				setIsClosed={setIsClosed}
+				showCross
+			>
+				<div className="new-product-modal__ctn">
+					<header className="new-product-modal__header">
+						<h1>New Product</h1>
+					</header>
+					<form
+						ref={formRef}
+						className="new-product-modal__form"
+						onSubmit={handleSubmit}
+					>
+						{step === 1 && (
+							<BasicInfo
+								setImages={setImages}
+								images={images}
+								values={values}
+							/>
+						)}
+						{step === 2 && (
+							<AttributesSection category={categories[categories.length - 1]} />
+						)}
+						{step === 3 && <Description />}
+						<div className="new-products-modal__buttons">
+							{step > 1 && (
+								<Button
+									predefinedStyle="grey"
+									type="button"
+									height="35px"
+									onClick={() => {
+										setStep(step - 1)
+									}}
+								>
+									Back
+								</Button>
+							)}
+							{step < 3 && categories.length ? (
+								<Button
+									predefinedStyle="primary"
+									type="button"
+									height="35px"
+									onClick={() => {
+										setStep(step + 1)
+									}}
+								>
+									{step === 1 ? "Add Attributes" : "Add Description"}
+								</Button>
+							) : (
+								false
+							)}
+							{step === 3 && (
+								<Button
+									className="new-products-modal__submit"
+									predefinedStyle="primary"
+									type="submit"
+									height="35px"
+								>
+									Create Product
+								</Button>
+							)}
+						</div>
+					</form>
 				</div>
-			</div>
-		</Modal>
+			</Modal>
+		</NewProductContext.Provider>
 	)
 }
 

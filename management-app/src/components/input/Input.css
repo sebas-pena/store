@@ -2,22 +2,26 @@
   display: inline-block;
 }
 .input__label > p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
   font-size: 14px;
   font-weight: 500;
-  margin-bottom: 5px;
   text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }
 
 .input{
   display: flex;
   align-items: center;
-  padding-left:10px;
   height: 35px;
   border-radius: 5px;
   background-color:#e9eaee;
   color: var(--dark-gray);
-  width: 100%;
   overflow: hidden;
+  padding-right: 10px;
 }
 
 .input[type="number"]{

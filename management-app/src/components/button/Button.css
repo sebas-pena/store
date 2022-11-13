@@ -1,19 +1,26 @@
 .button__ctn{
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
-    color: #fff;
     font-weight: 600;
-    filter: brightness(1);
-    transition: filter .3s ease-in-out;
+    cursor: pointer;
 }
 
 .button__ctn:hover{
-    filter: brightness(0.92);
+    color: var(--colorHover) !important;
+    background-color: var(--bgHover) !important;
 }
 
 .button__ctn.remove-hover:hover{
-    filter: brightness(1);
     cursor: default;
+}
+.button__ctn:not(:disabled){
+    transition: background var(--transitionDuration) ease-out, color var(--transitionDuration) ease-out;
+}
+
+
+.button__ctn.disabled:disabled{
+    color: #fff !important;
+    background-color: #d0d0d0 !important;
+    cursor: unset;
 }

@@ -1,23 +1,21 @@
 import React from "react"
 import "./OauthButton.css"
-const OauthButton = ({ primary, secondary, icon, text }) => {
-	const handleHover = (e) => {
-		console.log(e)
-	}
+const OauthButton = ({ primary, secondary, icon, text, oauthUri }) => {
 	const styles = {
 		"--primary-color": primary,
 		"--secondary-color": secondary,
 	}
 	return (
-		<button
+		<a
 			className="oauth-button"
-			onMouseEnter={handleHover}
-			onMouseLeave={handleHover}
 			style={styles}
+			href={oauthUri}
+			target="_blank"
+			rel="noopener noreferrer"
 		>
 			{icon}
 			<p>{text}</p>
-		</button>
+		</a>
 	)
 }
 

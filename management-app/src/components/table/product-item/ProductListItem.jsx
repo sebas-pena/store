@@ -3,12 +3,12 @@ import StarRating from "../../star-rating/StarRating"
 import { ReactComponent as ElipsisIcon } from "../../../assets/svg/elipsis.svg"
 import "./ProductListItem.css"
 import Button from "../../button/Button"
+import StyledText from "../../styled-text/StyledText"
 const ProductListItem = ({ product }) => {
 	const {
 		id,
 		name,
 		category,
-		variants,
 		price,
 		quantity,
 		rate,
@@ -17,32 +17,36 @@ const ProductListItem = ({ product }) => {
 		reviewsCount,
 	} = product
 	return (
-		<tr className="product-list-item__ctn">
+		<tr className="product-list-item">
 			<td className="product-list-item__product">
 				<img src={imageUrl} alt="name" />
 				<div className="product-list-item__product-description">
-					<h3>{name}</h3>
-					<p>{description}</p>
+					<StyledText asHeader={3} size="16px" semiBold>
+						{name}
+					</StyledText>
+					<StyledText maxLines={1} size="14px">
+						{description}
+					</StyledText>
 				</div>
 			</td>
 			<td>
 				<span className="product-list-item__category">{category}</span>
 			</td>
-			<td>algo</td>
-			<td>{price}</td>
-			<td>{quantity}</td>
-			<td className="product-list-item__rate">
-				<StarRating size="16" rating={rate} />
-				<span>({reviewsCount})</span>
+			<td>
+				<StyledText>${price}</StyledText>
 			</td>
 			<td>
-				<Button color="light" height="35px">
-					Edit
-				</Button>
+				<StyledText>{quantity}</StyledText>
+			</td>
+			<td>
+				<StarRating size="16" rating={rate} />
+				<StyledText size="14px" semiBold noBreak>
+					{reviewsCount} - Reviews
+				</StyledText>
 			</td>
 			<td>
 				<button>
-					<Button color="light-gray" height="35px">
+					<Button predefinedStyle="grey" height="35px">
 						<ElipsisIcon width="20" fill="#7f7f81" />
 					</Button>
 				</button>

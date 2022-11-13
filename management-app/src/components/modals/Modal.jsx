@@ -30,7 +30,8 @@ const Modal = ({
 	showCross,
 	children,
 	handleClose,
-	maxWidth,
+	width = 900,
+	height = 420,
 }) => {
 	const handleCloseModal = () => {
 		setIsClosed(true)
@@ -42,7 +43,7 @@ const Modal = ({
 	return (
 		<ModalPortal handleClose={handleCloseModal}>
 			<div
-				style={{ maxWidth: maxWidth || 850 }}
+				style={{ width, height }}
 				className={`modal__ctn animated ${isClosed ? "zoomOut" : "zoomIn"}`}
 			>
 				{showCross && (

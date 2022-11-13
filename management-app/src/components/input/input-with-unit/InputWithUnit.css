@@ -1,0 +1,23 @@
+.input-with-unit__ctn{
+  display: flex;
+}
+.input-with-unit__currency__options-ctn{
+  position: absolute;
+  width: 100%;
+}
+
+.input-with-unit__currency__options-ctn.right{
+  text-align: end;
+}
+
+.input-with-unit__currency__options{
+  display: none;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+}
+.input-with-unit__currency__options.visible{
+  display: block;
+  max-height: 220px;
+  overflow: auto;
+}

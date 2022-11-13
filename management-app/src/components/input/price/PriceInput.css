@@ -1,0 +1,21 @@
+.price-input__ctn{
+  position: relative;
+}
+.price-input__ctn div button{
+  line-height: 1
+}
+.price-input__currency__options-ctn{
+  position: absolute;
+  width: 100%;
+}
+.price-input__currency__options{
+  display: none;
+  position: absolute;
+  top: 100%;
+  z-index: 100;
+}
+.price-input__currency__options.visible{
+  display: block;
+  max-height: 220px;
+  overflow: auto;
+}

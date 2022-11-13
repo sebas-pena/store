@@ -1,0 +1,16 @@
+.dropdown{
+  display: flex;
+  flex-direction: column;
+}
+.dropdown__option-ctn{
+  position: absolute;
+  z-index: 20;
+  transform: translateY(35px);
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  overflow: auto;
+}
+.dropdown__option-ctn > button {
+  flex-shrink: 0;
+}

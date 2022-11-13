@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react"
 import Input from "../../components/input/Input"
 import Button from "../../components/button/Button"
-import OrderList from "../../components/order-list/OrderList"
 import Pagination from "../../components/pagination/Pagination"
 import { StoreContext } from "../../store/StoreProvider"
 // svgs, css and images below
@@ -9,6 +8,7 @@ import "./OrdersPage.css"
 
 // mocks below
 import { ordersMock } from "../../mocks/orders"
+import Table from "../../components/table/Table"
 
 const OrdersPage = () => {
 	const [statusFilter, setStatusFilter] = useState("")
@@ -19,7 +19,7 @@ const OrdersPage = () => {
 				<p className="orders-page__status-filter">Status</p>
 				<Button
 					height="35px"
-					color={statusFilter ? "light-gray" : "primary"}
+					predefinedStyle={statusFilter ? "grey" : "primary"}
 					removeHover={statusFilter === ""}
 					onClick={() => {
 						setStatusFilter("")
@@ -29,7 +29,7 @@ const OrdersPage = () => {
 				</Button>
 				<Button
 					height="35px"
-					color={statusFilter === "pending" ? "primary" : "light-gray"}
+					predefinedStyle={statusFilter === "pending" ? "primary" : "grey"}
 					removeHover={statusFilter === "pending"}
 					onClick={() => {
 						setStatusFilter("pending")
@@ -39,7 +39,7 @@ const OrdersPage = () => {
 				</Button>
 				<Button
 					height="35px"
-					color={statusFilter === "completed" ? "primary" : "light-gray"}
+					predefinedStyle={statusFilter === "completed" ? "primary" : "grey"}
 					removeHover={statusFilter === "completed"}
 					onClick={() => {
 						setStatusFilter("completed")
@@ -49,7 +49,7 @@ const OrdersPage = () => {
 				</Button>
 				<Button
 					height="35px"
-					color={statusFilter === "cancelled" ? "primary" : "light-gray"}
+					predefinedStyle={statusFilter === "cancelled" ? "primary" : "grey"}
 					removeHover={statusFilter === "cancelled"}
 					onClick={() => {
 						setStatusFilter("cancelled")
@@ -68,8 +68,9 @@ const OrdersPage = () => {
 				</div>
 			</div>
 			<div className="orders-page__body">
-				<OrderList
-					orders={ordersMock.filter((order) =>
+				<Table
+					type="orders"
+					rows={ordersMock.filter((order) =>
 						statusFilter ? order.status == statusFilter : true
 					)}
 				/>

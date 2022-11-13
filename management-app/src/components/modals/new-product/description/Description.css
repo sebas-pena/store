@@ -1,0 +1,18 @@
+.new-product-modal__description-ctn{
+  display:flex;
+  flex-direction : column;
+  flex : 1;
+  gap: 10px
+}
+.new-product-modal__description{
+  flex: 1;
+  resize: none;
+  border: 1px solid #666;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 20px;
+  color : #666;
+  font-weight: 400;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}

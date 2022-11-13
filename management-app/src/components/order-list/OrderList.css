@@ -1,9 +1,0 @@
-.order-list__ctn{
-  text-align: left;
-  border-spacing: 0 10px;
-}
-.order-list__header > tr > th{
-  font-size: 15px;
-  color: var(--gray);
-  font-weight: 500;
-}

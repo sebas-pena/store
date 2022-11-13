@@ -2,14 +2,14 @@ import { useState, useEffect, useContext } from "react"
 import { useProducts } from "../../hooks/useProducts"
 import { StoreContext } from "../../store/StoreProvider"
 import AddButton from "../../components/button/add-button/AddButton"
-import NewProductModal from "../../components/modals/new-product/NewProductModal"
 import Pagination from "../../components/pagination/Pagination"
-import ProductList from "../../components/products-list/ProductList"
 import SelectBox from "../../components/select-box/SelectBox"
 
 // svgs, css and images below
 import "./ProductsPage.css"
 import SearchInput from "../../components/input/SearchInput"
+import NewProductModal from "../../components/modals/new-product/NewProductModal"
+import Table from "../../components/table/Table"
 
 const ProductsPage = () => {
 	const [sort, setSort] = useState("")
@@ -28,23 +28,13 @@ const ProductsPage = () => {
 		dispatch({ type: "SET_TITLE", payload: "Products" })
 	}, [])
 
-	useEffect(() => {
-		console.log(sort)
-	}, [sort])
+	useEffect(() => {}, [sort])
 
-	useEffect(() => {
-		console.log(search)
-	}, [search])
+	useEffect(() => {}, [search])
 
-	useEffect(() => {
-		console.log(page)
-	}, [page])
+	useEffect(() => {}, [page])
 
-	useEffect(() => {
-		console.log(products)
-		console.log(loading)
-		console.log(error)
-	}, [products, loading, error])
+	useEffect(() => {}, [products, loading, error])
 	const handleAddProduct = (product) => {
 		product.imageUrl = product.images[0]
 		product.rate = 0
@@ -79,7 +69,7 @@ const ProductsPage = () => {
 					</div>
 				</div>
 				<div className="product-page__body">
-					<ProductList products={products} />
+					<Table type="products" rows={products} />
 					<div className="product-page__pagination-ctn">
 						<Pagination onChange={setPage} />
 					</div>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { StoreContext } from "../../store/StoreProvider"
 import LoginBackground from "../../assets/images/login-background.png"
@@ -7,12 +7,79 @@ import AppLogo from "../../assets/images/logo.png"
 import "./LoginPage.css"
 import CheckBox from "../../components/input/checkbox/CheckBox"
 import Button from "../../components/button/Button"
+import fetchAstro from "../../helpers/fetchAstro"
+import { useForm } from "../../hooks/useForm"
+import parseJWT from "../../helpers/parseJWT"
 
 const LoginPage = () => {
+	const [showSignUp, setShowSignUp] = useState(false)
+	const { handleChange, values, resetForm } = useForm({
+		name: "",
+		email: "",
+		storeName: "",
+		password: "",
+		keepSignned: false,
+	})
+	const { dispatch } = useContext(StoreContext)
+	const { email, storeName, password, keepSignned } = values
 	const navigate = useNavigate()
 	const [isLoading, setIsLoading] = useState(false)
-	const [error, setError] = useState(null)
 
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		if (isLoading) return
+
+		setIsLoading(true)
+
+		let response
+
+		if (showSignUp) {
+			response = fetchAstro("auth/signup", {
+				method: "POST",
+				headers: {
+					"content-type": "application/json",
+				},
+				body: JSON.stringify({
+					email: email,
+					password,
+					storeName: storeName,
+				}),
+			})
+		} else {
+			response = fetchAstro("auth/login", {
+				method: "POST",
+				headers: {
+					"content-type": "application/json",
+				},
+				body: JSON.stringify({
+					email,
+					password,
+				}),
+			})
+		}
+
+		response
+			.then(({ token, user }) => {
+				console.log("*** LOGUEADO CORRECTAMENTE ***")
+				console.log({ user })
+				dispatch({ type: "SET_TOKEN", payload: token })
+				dispatch({ type: "SET_SETTINGS", payload: user.settings })
+				dispatch({ type: "SET_USER", payload: user })
+
+				if (keepSignned) {
+					localStorage.setItem("token", token)
+				} else {
+					sessionStorage.setItem("token", token)
+				}
+				navigate("/")
+			})
+			.catch((error) => {
+				error.json().then((data) => console.log(data))
+			})
+			.finally(() => {
+				setIsLoading(false)
+			})
+	}
 	return (
 		<div className="login-page">
 			<ul className="login__background">
@@ -30,15 +97,92 @@ const LoginPage = () => {
 						<h2>WELCOME BACK</h2>
 					</div>
 				</div>
-				<div className="login-page__form">
-					<h2>Login Account</h2>
-					<input className="login-form__input" placeholder="Email or ID" />
-					<input className="login-form__input" placeholder="Password" />
-					<CheckBox text="keep me siggned in" id="keep-logged" />
-					<Button width="100%" maxWidth="200px" height="35px">
-						Login
+				<form className="login-page__form" onSubmit={handleSubmit}>
+					<h2>{showSignUp ? "Create Account" : "Login"} </h2>
+					{showSignUp ? (
+						<>
+							<input
+								className="login-form__input"
+								placeholder="Store Name"
+								onChange={handleChange}
+								name="storeName"
+								value={storeName}
+							/>
+							<input
+								className="login-form__input"
+								placeholder="Email"
+								onChange={handleChange}
+								name="email"
+								value={email}
+							/>
+							<input
+								className="login-form__input"
+								placeholder="Password"
+								onChange={handleChange}
+								name="password"
+								type="password"
+								value={password}
+							/>
+						</>
+					) : (
+						<>
+							<input
+								className="login-form__input"
+								placeholder="Email"
+								onChange={handleChange}
+								name="email"
+								value={email}
+							/>
+							<input
+								className="login-form__input"
+								placeholder="Password"
+								onChange={handleChange}
+								name="password"
+								value={password}
+								type="password"
+							/>
+							<CheckBox
+								text="keep me siggned in"
+								id="keep-logged"
+								height="40px"
+								onChange={handleChange}
+								name="keepSignned"
+								checked={keepSignned}
+							/>
+						</>
+					)}
+					<Button
+						width="100%"
+						maxWidth="200px"
+						height="35px"
+						type="submit"
+						predefinedStyle="primary"
+						color="#fff"
+						disabled={isLoading}
+					>
+						{showSignUp ? "Sign Up" : "Login"}
 					</Button>
-				</div>
+					<div>
+						<span>
+							{showSignUp ? "Alredy have an account?" : "Need an account?"}
+						</span>
+						<Button
+							predefinedStyle="simple"
+							maxWidth="200px"
+							height="35px"
+							paddingX="5px"
+							color="#3A78F2"
+							colorHover="#2564e0"
+							onClick={() => {
+								if (isLoading) return
+								setShowSignUp(!showSignUp)
+								resetForm()
+							}}
+						>
+							{showSignUp ? "Login" : "Sign Up"}
+						</Button>
+					</div>
+				</form>
 			</div>
 		</div>
 	)

@@ -1,0 +1,13 @@
+
+.predict-category{
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 12%);
+  border-radius: 5px;
+  padding: 30px;
+}
+
+
+.predict-category__input-ctn{
+  display: flex;
+  gap: 30px;
+}

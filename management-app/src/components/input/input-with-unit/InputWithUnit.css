@@ -1,9 +1,16 @@
 .input-with-unit__ctn{
   display: flex;
+  align-items: flex-end;
+}
+.input-with-unit__ctn.left{
+  flex-direction: row-reverse;
 }
 .input-with-unit__currency__options-ctn{
   position: absolute;
+  font-size: 0;
+  line-height: 1;
   width: 100%;
+  bottom: 0;
 }
 
 .input-with-unit__currency__options-ctn.right{

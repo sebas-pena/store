@@ -12,11 +12,14 @@ import { NewProductContext } from "../../../context/NewProductContext"
 import { useEffect } from "react"
 import Description from "./description/Description"
 
-const NewProductModal = ({ handleClose, submitCallback }) => {
-	const { store } = useContext(StoreContext)
-	const { token } = store
+const NewProductModal = ({ handleClose }) => {
+	const { token, allowedCurrencies, integersSeparator, decimalSeparator } =
+		useContext(StoreContext).store
+	const [attributes, setAttributes] = useState({
+		required: [],
+		optional: [],
+	})
 	const [isClosed, setIsClosed] = useState(false)
-	const [images, setImages] = useState([])
 	const [step, setStep] = useState(1)
 	const [categories, setCategories] = useState([])
 	const [attributesSelected, setAttributedSelected] = useState([])
@@ -24,7 +27,10 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 	const { handleChange, values } = useForm({
 		name: "",
 		description: "",
-		price: { price: 0, currency: {} },
+		price: {
+			value: 0,
+			unit: allowedCurrencies[0],
+		},
 		quantity: "",
 		images: [],
 	})
@@ -34,6 +40,71 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 		resetForm: resetAttributes,
 	} = useForm({})
 	console.log({ values, attributesValues })
+
+	useEffect(() => {
+		if (categories.length) {
+			const lastCategory = categories[categories.length - 1]
+			fetch(
+				`https://api.mercadolibre.com/categories/${lastCategory.id}/attributes`
+			)
+				.then((res) => res.json())
+				.then((data) => {
+					const optional = []
+					const required = []
+					data.forEach((attribute) => {
+						if (attribute.id === "ITEM_CONDITION") return
+						const {
+							hint = "",
+							name,
+							id,
+							tooltip,
+							value_type,
+							tags,
+							default_unit,
+							allowed_units = [],
+							values = [],
+						} = attribute
+						if (
+							attribute.tags["catalog_required"] ||
+							attribute.tags["required"]
+						) {
+							required.push({
+								hint,
+								title: name,
+								id,
+								tooltip,
+								value_type,
+								tags,
+								default_unit,
+								allowed_units: allowed_units.map(({ id, name }) => {
+									return { id, symbol: name }
+								}),
+								values,
+							})
+						} else {
+							optional.push({
+								hint,
+								title: name,
+								id,
+								tooltip,
+								value_type,
+								tags,
+								default_unit,
+								allowed_units: allowed_units.map(({ id, name }) => {
+									return { id, symbol: name }
+								}),
+								values,
+							})
+						}
+					})
+					setAttributes({
+						required,
+						optional,
+					})
+				})
+		}
+	}, [categories])
+
 	const { name } = values
 	const handleCloseModal = () => {
 		setIsClosed(true)
@@ -48,27 +119,48 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 	const formRef = useRef()
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		const data = new FormData(formRef.current)
+
+		const formData = new FormData()
 		const imagesResult = await Promise.all(
-			images.map((image) => resizedImageURL(image, 500, 500))
+			values.images.map((image) => resizedImageURL(image, 500, 500))
 		)
-		data.delete("images")
+		console.log({ imagesResult })
 		imagesResult.forEach((image, i) => {
-			data.append(`image-${i}`, image, `${name}-${i}.png`)
+			formData.append(`${name}-${i}`, image, `${name}-${i}.png`)
 		})
-		data.append("price")
-		console.log(data)
+
+		let data = JSON.parse(
+			JSON.stringify({
+				...values,
+				categories,
+				attributes: attributesValues,
+			})
+		)
+
+		const parsedPrice = Number(
+			parseFloat(
+				data.price.value
+					.replaceAll(integersSeparator, "")
+					.replace(decimalSeparator, ".")
+			).toFixed(data.price.unit.decimal_places)
+		)
+		data.price.value = parsedPrice
+		data.quantity = parseInt(data.quantity)
+		delete data.images
+		data = new Blob([JSON.stringify(data)], {
+			type: "application/json",
+		})
+		formData.set("data", data, "form-data.json")
 		fetchAstro("product", {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-			body: data,
+			body: formData,
 		})
 			.then((res) => console.log(res))
 			.catch((err) => err.json())
 			.then((res) => console.log(res))
-		// submitCallback({ ...values, images })
 		// handleCloseModal()
 	}
 	return (
@@ -76,14 +168,14 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 			value={{
 				values,
 				handleChange,
-				setImages,
-				images,
 				categories,
 				setCategories,
 				handleChangeAttribute,
 				attributesValues,
 				attributesSelected,
 				setAttributedSelected,
+				attributes,
+				setAttributes,
 			}}
 		>
 			<Modal
@@ -91,6 +183,8 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 				isClosed={isClosed}
 				setIsClosed={setIsClosed}
 				showCross
+				width={900}
+				height={420}
 			>
 				<div className="new-product-modal__ctn">
 					<header className="new-product-modal__header">
@@ -101,13 +195,7 @@ const NewProductModal = ({ handleClose, submitCallback }) => {
 						className="new-product-modal__form"
 						onSubmit={handleSubmit}
 					>
-						{step === 1 && (
-							<BasicInfo
-								setImages={setImages}
-								images={images}
-								values={values}
-							/>
-						)}
+						{step === 1 && <BasicInfo values={values} />}
 						{step === 2 && (
 							<AttributesSection category={categories[categories.length - 1]} />
 						)}

@@ -31,4 +31,5 @@
 	display: flex;
 	justify-content: flex-end;
 	gap: 20px;
+	height: 35px
 }

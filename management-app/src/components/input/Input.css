@@ -16,7 +16,8 @@
 .input{
   display: flex;
   align-items: center;
-  height: 35px;
+  height: 32px;
+  margin-top: 5px;
   border-radius: 5px;
   background-color:#e9eaee;
   color: var(--dark-gray);

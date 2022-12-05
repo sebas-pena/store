@@ -1,50 +1,39 @@
 import "./Button.css"
 
 const Button = ({
-	color = "#fff",
 	disabled,
-	colorHover,
-	bgColor = "#3A78F2",
-	bgHover = "#2564e0",
-	predefinedStyle = "",
+	simple,
+	predefinedStyle = "primary",
 	children,
 	onClick,
 	className = "",
 	type = "button",
-	removeHover,
-	height = 32,
+	height,
+	size = "small",
 	width = "unset",
 	maxWidth = "unset",
-	minHeight = "unset",
-	paddingX = "24px",
-	paddingY = "0",
-	transitionDuration = ".3s",
-	radius = "5px",
+	radius = 5,
 	position = "unset",
 	zIndex = "unset",
 	handleRef,
+	padding,
 }) => {
 	let buttonStyle = {
-		backgroundColor: bgColor,
 		width,
-		height,
 		maxWidth,
-		padding: `${paddingY} ${paddingX}`,
 		borderRadius: radius,
 		position,
 		zIndex,
-		minHeight,
 	}
-
-	if (!colorHover) colorHover = color
-	switch (predefinedStyle) {
+	padding !== undefined && (buttonStyle.padding = padding)
+	size == "small" && (buttonStyle.height = 32)
+	size == "medium" && (buttonStyle.height = 44)
+	size == "big" && (buttonStyle.height = 52)
+	height && (buttonStyle.height = height)
+	/* switch (predefinedStyle) {
 		case "simple":
 			bgColor = "transparent"
 			bgHover = "transparent"
-			break
-		case "primary":
-			bgColor = "#3A78F2"
-			bgHover = "#2564e0"
 			break
 		case "grey":
 			bgColor = "#cccccc"
@@ -56,26 +45,18 @@ const Button = ({
 			color = "#a2a2a2"
 			colorHover = "#828283"
 			break
-		case "danger":
-			bgColor = "#ee6a6a"
-			bgHover = "#e91e2a"
-			break
 	}
-	buttonStyle.color = color
-	buttonStyle.backgroundColor = bgColor
-	buttonStyle["--bgHover"] = bgHover
-	buttonStyle["--colorHover"] = colorHover
-	buttonStyle["--transitionDuration"] = transitionDuration
+	buttonStyle["--transitionDuration"] = transitionDuration */
 
 	return (
 		<button
-			className={`button__ctn ${className || ""} ${
-				disabled ? "disabled" : ""
-			} ${removeHover ? "remove-hover" : ""}`}
-			style={buttonStyle}
+			className={`button ${className || ""} ${predefinedStyle} ${
+				simple ? "simple" : ""
+			}`}
 			onClick={onClick}
 			type={type}
 			disabled={disabled}
+			style={buttonStyle}
 			ref={handleRef}
 		>
 			{children}

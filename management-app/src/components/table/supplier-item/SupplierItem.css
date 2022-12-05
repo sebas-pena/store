@@ -1,5 +1,26 @@
+.supplier-item__ctn{
+  height: 50px;
+  cursor: pointer;
+  transition: background .3s ease-out;
+}
 
-.supplier-item > td{
-  vertical-align: center;
-  background-color: var(--light-gray);
+.supplier-item__ctn:hover:not(:has(button:hover)){
+  background-color: #e1e1e1;
+}
+
+.supplier-item__ctn > td:first-child{
+  padding-left: 20px;
+  width: 250px;
+  overflow: hidden;
+}
+
+.supplier-item__ctn > td:nth-child(2){
+  width: 250px;
+}
+
+.supplier-item__actions-ctn{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px
 }

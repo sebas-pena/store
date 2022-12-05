@@ -35,6 +35,7 @@ const StyledText = ({
 	align && (styles.textAlign = align)
 	maxLines && (styles["--MaxLines"] = maxLines)
 	maxLines && (styles.overflow = "hidden")
+	maxLines && (styles.wordBreak = "break-all")
 	maxWidth && (styles.maxWidth = maxWidth)
 	noBreak && (styles.whiteSpace = "nowrap")
 	if (asSpan) {

@@ -4,6 +4,8 @@ import StyledText from "../../styled-text/StyledText"
 import Input from "../Input"
 import "./InputWithUnit.css"
 import useClickOutside from "../../../hooks/useClickOutside"
+import { useContext } from "react"
+import { StoreContext } from "../../../store/StoreProvider"
 const InputWithUnit = ({
 	onChange,
 	label = "Price",
@@ -13,6 +15,7 @@ const InputWithUnit = ({
 	unitsPosition = "right",
 	name,
 }) => {
+	const { integersSeparator, decimalSeparator } = useContext(StoreContext).store
 	const [showOptions, setShowOptions] = useState(false)
 	const handleOpenBox = (e) => {
 		e.stopPropagation()
@@ -41,7 +44,9 @@ const InputWithUnit = ({
 	}, [])
 
 	useEffect(() => {
-		const hideOption = () => {
+		const hideOption = (e) => {
+			if (ctnRef.current == e.target || ctnRef.current.contains(e.target))
+				return
 			setShowOptions(false)
 		}
 		if (dropDownRef.current && ctnRef.current) {
@@ -51,7 +56,7 @@ const InputWithUnit = ({
 		}
 		return () => {
 			window.removeEventListener("scroll", repositionElement, true)
-			window.addEventListener("scroll", hideOption, true)
+			window.removeEventListener("scroll", hideOption, true)
 		}
 	}, [dropDownRef, ctnRef])
 	useEffect(() => {
@@ -61,30 +66,28 @@ const InputWithUnit = ({
 	const handleChangeValue = (e) => {
 		let inputValue = e.target.value
 		if (/[^0-9\.|\,]/g.test(inputValue)) return
-		const INTEGERS_SEPARATOR = Number(10000).toLocaleString().charAt(2)
-		const DECIMAL_SEPARATOR = Number(1.1).toLocaleString().charAt(1)
-		let parsedNumbers = inputValue.split(DECIMAL_SEPARATOR)
+		let parsedNumbers = inputValue.split(decimalSeparator)
 		if (parsedNumbers.length > 2) return
 		let [integers, decimals] = parsedNumbers
 		if (decimals) {
-			if (decimals.includes(INTEGERS_SEPARATOR)) return
+			if (decimals.includes(integersSeparator)) return
 		}
-		integers = integers.replaceAll(INTEGERS_SEPARATOR, "")
-		let value2
+		integers = integers.replaceAll(integersSeparator, "")
+		let valueFormated
 		integers = Number(integers).toLocaleString()
 		if (decimals) {
-			value2 = `${integers}${DECIMAL_SEPARATOR}${decimals}`
+			valueFormated = `${integers}${decimalSeparator}${decimals}`
 		} else if (decimals === undefined) {
-			value2 = integers
+			valueFormated = integers
 		} else if (decimals === "") {
-			value2 = `${integers}${DECIMAL_SEPARATOR}`
+			valueFormated = `${integers}${decimalSeparator}`
 		} else if (inputValue === "") {
-			value2 = ""
+			valueFormated = ""
 		}
 		onChange({
 			name,
 			value: {
-				value: value2,
+				value: valueFormated,
 				unit: value.unit,
 			},
 			custom: true,
@@ -106,9 +109,17 @@ const InputWithUnit = ({
 			<StyledText small semiBold>
 				{label}
 			</StyledText>
-			<div className="input-with-unit__ctn">
+			<div className={`input-with-unit__ctn ${unitsPosition}`}>
 				<Input
-					radius=""
+					radius={
+						showOptions
+							? unitsPosition === "right"
+								? "5px 0 0 0"
+								: "0 5px 0 0"
+							: unitsPosition === "right"
+							? "5px 0 0 5px"
+							: "0 5px 5px 0"
+					}
 					width={parseInt(width) - 50}
 					position="relative"
 					padding="0 10px"
@@ -120,7 +131,7 @@ const InputWithUnit = ({
 					onClick={handleOpenBox}
 					width="50px"
 					paddingX="0"
-					height={35}
+					height={32}
 					predefinedStyle={"primary"}
 					radius={
 						showOptions
@@ -149,18 +160,16 @@ const InputWithUnit = ({
 			>
 				{units.map((option) => (
 					<Button
-						key={option.symbol}
+						key={option.id}
 						width="100%"
 						height={35}
 						onClick={() => {
 							handleChangeUnit(option)
 						}}
 						radius="0"
-						predefinedStyle={
-							value?.unit?.id === option.id ? "primary" : "light-grey"
-						}
+						predefinedStyle={value?.unit?.id === option.id ? "primary" : "grey"}
 					>
-						{option.symbol}
+						{option.name || option.symbol}
 					</Button>
 				))}
 			</div>

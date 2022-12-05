@@ -1,8 +1,9 @@
 import { ReactComponent as SearchIcon } from "../../assets/svg/magnify.svg"
 import "./SearchInput.css"
-const SearchInput = ({ onChange, value, placeholder, maxWidth }) => {
+const SearchInput = ({ onChange, value, placeholder, maxWidth, height }) => {
 	const style = {
 		maxWidth: maxWidth || "unset",
+		height,
 	}
 	return (
 		<label className="search-input__ctn" style={style}>
@@ -14,6 +15,7 @@ const SearchInput = ({ onChange, value, placeholder, maxWidth }) => {
 				onChange={(e) => {
 					onChange(e.target.value)
 				}}
+				style={{ height }}
 				placeholder={placeholder}
 			/>
 		</label>

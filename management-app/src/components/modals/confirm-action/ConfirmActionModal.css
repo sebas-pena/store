@@ -1,0 +1,13 @@
+.confrim-action-modal__ctn{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 20px 30px;
+}
+.confirm-action-modal__buttons{
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 15px 30px;
+  border-top: 1px solid #d1d1d1;
+}

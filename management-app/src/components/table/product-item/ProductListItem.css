@@ -1,13 +1,18 @@
-.product-list-item__ctn{
+.product-list-item{
     border-radius: 4px;
     word-wrap: break-word;
     height: 75px;
     overflow: hidden;
+    cursor : pointer
 }
 
-.product-list-item__ctn > td{
+
+.product-list-item > td{
     vertical-align: center;
-    background-color: var(--light-gray);
+}
+
+.product-list-item:hover:not(:has(button:hover)){
+  background-color: #e1e1e1;
 }
 
 .product-list-item__product{
@@ -53,4 +58,10 @@
 
 .product-list-item > td:last-child{
     text-align: right;
+}
+
+.product-list-item__actions-ctn{
+    display:flex;
+    justify-content: flex-end;
+    gap: 10px
 }

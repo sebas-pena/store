@@ -2,11 +2,7 @@ import { useState, useEffect } from "react"
 import { ReactComponent as ArrowIcon } from "../../assets/svg/arrow.svg"
 import { ReactComponent as ElipsisIcon } from "../../assets/svg/elipsis.svg"
 import "./Pagination.css"
-const Pagination = ({ total = 4, onChange }) => {
-	const [currentPage, setCurrentPage] = useState(1)
-	useEffect(() => {
-		onChange(currentPage)
-	}, [currentPage])
+const Pagination = ({ total = 1, setPage, currentPage = 1 }) => {
 	return (
 		<div className="pagination__ctn">
 			<div className="pagination__buttons">
@@ -15,7 +11,7 @@ const Pagination = ({ total = 4, onChange }) => {
 						<button
 							className="pagination__button"
 							onClick={() => {
-								setCurrentPage(currentPage - 1)
+								setPage(currentPage - 1)
 							}}
 						>
 							<ArrowIcon width="10" style={{ transform: "rotate(-90deg)" }} />
@@ -23,7 +19,7 @@ const Pagination = ({ total = 4, onChange }) => {
 						<button
 							className="pagination__button"
 							onClick={() => {
-								setCurrentPage(1)
+								setPage(1)
 							}}
 						>
 							1
@@ -41,7 +37,7 @@ const Pagination = ({ total = 4, onChange }) => {
 					<button
 						className="pagination__button"
 						onClick={() => {
-							setCurrentPage(currentPage - 1)
+							setPage(currentPage - 1)
 						}}
 					>
 						{currentPage - 1}
@@ -52,7 +48,7 @@ const Pagination = ({ total = 4, onChange }) => {
 					<button
 						className="pagination__button"
 						onClick={() => {
-							setCurrentPage(currentPage + 1)
+							setPage(currentPage + 1)
 						}}
 					>
 						{currentPage + 1}
@@ -70,7 +66,7 @@ const Pagination = ({ total = 4, onChange }) => {
 						<button
 							className="pagination__button"
 							onClick={() => {
-								setCurrentPage(total)
+								setPage(total)
 							}}
 						>
 							{total}
@@ -78,7 +74,7 @@ const Pagination = ({ total = 4, onChange }) => {
 						<button
 							className="pagination__button"
 							onClick={() => {
-								setCurrentPage(currentPage + 1)
+								setPage(currentPage + 1)
 							}}
 						>
 							<ArrowIcon width="10" style={{ transform: "rotate(90deg)" }} />

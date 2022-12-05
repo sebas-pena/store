@@ -1,26 +1,98 @@
-.button__ctn{
+.button.primary{
+    --color: #fff;
+    --bgColor: #2563EA;
+    --bgHover: #1D4ED7;
+    --bgActive: #1F3FAE;
+    --bgFocus: #2563EA;
+    
+}
+.button.primary.simple{
+    --color: #2563EA;
+    --colorHover: #1D4ED7;
+    --colorActive: #1F3FAE;
+    --colorFocus: #2563EA;
+    --colorDisabled: #6C93E4;
+}
+.button.secondary{
+    --color: #fff;
+    --bgColor: #FFFFFF;
+    --bgHover: #F5F5F5;
+    --bgActive: #9B1B1A;
+    --bgFocus: #2563EA;
+    --borderFocus: #fff;
+}
+.button.secondary.simple{
+    --color: #858486;
+    --colorHover: #4A4A4C;
+    --colorActive: #333333;
+    --colorFocus: #727274;
+    --colorDisabled: #CECECE;
+}
+.button.danger{
+    --color: #fff;
+    --bgColor: #DC2625;
+    --bgHover: #B81C1D;
+    --bgActive: #B81C1D;
+    --bgFocus: #DC2625;
+    --borderFocus: #DC2625;
+}
+.button.grey{
+    --color: #fff;
+    --bgColor: #d3d3d3;
+    --bgHover: #aeaeae;
+    --bgActive: #787878;
+    --bgFocus: #c0c0c0;
+    --borderFocus: #c0c0c0;
+}
+.button.danger.simple{
+    --color: #DC2625;
+    --colorHover: #B81C1D;
+    --colorActive: #B81C1D;
+    --colorFocus: #DC2625;
+}
+.button{
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 0 24px;
+    border-radius: 5px;
+    color: var(--color);
     font-weight: 600;
     cursor: pointer;
+    transition: all .3s ease-out;
+    --outlineFocus: #fff;
+    --outlineFocus2:  #6C93E4;
+    border: 1px solid transparent
+}
+.button:not(.simple){
+    background-color: var(--bgColor);
+}
+.button:hover:not(.simple){
+    background-color: var(--bgHover);
+}
+.button.hover:focus{
+    color: var(--colorHover)
+}
+.button:focus:not(.simple){
+    background-color: var(--bgFocus);
+    box-shadow: 0px 0px 0px 1px var(--outlineFocus), 0px 0px 0px 3px var(--outlineFocus2);
+}
+.button.simple:focus{
+    color: var(--colorFocus);
+    border: 1px solid var(--borderFocus);
+    box-shadow: 0px 0px 0px 1px var(--outlineFocus), 0px 0px 0px 3px var(--outlineFocus2);
 }
 
-.button__ctn:hover{
-    color: var(--colorHover) !important;
-    background-color: var(--bgHover) !important;
+.button:active:not(.simple){
+    background-color: var(--bgActive);
+}
+.button:active.simple{
+    color: var(--colorActive);
 }
 
-.button__ctn.remove-hover:hover{
-    cursor: default;
-}
-.button__ctn:not(:disabled){
-    transition: background var(--transitionDuration) ease-out, color var(--transitionDuration) ease-out;
-}
-
-
-.button__ctn.disabled:disabled{
-    color: #fff !important;
-    background-color: #d0d0d0 !important;
-    cursor: unset;
+.button:disabled{
+    color: var(--colorDisabled, #A7B9CB);
+    --bgColor: "#F4F4F6";
+    --bgHover: "#C9C8CE";
+    cursor: not-allowed;
 }

@@ -12,10 +12,6 @@
   margin-bottom: 20px;
 }
 
-.orders-page__header > button:not(.remove-hover){
-  color: var(--dark-gray);
-}
-
 .orders-page__status-filter{
   position: absolute;
   top: 0;

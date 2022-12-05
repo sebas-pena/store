@@ -3,7 +3,7 @@ import { ReactComponent as AddIcon } from "../../../assets/svg/plus.svg"
 import "./AddButton.css"
 const AddButton = ({ children, onClick }) => {
 	return (
-		<Button height="45px" onClick={onClick}>
+		<Button size="medium" onClick={onClick}>
 			<AddIcon
 				width="16"
 				height="16"

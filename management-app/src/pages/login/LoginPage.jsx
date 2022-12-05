@@ -31,36 +31,31 @@ const LoginPage = () => {
 
 		setIsLoading(true)
 
-		let response
-
-		if (showSignUp) {
-			response = fetchAstro("auth/signup", {
-				method: "POST",
-				headers: {
-					"content-type": "application/json",
-				},
-				body: JSON.stringify({
-					email: email,
-					password,
-					storeName: storeName,
-				}),
-			})
-		} else {
-			response = fetchAstro("auth/login", {
-				method: "POST",
-				headers: {
-					"content-type": "application/json",
-				},
-				body: JSON.stringify({
-					email,
-					password,
-				}),
-			})
-		}
+		let response = showSignUp
+			? fetchAstro("auth/signup", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify({
+						email: email,
+						password,
+						storeName: storeName,
+					}),
+			  })
+			: fetchAstro("auth/login", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify({
+						email,
+						password,
+					}),
+			  })
 
 		response
 			.then(({ token, user }) => {
-				console.log("*** LOGUEADO CORRECTAMENTE ***")
 				console.log({ user })
 				dispatch({ type: "SET_TOKEN", payload: token })
 				dispatch({ type: "SET_SETTINGS", payload: user.settings })
@@ -154,10 +149,7 @@ const LoginPage = () => {
 					<Button
 						width="100%"
 						maxWidth="200px"
-						height="35px"
 						type="submit"
-						predefinedStyle="primary"
-						color="#fff"
 						disabled={isLoading}
 					>
 						{showSignUp ? "Sign Up" : "Login"}
@@ -167,12 +159,7 @@ const LoginPage = () => {
 							{showSignUp ? "Alredy have an account?" : "Need an account?"}
 						</span>
 						<Button
-							predefinedStyle="simple"
-							maxWidth="200px"
-							height="35px"
-							paddingX="5px"
-							color="#3A78F2"
-							colorHover="#2564e0"
+							simple
 							onClick={() => {
 								if (isLoading) return
 								setShowSignUp(!showSignUp)

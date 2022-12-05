@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import Aside from "../components/aside/Aside"
 import TitleBar from "../components/titlebar/TitleBar"
 import DashboardPage from "../pages/dashboard/DashboardPage"
+import NewProductPage from "../pages/new-product/NewProductPage"
 import OauthPage from "../pages/oauth/OauthPage"
 import OrdersPage from "../pages/orders/OrdersPage"
 import ProductsPage from "../pages/products/ProductsPage"
@@ -20,7 +21,7 @@ const AddAsideAndTitleBar = ({ children }) => <div className="App">
 const PrivateRoutes = () => {
   return (
     <Routes>
-      <Route path="oauth/:provider" element={<OauthPage />} />
+      <Route path="/oauth/:provider" element={<OauthPage />} />
       <Route path="/" element={
         <AddAsideAndTitleBar>
           <DashboardPage />
@@ -51,6 +52,7 @@ const PrivateRoutes = () => {
           <SuppliersPage />
         </AddAsideAndTitleBar>
       } />
+      <Route path="/new-product" element={<NewProductPage />} />
     </Routes>
 
   )

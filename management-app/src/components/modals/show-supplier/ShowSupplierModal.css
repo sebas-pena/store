@@ -1,0 +1,14 @@
+.show-supplier-modal_wrapper,
+.show-supplier-modal__ctn{
+  display: flex;
+  gap: 10px
+}
+
+.show-supplier-modal__ctn{
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.show-supplier-modal_wrapper{
+  align-items: flex-end;
+}

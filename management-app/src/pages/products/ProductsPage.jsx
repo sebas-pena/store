@@ -22,8 +22,7 @@ const ProductsPage = () => {
 
 	const [showNewProductModal, setShowNewProductModal] = useState(false)
 
-	const { dispatch } = useContext(StoreContext)
-
+	const { store, dispatch } = useContext(StoreContext)
 	useEffect(() => {
 		dispatch({ type: "SET_TITLE", payload: "Products" })
 	}, [])

@@ -12,7 +12,7 @@
 
 .category-selector__selection-ctn{
   display: flex;
-  height: 28px;
+  height: 35px;
   align-items: center;
   justify-content: space-between;
 }

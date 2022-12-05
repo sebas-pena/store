@@ -65,7 +65,7 @@ const SelectBox = ({
 	}, [showOptions])
 	return (
 		<div className="select-box2" style={{ width }}>
-			<StyledText small semiBold maxLines="1">
+			<StyledText small semiBold maxLines="1" mb={5}>
 				{label}
 			</StyledText>
 			<div
@@ -104,9 +104,7 @@ const SelectBox = ({
 								handleChange(option)
 							}}
 							radius="0"
-							predefinedStyle={
-								value === option.value ? "primary" : "light-grey"
-							}
+							predefinedStyle={value === option.value ? "primary" : "grey"}
 						>
 							{option.name}
 						</Button>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<polygon
+		points="43 24 48 24 54 24 59 27 51 27 45 28 43 24"
+		style="fill: rgb(255, 187, 127)"
+	></polygon>
+	<path
+		d="M12.059,52a9,9,0,1,1,9-9A9.01,9.01,0,0,1,12.059,52Zm0-14a5,5,0,1,0,5,5A5.006,5.006,0,0,0,12.059,38Z"
+		style="fill: #394d5c"
+	></path>
+	<path
+		d="M52,34a9,9,0,1,0,9,9A9.011,9.011,0,0,0,52,34Zm0,15a6,6,0,1,1,6-6A6,6,0,0,1,52,49Z"
+		style="fill: #394d5c"
+	></path>
+	<circle cx="52" cy="43" r="4" style="fill: #7c8c9a"></circle>
+	<circle cx="52" cy="43" r="2" style="fill: #a8bccb"></circle>
+	<path
+		d="M11,23.469v3.262a1.951,1.951,0,0,0,1.159,1.784L20,32l2-4Z"
+		style="fill: #7c8c9a"
+	></path>
+	<polygon
+		points="43 16 44 19 42.019 21.224 43.292 24 48 24 46 16 43 16"
+		style="fill: rgb(255, 119, 0)"
+	></polygon>
+	<polygon
+		points="40.792 27.875 38.571 22.049 42.59 21.039 44.282 26.451 40.792 27.875"
+		style="fill: #394d5c"
+	></polygon>
+	<circle cx="12.059" cy="43" r="3" style="fill: #a8bccb"></circle>
+	<polygon
+		points="14.145 25.253 16 30.222 25 34.229 25.187 28.077 14.145 25.253"
+		style="fill: rgb(255, 119, 0)"
+	></polygon>
+	<polygon points="38 20 41 26 33 22 38 20" style="fill: #a8bccb"></polygon>
+	<path d="M35,41H32V31h6v7A3,3,0,0,1,35,41Z" style="fill: #7c8c9a"></path>
+	<polygon
+		points="4 22 27 24 33 22 43 27 40 30 40 36 36 31 36 27 29 28 25 34.229 22 28 11 24.154 4 22"
+		style="fill: rgb(252, 169, 53)"
+	></polygon>
+	<polygon
+		points="12 42 12 44 26 41 26.424 41 26.424 37 26 37 12 42"
+		style="fill: #5a6470"
+	></polygon>
+	<path
+		d="M34.372,13.071l5,2a1,1,0,0,1,.46.374l2,3a1.034,1.034,0,0,1,.077.138l11,24-1.818.834L40.124,19.488,38.34,16.813l-4.712-1.884Z"
+		style="fill: #5a6470"
+	></path>
+	<polygon
+		points="33 41 26 41 26 37 25 34.229 29 28 36 27 36 31 33 31 33 41"
+		style="fill: #394d5c"
+	></polygon>
+	<circle cx="33" cy="38" r="3" style="fill: #5a6470"></circle>
+</svg>

@@ -74,7 +74,7 @@ const DropDown = ({
 								cb(option, i)
 							}}
 							height="unset"
-							paddingY="10px"
+							padding="10px 0"
 							radius="0"
 						>
 							{option.title}

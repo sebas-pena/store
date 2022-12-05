@@ -10,6 +10,7 @@
 	font-weight: 500;
 	font-size: 15px;
   padding-right: 25px;
+	white-space: nowrap;
 }
 
 .table__body{
@@ -18,7 +19,6 @@
 }
 
 .table__body > tr{
-  vertical-align: center;
 	background-color: #eee;
 }
 .table__body > tr > td{
@@ -30,5 +30,4 @@
 }
 .table__body > tr > td:last-child{
   border-radius: 0 5px 5px 0;
-	padding-right: 20px;
 }

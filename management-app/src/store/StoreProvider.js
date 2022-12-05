@@ -11,8 +11,13 @@ export const StoreProvider = ({ children }) => {
 		token,
 		user: token && parsedToken.user,
 		settings: token ? parsedToken.settings : {},
+		allowedCurrencies: [
+			{ id: "USD", symbol: "U$S", name: "Dólar", decimal_places: 2 },
+			{ id: "UYU", symbol: "$", name: "Peso Uruguayo", decimal_places: 2 }
+		],
+		integersSeparator: Number(10000).toLocaleString().charAt(2),
+		decimalSeparator: Number(1.1).toLocaleString().charAt(1)
 	}
-
 	const [store, dispatch] = useReducer(StoreReducer, initialStore)
 
 	return (

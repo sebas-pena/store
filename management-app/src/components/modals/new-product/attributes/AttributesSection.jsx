@@ -1,5 +1,4 @@
 import React, { useContext } from "react"
-import { useState, useEffect } from "react"
 import { NewProductContext } from "../../../../context/NewProductContext"
 import DropDown from "../../../drop-down/DropDown"
 import Input from "../../../input/Input"
@@ -8,16 +7,14 @@ import SelectBox from "../../../input/select-box/SelectBox"
 import StyledText from "../../../styled-text/StyledText"
 import "./AttributesSection.css"
 
-const AttributesSection = ({ category }) => {
-	const [attributes, setAttributes] = useState({
-		required: [],
-		optional: [],
-	})
+const AttributesSection = (S) => {
 	const {
 		attributesValues,
 		handleChangeAttribute,
 		attributesSelected,
 		setAttributedSelected,
+		attributes,
+		setAttributes,
 	} = useContext(NewProductContext)
 	const inputs = {
 		string: (attribute) => (
@@ -93,66 +90,6 @@ const AttributesSection = ({ category }) => {
 			/>
 		),
 	}
-
-	useEffect(() => {
-		if (category)
-			fetch(`https://api.mercadolibre.com/categories/${category.id}/attributes`)
-				.then((res) => res.json())
-				.then((data) => {
-					const optional = []
-					const required = []
-					data.forEach((attribute) => {
-						if (attribute.id === "ITEM_CONDITION") return
-						const {
-							hint = "",
-							name,
-							id,
-							tooltip,
-							value_type,
-							tags,
-							default_unit,
-							allowed_units = [],
-							values = [],
-						} = attribute
-						if (
-							attribute.tags["catalog_required"] ||
-							attribute.tags["required"]
-						) {
-							required.push({
-								hint,
-								title: name,
-								id,
-								tooltip,
-								value_type,
-								tags,
-								default_unit,
-								allowed_units: allowed_units.map(({ id, name }) => {
-									return { id, symbol: name }
-								}),
-								values,
-							})
-						} else {
-							optional.push({
-								hint,
-								title: name,
-								id,
-								tooltip,
-								value_type,
-								tags,
-								default_unit,
-								allowed_units: allowed_units.map(({ id, name }) => {
-									return { id, symbol: name }
-								}),
-								values,
-							})
-						}
-					})
-					setAttributes({
-						required,
-						optional,
-					})
-				})
-	}, [category])
 
 	const handleAddAttribute = (attribute, position) => {
 		if (attribute.value_type === "number_unit") {

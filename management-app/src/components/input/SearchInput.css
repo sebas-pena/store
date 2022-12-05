@@ -3,13 +3,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 0 13px;
+    padding: 1px 14px;
     height: 100%;
     width: 100%;
     border-radius: 5px;
-    border: 2px solid transparent;
+    border: 1px solid #d8d8d8;
     background-color: var(--light-gray);
-    transition: all 0.3s ease;
     cursor: pointer;
 }
 .search-input__icon{
@@ -24,5 +23,7 @@
 }
 
 .search-input__ctn:focus-within{
-  border-color: #e1e1e1
+    padding: 0 13px;
+    border-color: #e1e1e1;
+    border-width: 2px;
 }

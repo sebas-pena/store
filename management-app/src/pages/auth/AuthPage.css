@@ -1,0 +1,42 @@
+.auth-page{
+  flex : 1;
+  display : flex;
+  align-items : center;
+  justify-content : center;
+}
+
+.auth__background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgb(181 211 255) 0%, rgb(106 170 251) 100%);
+}
+
+.auth__background li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.auth__background li:nth-child(1) {
+  left: -27px;
+  top: -39px;
+  width: 218px;
+  height: 218px;
+}
+
+.auth__background li:nth-child(2) {
+  right: -48px;
+  bottom: 0;
+  width: 382px;
+  height: 382px;
+}

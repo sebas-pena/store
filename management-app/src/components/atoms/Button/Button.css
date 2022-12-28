@@ -1,0 +1,86 @@
+button , .button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  transition: background .3s ease-out;
+  line-height: 1;
+  cursor: pointer;
+}
+
+button:focus , .button:focus{
+  box-shadow: 0px 0px 0px 1px #fff, 0px 0px 0px 3px var(--focusOutline);
+}
+
+.button{
+  border-radius: 5px;
+}
+
+.button.primary{
+  color:#fff;
+  background-color: var(--primary);
+}
+
+.button.primary svg * {
+  fill:#fff;
+}
+
+.button.primary:focus{
+  background-color: var(--primaryFocus);
+}
+
+.button.primary:hover{
+  background-color: var(--primaryHover);
+}
+
+.button.primary:active{
+  background-color: var(--primaryActive);
+}
+
+.button.button.primary.disabled{
+  background-color: var(--primaryDisabled);
+  color: #fff;
+}
+.button.button.primary.disabled svg *{
+  fill : #fff !important
+}
+
+.button.danger{
+  color:#fff;
+  background-color: var(--danger);
+}
+.button.danger svg * {
+  fill:#fff;
+}
+
+.button.danger:focus{
+  background-color: var(--dangerFocus);
+}
+
+.button.danger:hover{
+  background-color: var(--dangerHover);
+}
+
+.button.danger:active{
+  background-color: var(--dangerActive);
+}
+
+.button.gray svg * {
+  color:#7f7f81;
+  background-color: var(--gray);
+}
+.button.gray svg * {
+  fill: #7f7f81
+}
+.button.gray:focus{
+  background-color: var(--grayFocus);
+}
+
+.button.gray:hover{
+  background-color: var(--grayHover);
+}
+
+.button.gray:active{
+  background-color: var(--grayActive);
+}

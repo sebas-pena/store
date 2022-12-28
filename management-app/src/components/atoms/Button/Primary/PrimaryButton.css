@@ -1,0 +1,16 @@
+.primary-button{
+  background-color: var(--primary);
+  border-radius: 5px;
+}
+
+.primary-button:focus{
+  background-color: var(--primaryFocus);
+}
+
+.primary-button:hover{
+  background-color: var(--primaryHover);
+}
+
+.primary-button:active{
+  background-color: var(--primaryActive);
+}

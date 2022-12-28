@@ -1,0 +1,6 @@
+.text__clamp{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: var(--max-lines);
+}

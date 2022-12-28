@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react"
-import AddButton from "../../components/button/add-button/AddButton"
 import SearchInput from "../../components/input/SearchInput"
 import NewSupplierModal from "../../components/modals/new-supplier/NewSupplierModal"
 import Pagination from "../../components/pagination/Pagination"
@@ -50,15 +49,7 @@ const SuppliersPage = () => {
 						placeholder="Supplier Name"
 						maxWidth={250}
 					/>
-					<div className="product-page__add-product">
-						<AddButton
-							onClick={() => {
-								setShowNewSupplierModal(true)
-							}}
-						>
-							Add Supplier
-						</AddButton>
-					</div>
+					<div className="product-page__add-product"></div>
 				</div>
 				<Table type="suppliers" handleRefresh={getSuppliers} rows={suppliers} />
 				{currentPage && (

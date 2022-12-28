@@ -1,11 +1,11 @@
 import { useState, useContext } from "react"
 import fetchAstro from "../../../helpers/fetchAstro"
 import { StoreContext } from "../../../store/StoreProvider"
-import DeleteButton from "../../button/delete-button/DeleteButton"
-import EditButton from "../../button/edit-button/EditButton"
 import ConfirmActionModal from "../../modals/confirm-action/ConfirmActionModal"
 import NewSupplierModal from "../../modals/new-supplier/NewSupplierModal"
 import ShowSupplierModal from "../../modals/show-supplier/ShowSupplierModal"
+import DeleteButton from "../../molecules/Buttons/Delete/DeleteButton"
+import EditButton from "../../molecules/Buttons/Edit/EditButton"
 import StyledText from "../../styled-text/StyledText"
 import "./SupplierItem.css"
 

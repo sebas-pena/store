@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState, useRef } from "react"
 import { ReactComponent as AmazonIcon } from "../../assets/svg/amazon-icon.svg"
 import { ReactComponent as MeliIcon } from "../../assets/svg/meli-hands.svg"
-import Button from "../../components/button/Button"
+import Button from "../../components/atoms/Button/Button"
 import OauthButton from "../../components/button/oauth-button/OauthButton"
-import Input from "../../components/input/Input"
 import { useForm } from "../../hooks/useForm"
 import { StoreContext } from "../../store/StoreProvider"
 import { ReactComponent as CameraIcon } from "../../assets/svg/camera.svg"
@@ -11,7 +10,10 @@ import "./SettingsPage.css"
 import imageFileToUrl from "../../helpers/imageFileToUrl"
 import fetchAstro from "../../helpers/fetchAstro"
 import { resizeImageFile } from "../../helpers/resizeImageFile"
-import StyledText from "../../components/styled-text/StyledText"
+import FlexContainer from "../../components/atoms/Container/FlexContainer"
+import InputWithLabel from "../../components/molecules/Inputs/WithLabel/InputWithLabel"
+import Container from "../../components/atoms/Container/Container"
+import Text from "../../components/atoms/Text/Text"
 const SettingsPage = () => {
 	const { dispatch, store } = useContext(StoreContext)
 	const { user, token } = store
@@ -99,11 +101,16 @@ const SettingsPage = () => {
 	}
 
 	return (
-		<div className="settings-page__ctn">
-			<form
+		<Container flex={1} overflow="auto" as="main">
+			<FlexContainer
+				as="form"
+				padding={20}
+				gap={20}
+				vertical
+				maxWidth={900}
+				margin="0 auto"
 				onSubmit={handleSubmit}
 				ref={formRef}
-				className="settings-page__form"
 			>
 				<div className="settings-page__progile-ctn">
 					<img src={profileUrl} alt={`${user.storeName} logo`} />
@@ -117,11 +124,12 @@ const SettingsPage = () => {
 						/>
 					</label>
 				</div>
-				<StyledText asHeader={2} big semiBold color="#000">
+				<Text as="h2" size={24} bold>
 					Account
-				</StyledText>
-				<div className="settins-page__inputs-ctn">
-					<Input
+				</Text>
+
+				<FlexContainer gap={20} wrap>
+					<InputWithLabel
 						label="Store Name"
 						name="storeName"
 						value={storeName}
@@ -129,7 +137,7 @@ const SettingsPage = () => {
 						placeholder="Store Name"
 						width="250px"
 					/>
-					<Input
+					<InputWithLabel
 						label="Email"
 						name="email"
 						value={email}
@@ -137,7 +145,7 @@ const SettingsPage = () => {
 						placeholder="example@mail.com"
 						width="250px"
 					/>
-					<Input
+					<InputWithLabel
 						label="City, Country"
 						name="address"
 						value={address}
@@ -145,9 +153,9 @@ const SettingsPage = () => {
 						placeholder="Montevideo, Uruguay"
 						width="250px"
 					/>
-				</div>
-				<div className="settins-page__inputs-ctn">
-					<Input
+				</FlexContainer>
+				<FlexContainer gap={20} wrap>
+					<InputWithLabel
 						label="New Password"
 						name="newPassword"
 						value={newPassword}
@@ -155,7 +163,7 @@ const SettingsPage = () => {
 						placeholder="Password"
 						width="250px"
 					/>
-					<Input
+					<InputWithLabel
 						label="Confirm Password"
 						name="confirmPassword"
 						value={confirmPassword}
@@ -163,13 +171,13 @@ const SettingsPage = () => {
 						placeholder="Confirm Password"
 						width="250px"
 					/>
-				</div>
+				</FlexContainer>
 				<div className="settings-page__divisor"></div>
-				<StyledText asHeader={2} big semiBold color="#000">
+				<Text as="h2" size={24} bold>
 					Integrate Application
-				</StyledText>
-				<div className="settins-page__inputs-ctn">
-					<Input
+				</Text>
+				<FlexContainer gap={20} wrap>
+					<InputWithLabel
 						label="Base URI"
 						name="backendUri"
 						value={backendUri}
@@ -177,7 +185,7 @@ const SettingsPage = () => {
 						placeholder="https://domain.com/api/"
 						width="250px"
 					/>
-					<Input
+					<InputWithLabel
 						label="API Key"
 						name="backendToken"
 						value={backendToken}
@@ -185,9 +193,9 @@ const SettingsPage = () => {
 						placeholder="Bearer Token"
 						width="250px"
 					/>
-				</div>
-				<div className="settins-page__inputs-ctn">
-					<Input
+				</FlexContainer>
+				<FlexContainer gap={20} wrap>
+					<InputWithLabel
 						label="Orders Endpoint"
 						name="ordersEndpoint"
 						value={ordersEndpoint}
@@ -195,7 +203,7 @@ const SettingsPage = () => {
 						placeholder="orders"
 						width="250px"
 					/>
-					<Input
+					<InputWithLabel
 						label="Products Endpoint"
 						name="productsEndpoint"
 						value={productsEndpoint}
@@ -203,7 +211,7 @@ const SettingsPage = () => {
 						placeholder="products"
 						width="250px"
 					/>
-					<Input
+					<InputWithLabel
 						label="Suppliers Endpoint"
 						name="suppliersEndpoint"
 						value={suppliersEndpoint}
@@ -211,7 +219,7 @@ const SettingsPage = () => {
 						placeholder="suppliers"
 						width="250px"
 					/>
-					<Input
+					<InputWithLabel
 						label="Customers Endpoint"
 						name="customersEndpoint"
 						value={customersEndpoint}
@@ -219,7 +227,7 @@ const SettingsPage = () => {
 						placeholder="customers"
 						width="250px"
 					/>
-					<Input
+					<InputWithLabel
 						label="Support Endpoint"
 						name="supportEndpoint"
 						value={supportEndpoint}
@@ -227,7 +235,7 @@ const SettingsPage = () => {
 						placeholder="support"
 						width="250px"
 					/>
-				</div>
+				</FlexContainer>
 				<div className="settings-page__link">
 					<span>
 						Endpoints are appended to your Base URL to handle specific actions.
@@ -236,9 +244,9 @@ const SettingsPage = () => {
 					<a href="www.google.com">More info</a>
 				</div>
 				<div className="settings-page__divisor"></div>
-				<StyledText asHeader={2} big semiBold color="#000">
+				<Text as="h2" size={24} bold>
 					Integrate Third Party
-				</StyledText>
+				</Text>
 				<div className="settins-page__integrations-ctn">
 					<OauthButton
 						primary="#FF9A00"
@@ -256,12 +264,13 @@ const SettingsPage = () => {
 					/>
 				</div>
 				<div className="settings-page__divisor"></div>
-				<StyledText asHeader={2} big semiBold color="#000">
-					Delete Account
-				</StyledText>
+				<Text as="h2" size={24} bold>
+					Integrate Third Party
+				</Text>
 				<Button
-					predefinedStyle="danger"
-					height="35px"
+					palette="danger"
+					padding="0 16px"
+					height="32px"
 					width="max-content"
 					type="button"
 					onClick={handleDeleteAccount}
@@ -270,19 +279,19 @@ const SettingsPage = () => {
 				</Button>
 				<div className="settings-page__bottom-buttons">
 					<Button
-						height="35px"
+						height="32px"
 						width="150px"
 						onClick={handleResetForm}
-						predefinedStyle="grey"
+						palette="grey"
 					>
 						Revert
 					</Button>
-					<Button height="35px" width="150px" type="submit">
+					<Button height="32px" width="150px" type="submit">
 						Apply changes
 					</Button>
 				</div>
-			</form>
-		</div>
+			</FlexContainer>
+		</Container>
 	)
 }
 

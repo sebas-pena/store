@@ -1,0 +1,4 @@
+.login-form__error{
+  position: absolute;
+  transform: translateY(17px);
+}

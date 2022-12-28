@@ -1,0 +1,18 @@
+.delete-button{
+  height: 32px;
+  padding: 0px 10px;
+  border-radius: 5px;
+  background-color: var(--danger);
+}
+
+.delete-button:focus{
+  background-color: var(--dangerFocus);
+}
+
+.delete-button:hover{
+  background-color: var(--dangerHover);
+}
+
+.delete-button:active{
+  background-color: var(--dangerActive);
+}

@@ -1,84 +1,40 @@
 import { useState, useContext, useEffect } from "react"
-import Input from "../../components/input/Input"
-import Button from "../../components/button/Button"
 import Pagination from "../../components/pagination/Pagination"
-import { StoreContext } from "../../store/StoreProvider"
-// svgs, css and images below
-import "./OrdersPage.css"
 
 // mocks below
 import { ordersMock } from "../../mocks/orders"
-import Table from "../../components/table/Table"
+import FlexContainer from "../../components/atoms/Container/FlexContainer"
+import Button from "../../components/atoms/Button/Button"
+import Container from "../../components/atoms/Container/Container"
+import Text from "../../components/atoms/Text/Text"
+import SearchInput from "../../components/molecules/SearchInput/SearchInput"
+import OrdersTable from "../../components/organisms/Tables/Orders/OrdersTable"
+import ToggleOptions from "../../components/molecules/ToggleOptions"
 
 const OrdersPage = () => {
-	const [statusFilter, setStatusFilter] = useState("")
+	const [statusFilter, setStatusFilter] = useState("All")
 	const [page, setPage] = useState(1)
 	return (
-		<div className="orders-page__ctn">
-			<div className="orders-page__header">
-				<p className="orders-page__status-filter">Status</p>
-				<Button
-					predefinedStyle={statusFilter ? "secondary" : "primary"}
-					simple={statusFilter !== ""}
-					onClick={() => {
-						setStatusFilter("")
-					}}
-				>
-					All
-				</Button>
-				<Button
-					predefinedStyle={statusFilter === "pending" ? "primary" : "secondary"}
-					simple={statusFilter !== "pending"}
-					onClick={() => {
-						setStatusFilter("pending")
-					}}
-				>
-					Pending
-				</Button>
-				<Button
-					predefinedStyle={
-						statusFilter === "completed" ? "primary" : "secondary"
-					}
-					simple={statusFilter !== "completed"}
-					onClick={() => {
-						setStatusFilter("completed")
-					}}
-				>
-					Completed
-				</Button>
-				<Button
-					predefinedStyle={
-						statusFilter === "cancelled" ? "primary" : "secondary"
-					}
-					simple={statusFilter !== "cancelled"}
-					onClick={() => {
-						setStatusFilter("cancelled")
-					}}
-				>
-					Cancelled
-				</Button>
-				<div className="orders-page__search">
-					<Input label="Order #" name="Order #" type="number" hideControls />
-					<Input
-						label="Customer #"
-						name="Customer #"
-						type="text"
-						hideControls
-					/>
-				</div>
-			</div>
-			<div className="orders-page__body">
-				<Table
-					type="orders"
-					rows={ordersMock.filter((order) =>
-						statusFilter ? order.status == statusFilter : true
-					)}
+		<FlexContainer
+			as="main"
+			gap={20}
+			padding=" 10px 10px 20px 10px"
+			flex={1}
+			vertical
+		>
+			<FlexContainer justify="space-between" align="flex-end">
+				<ToggleOptions
+					onChange={setStatusFilter}
+					value={statusFilter}
+					label="Status:"
+					options={["All", "Pending", "Completed"]}
 				/>
-				<div className="orders-page__pagination">
-					<Pagination onChange={setPage} />
-				</div>
-			</div>
-		</div>
+				<FlexContainer gap={10}>
+					<SearchInput placeholder="Order ID or Customer" />
+				</FlexContainer>
+			</FlexContainer>
+			<OrdersTable orders={ordersMock} />
+		</FlexContainer>
 	)
 }
 

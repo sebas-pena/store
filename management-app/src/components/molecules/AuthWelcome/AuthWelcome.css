@@ -1,0 +1,26 @@
+.auth-welcome__ctn{
+  position: relative;
+}
+
+.auth-welcome__background{
+  position: absolute;
+}
+
+.auth-welcome__ctn div{
+  position: relative;
+}
+
+.auth-welcome__welcome-text{
+  position: relative;
+}
+
+.auth-welcome__welcome-text::after{
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 3px;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50% , 8px);
+  background-color: #fff;
+}

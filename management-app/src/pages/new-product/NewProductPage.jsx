@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useRef } from "react"
 import { StoreContext } from "../../store/StoreProvider"
 import { ReactComponent as MotorCycleIcon } from "../../assets/svg/motorcycle.svg"
 import { ReactComponent as ServicesIcon } from "../../assets/svg/services.svg"
@@ -25,8 +25,10 @@ const NewProductPage = () => {
 	const { user } = useContext(StoreContext).store
 	const [mainCategory, setMainCategory] = useState(null)
 	const [step, setStep] = useState(null)
+	const [category, setCategory] = useState(null)
+	const pageCtnRef = useRef(null)
 	return (
-		<div className="new-product-page">
+		<div className="new-product-page" ref={pageCtnRef}>
 			<header className="new-product-page__header">
 				<div className="new-product-page__header-ctn">
 					<div className="logo">
@@ -105,7 +107,10 @@ const NewProductPage = () => {
 						mainCategory ? "show" : ""
 					}`}
 				>
-					<PredictCategory onChange={console.log} setIsLoading={console.log} />
+					<PredictCategory
+						onChange={setCategory}
+						pageCtn={pageCtnRef.current}
+					/>
 				</div>
 			</div>
 		</div>

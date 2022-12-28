@@ -1,0 +1,8 @@
+.logout-btn{
+  padding: 10px;
+  height: 100%;
+  background-color: transparent;
+}
+.logout-btn:hover{
+  background-color:#c7c7c7;
+}

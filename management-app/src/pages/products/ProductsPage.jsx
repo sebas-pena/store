@@ -1,15 +1,15 @@
 import { useState, useEffect, useContext } from "react"
 import { useProducts } from "../../hooks/useProducts"
 import { StoreContext } from "../../store/StoreProvider"
-import AddButton from "../../components/button/add-button/AddButton"
+import AddButton from "../../components/molecules/Buttons/AddButton"
 import Pagination from "../../components/pagination/Pagination"
-import SelectBox from "../../components/select-box/SelectBox"
 
 // svgs, css and images below
 import "./ProductsPage.css"
-import SearchInput from "../../components/input/SearchInput"
-import NewProductModal from "../../components/modals/new-product/NewProductModal"
-import Table from "../../components/table/Table"
+import FlexContainer from "../../components/atoms/Container/FlexContainer"
+import SearchInput from "../../components/molecules/SearchInput/SearchInput"
+import Text from "../../components/atoms/Text/Text"
+import ProductsTable from "../../components/organisms/Tables/Products/ProductsTable"
 
 const ProductsPage = () => {
 	const [sort, setSort] = useState("")
@@ -19,8 +19,6 @@ const ProductsPage = () => {
 		query: search,
 		page,
 	})
-
-	const [showNewProductModal, setShowNewProductModal] = useState(false)
 
 	const { store, dispatch } = useContext(StoreContext)
 	useEffect(() => {
@@ -34,57 +32,21 @@ const ProductsPage = () => {
 	useEffect(() => {}, [page])
 
 	useEffect(() => {}, [products, loading, error])
-	const handleAddProduct = (product) => {
-		product.imageUrl = product.images[0]
-		product.rate = 0
-		product.reviewsCount = 0
-		products.unshift({
-			...product,
-		})
-	}
 	return (
-		<>
-			<div className="product-page__ctn">
-				<div className="product-page__header">
-					<SearchInput
-						onChange={setSearch}
-						value={search}
-						placeholder="Name or Category"
-						maxWidth={250}
-					/>
-					<SelectBox
-						placeholder="Sort By"
-						options={["Name", "Price", "Rating", "Stock", "Category"]}
-						handleChange={setSort}
-					/>
-					<div className="product-page__add-product">
-						<AddButton
-							onClick={() => {
-								setShowNewProductModal(true)
-							}}
-						>
-							New Product
-						</AddButton>
-					</div>
-				</div>
-				<div className="product-page__body">
-					<Table type="products" rows={products} />
-					<div className="product-page__pagination-ctn">
-						<Pagination onChange={setPage} />
-					</div>
+		<FlexContainer as="main" gap={20} padding="20px 10px" flex={1} vertical>
+			<FlexContainer justify="space-between">
+				<SearchInput placeholder="Name or Category" />
+				<AddButton height={32} padding="0 16px" as="link" to="/new-product">
+					<Text size={13}>Create Product</Text>
+				</AddButton>
+			</FlexContainer>
+			<div className="product-page__body">
+				<ProductsTable products={products} />
+				<div className="product-page__pagination-ctn">
+					<Pagination onChange={setPage} />
 				</div>
 			</div>
-			{showNewProductModal && (
-				<NewProductModal
-					handleClose={() => {
-						setShowNewProductModal(false)
-					}}
-					submitCallback={handleAddProduct}
-				>
-					Modal
-				</NewProductModal>
-			)}
-		</>
+		</FlexContainer>
 	)
 }
 

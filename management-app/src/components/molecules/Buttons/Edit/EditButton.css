@@ -1,0 +1,18 @@
+.edit-button{
+  height: 32px;
+  padding: 0 24px;
+  background-color: var(--primary);
+  border-radius: 5px;
+}
+
+.edit-button:focus{
+  background-color: var(--primaryFocus);
+}
+
+.edit-button:hover{
+  background-color: var(--primaryHover);
+}
+
+.edit-button:active{
+  background-color: var(--primaryActive);
+}

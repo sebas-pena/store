@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom"
-import Aside from "../components/aside/Aside"
+import SideNav from "../components/organisms/SideNav/SideNav"
 import TitleBar from "../components/titlebar/TitleBar"
 import DashboardPage from "../pages/dashboard/DashboardPage"
+import Error404Page from "../pages/Error404/Error404Page"
 import NewProductPage from "../pages/new-product/NewProductPage"
 import OauthPage from "../pages/oauth/OauthPage"
 import OrdersPage from "../pages/orders/OrdersPage"
@@ -10,7 +11,7 @@ import SettingsPage from "../pages/settings/SettingsPage"
 import SuppliersPage from "../pages/suppliers/SuppliersPage"
 
 const AddAsideAndTitleBar = ({ children }) => <div className="App">
-  <Aside />
+  <SideNav />
   <div className="app__ctn">
     <TitleBar />
     {children}
@@ -18,15 +19,15 @@ const AddAsideAndTitleBar = ({ children }) => <div className="App">
 </div>
 
 
+
 const PrivateRoutes = () => {
   return (
     <Routes>
-      <Route path="/oauth/:provider" element={<OauthPage />} />
       <Route path="/" element={
         <AddAsideAndTitleBar>
           <DashboardPage />
-        </AddAsideAndTitleBar>}
-      />
+        </AddAsideAndTitleBar>} />
+      <Route path="/oauth/:provider" element={<OauthPage />} />
       <Route path="/products" element={
         <AddAsideAndTitleBar>
           <ProductsPage />
@@ -53,6 +54,7 @@ const PrivateRoutes = () => {
         </AddAsideAndTitleBar>
       } />
       <Route path="/new-product" element={<NewProductPage />} />
+      <Route path="*" element={<Error404Page />} />
     </Routes>
 
   )

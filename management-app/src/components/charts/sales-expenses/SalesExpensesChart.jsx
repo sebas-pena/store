@@ -1,27 +1,13 @@
-import {
-	Chart as ChartJS,
-	CategoryScale,
-	LinearScale,
-	BarElement,
-	Title,
-	Tooltip,
-	Legend,
-} from "chart.js"
+import { BarElement } from "chart.js"
 import { Bar } from "react-chartjs-2"
+import CardWrapper from "../../atoms/Container/CardWrapper"
+import FlexContainer from "../../atoms/Container/FlexContainer"
+import Text from "../../atoms/Text/Text"
 
 import "./SalesExpensesChart.css"
 
-const SalesExpensesChart = ({ labels, incomes, expenses }) => {
+const SalesExpensesChart = ({ labels, incomes, expenses, width, flex }) => {
 	BarElement.prototype.constructor.defaults.borderRadius = 3
-	ChartJS.register(
-		CategoryScale,
-		LinearScale,
-		BarElement,
-		Title,
-		Tooltip,
-		Legend
-	)
-
 	const options = {
 		responsive: true,
 		maintainAspectRatio: false,
@@ -86,10 +72,18 @@ const SalesExpensesChart = ({ labels, incomes, expenses }) => {
 	}
 
 	return (
-		<div className="sales-expenses-chart__ctn">
-			<h2 className="sales-expenses-chart__title">Summary</h2>
-			<p className="sales-expenses-chart__balance">$12,345.12</p>
-			<p className="sales-expenses-chart__profit">$123456</p>
+		<CardWrapper width={width}>
+			<div>
+				<Text as="h2" color="#404043" size={18} bold>
+					Balance
+				</Text>
+				<Text as="h2" color="#404043" size={25} heavy>
+					$12,345.12
+				</Text>
+			</div>
+			<Text as="h2" color="#119E2F" size={18}>
+				$123456
+			</Text>
 			<div className="sales-expenses-chart__info">
 				<span>Incomes</span>
 				<span>Expenses</span>
@@ -97,7 +91,7 @@ const SalesExpensesChart = ({ labels, incomes, expenses }) => {
 			<div className="sales-expenses-chart__chart">
 				<Bar options={options} data={data} />
 			</div>
-		</div>
+		</CardWrapper>
 	)
 }
 

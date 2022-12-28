@@ -1,20 +1,32 @@
+const resize = (img, height, width, cb) => {
+  let canvas = document.createElement('canvas')
+  canvas.width = width;
+  canvas.height = height;
+  const hRatio = canvas.width / img.width;
+  const vRatio = canvas.height / img.height
+  const ratio = Math.min(hRatio, vRatio);
+  const centerShift_x = (canvas.width - img.width * ratio) / 2;
+  const centerShift_y = (canvas.height - img.height * ratio) / 2;
+  const ctx = canvas.getContext("2d")
+  ctx.fillStyle = "#fff"
+  ctx.fillRect(0, 0, width, height)
+  ctx.drawImage(img, 0, 0, img.width, img.height,
+    centerShift_x, centerShift_y, img.width * ratio, img.height * ratio)
+  canvas.toBlob(resizedImage => {
+    cb(resizedImage)
+  })
+}
+
 const resizeImageFile = (file, width, height) => {
   return new Promise((res, rej) => {
     if (file.type.match(/image.*/)) {
       let reader = new FileReader();
       reader.onload = (data) => {
-        let image = new Image();
-        image.onload = () => {
-          let canvas = document.createElement('canvas')
-          canvas.width = width;
-          canvas.height = height;
-          canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-          canvas.toBlob(resizedImage => {
-            console.log(resizedImage)
-            res(resizedImage)
-          })
+        let img = new Image();
+        img.onload = () => {
+          resize(img, height, width, res)
         }
-        image.src = data.target.result;
+        img.src = data.target.result;
       }
       reader.readAsDataURL(file);
     } else {
@@ -25,17 +37,11 @@ const resizeImageFile = (file, width, height) => {
 
 const resizedImageURL = (url, width, height) => {
   return new Promise((res, rej) => {
-    let image = new Image();
-    image.onload = () => {
-      let canvas = document.createElement('canvas')
-      canvas.width = width;
-      canvas.height = height;
-      canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-      canvas.toBlob(resizedImage => {
-        res(resizedImage)
-      })
+    let img = new Image();
+    img.onload = () => {
+      resize(img, height, width, res)
     }
-    image.src = url;
+    img.src = url;
   })
 }
 

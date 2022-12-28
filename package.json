@@ -18,5 +18,7 @@
   "keywords": [],
   "author": "Pablo Peña & BanKing",
   "license": "ISC",
-  "devDependencies": {}
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.9"
+  }
 }

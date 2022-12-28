@@ -1,0 +1,46 @@
+.switch__ctn{
+  position: relative;
+  border: 1px solid #dbdbdb;
+  padding: 3px;
+  width: max-content;
+}
+
+.switch__ctn.border-off{
+  border: none;
+}
+
+.switch__ctn input{
+  display: none;
+}
+
+.switch__ctn label:hover{
+  background-color: #f4f5ff;
+  transition: background .3s ease-out;
+}
+
+.switch__ctn p{
+  position: relative;
+  z-index: 3;
+}
+
+.switch__ctn > label:first-child::before{
+  content: "";
+  position: absolute;
+  display: block;
+  width: calc(50% - 6px);
+  height: calc(100% - 6px);
+  border-radius: 7px;
+  background-color: #c5cae9;
+  transform: translateX(calc(100% + 6px));
+  transition: transform .2s ease-out;
+}
+
+.switch__ctn.with-slash > label:first-child::before{
+  width: calc(50% - 12px);
+  transform: translateX(calc(100% + 18px));
+}
+
+.switch__ctn  > label:first-child:has(input:checked)::before{
+  transform: translateX(0);
+}
+

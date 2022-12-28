@@ -1,0 +1,60 @@
+.input-with-label-inside{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap:10px;
+  height: 45px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid var(--grayDark);
+  cursor: text;
+}
+
+.input-with-label-inside.error{
+  border: 1px solid var(--danger);
+}
+
+.input-with-label-inside input {
+  background-color: transparent;
+  align-self: flex-end;
+  flex: 1;
+}
+
+.input-with-label-inside p{
+  position: absolute;
+  transform: translateY(0);
+  transition: transform .1s ease-out, font-size .1s ease-out;
+  font-size: 18px;
+  color: var(--grayDark);
+}
+
+.input-with-label-inside:has(input:focus){
+  border: 2px solid var(--focusOutline);
+  padding: 5px 13px;
+}
+
+.input-with-label-inside:has(input:focus) p {
+  color: var(--focusOutline);
+}
+
+.input-with-label-inside:has(input[type="email"]) svg * {
+  stroke: var(--grayDark);
+}
+.input-with-label-inside:has(input[type="email"]:focus) svg * {
+  stroke: var(--focusOutline);
+}
+
+.input-with-label-inside:has(input:not([type="email"])) svg * {
+  fill: var(--grayDark);
+}
+.input-with-label-inside:has(input:not([type="email"]):focus) svg * {
+  fill: var(--focusOutline);
+}
+
+.input-with-label-inside:has(input:focus) p,
+.input-with-label-inside.filled p{
+  font-size: 14px;
+  transform: translateY(-10px);
+}
+

@@ -1,0 +1,10 @@
+.link{
+  font-size: 16px;
+  color: #2563EA;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.link:focus{
+  box-shadow: 0px 0px 0px 1px #fff, 0px 0px 0px 3px var(--focusOutline);
+}

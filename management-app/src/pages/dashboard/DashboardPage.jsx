@@ -1,59 +1,81 @@
-import { useContext, useEffect } from "react"
-import BestSellerDashboard from "../../components/best-seller-dashboard/BestSellerDashboard"
-import Cards from "../../components/cards/Cards"
+import { useContext, useEffect, useState } from "react"
 import SalesExpensesChart from "../../components/charts/sales-expenses/SalesExpensesChart"
-import LatestTransactions from "../../components/latest-transactions/TransactionsHistory"
 import { StoreContext } from "../../store/StoreProvider"
 
 // svgs , css and images below
-import { ReactComponent as TruckIcon } from "../../assets/svg/truck.svg"
-import { ReactComponent as CartIcon } from "../../assets/svg/cart2.svg"
-import { ReactComponent as TrendingIcon } from "../../assets/svg/trending.svg"
 import "./DashboardPage.css"
 
 // mocks below
 import { totalSalesMock } from "../../mocks/totalsales"
+import BestSelling from "../../components/organisms/BestSelling/BestSelling"
+import FlexContainer from "../../components/atoms/Container/FlexContainer"
+import ComparsionCard from "../../components/organisms/Cards/Comparsion/ComparsionCard"
+import SalesChannels from "../../components/organisms/PurcharseChannelsChart/PurcharseChannelChart.jsx/SalesChannerls"
+import Text from "../../components/atoms/Text/Text"
+import Switch from "../../components/molecules/Switch/Switch"
 
 const DashboardPage = () => {
-  const { dispatch } = useContext(StoreContext)
+	const { dispatch } = useContext(StoreContext)
+	const [salesPeriod, setSalesPeriod] = useState("monthly")
+	useEffect(() => {
+		dispatch({ type: "SET_TITLE", payload: "Dashboard" })
+	}, [])
 
-  useEffect(() => {
-    dispatch({ type: "SET_TITLE", payload: "Dashboard" })
-  }, [])
-
-  return (
-    <div className="dashboard__ctn">
-      <main className="dashboard__main-ctn">
-        <div className="dashboard__chart">
-          <SalesExpensesChart period={"lastyear"} {...totalSalesMock} />
-        </div>
-        <div className="dashboard__best-seller">
-          <BestSellerDashboard />
-        </div>
-        <div className="dashboard__cards-1">
-          <Cards background="0">
-            <TruckIcon width="80" height="80" fill="#fff" />
-            <h3>Next Order</h3>
-            <p> 20m 20s</p>
-          </Cards>
-          <Cards background="1">
-            <CartIcon width="80" height="80" fill="#fff" />
-            <h3>Sold Today</h3>
-            <p>1200 items</p>
-          </Cards>
-        </div>
-        <div className="dashboard__cards-2">
-          <Cards background="2">
-            <TrendingIcon width="80" height="80" fill="#fff" />
-            <h3>Trending</h3>
-            <p>Graphic Cards</p>
-          </Cards>
-          <Cards background="3"></Cards>
-        </div>
-      </main>
-      <LatestTransactions />
-    </div>
-  )
+	return (
+		<FlexContainer
+			flex={1}
+			vertical
+			overflow="auto"
+			background="#f4f4f4"
+			padding={20}
+			as="main"
+			gap={20}
+		>
+			<Text size={25} as="h2">
+				General
+			</Text>
+			<FlexContainer gap={20} height={340}>
+				<FlexContainer vertical gap={10} width={200} shrink={0}>
+					<ComparsionCard title="New Sales" value="128k" percentage={9} />
+					<ComparsionCard title="New Customers" value="128k" percentage={-9} />
+				</FlexContainer>
+				<SalesExpensesChart period={"lastyear"} {...totalSalesMock} flex={1} />
+				<BestSelling />
+			</FlexContainer>
+			<FlexContainer gap={20} align="flex-end">
+				<Text size={25} as="h2">
+					Sales Channels
+				</Text>
+				<Switch
+					name="sales-channels"
+					rigth={{
+						label: "Monthly",
+						value: "monthly",
+					}}
+					left={{
+						label: "Daily",
+						value: "daily",
+					}}
+					removeBorder
+					value={salesPeriod}
+					fontSize={13}
+					onChange={(e) => {
+						setSalesPeriod(e.target.value)
+					}}
+				/>
+			</FlexContainer>
+			<FlexContainer gap={20} height={340}>
+				<SalesChannels title="Orders" values={[100, 50, 300]} showPercentage />
+				<SalesChannels title="Items" values={[500, 200, 390]} showPercentage />
+				<SalesChannels
+					title="Revenue"
+					values={[2000, 6000, 5200]}
+					symbol="$"
+					showPercentage
+				/>
+			</FlexContainer>
+		</FlexContainer>
+	)
 }
 
 export default DashboardPage

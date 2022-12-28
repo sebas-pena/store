@@ -1,11 +1,31 @@
 :root{
-  --primary: #3A78F2;
+  /* PRIMARY */
+  --primary: #2563EA;
+  --primaryHover: #1D4ED7;
+  --primaryFocus: #2563EA;
+  --primaryActive: #1F3FAE;
+  --primaryDisabled: #8bb0ff;
+  
+  /* DANGER */
+  --danger:#DC2625;
+  --dangerHover:#B81C1D;
+  --dangerFocus:#DC2625;
+  --dangerActive:#A31E1F;
+  
+  /* GRAY */
+  --gray: #f5f7fb;
+  --grayHover: #e7e7e7;
+  --grayFocus: #d8d8d8;
+  --grayActive: #e3e5e8;
+
+  /* FOCUS OUTLINE */
+  --focusOutline: #6C93E4;
+  --grayDark:#707070;
   --light-blue:#a4bbe2;
   --yellow: #FFAF02;
   --light-yellow: #FFD006;
   --green-water :#1ED796; 
   --light-gray: #F5F7FB;
-  --gray: #7f7f81;
   --light-green: #52c669;
   --dark-gray: #404043;
   --light-red:#e4696b;
@@ -41,13 +61,6 @@ body {
   overflow: hidden;
 }
 
-button{
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
 ol, ul{
   list-style: none;
 }
@@ -60,8 +73,18 @@ input{
   outline: none;
   border: none;
 }
+
 input:focus{
   outline: none;
+}
+
+label{
+  cursor: pointer
+}
+
+/* All focus */
+*[tabindex="0"]:focus{
+  box-shadow: 0px 0px 0px 1px #fff, 0px 0px 0px 3px var(--focusOutline);
 }
 
 /* width */
